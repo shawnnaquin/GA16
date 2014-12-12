@@ -1,0 +1,73 @@
+@mixin grid-relative-classes($size) {
+	.#{$size}-pull-three-quarter {
+		right: 75%;
+		left: auto;
+	}
+	.#{$size}-pull-two-third {
+		right: (100% / 3) * 2;
+		left: auto;
+	}
+	.#{$size}-pull-half {
+		right: 50%;
+		left: auto;
+	}
+	.#{$size}-pull-third {
+		right: (100% / 3);
+		left: auto;
+	}
+	.#{$size}-pull-quarter {
+		right: 25%;
+		left: auto;
+	}
+
+	.#{$size}-push-three-quarter {
+		left: 75%;
+		right: auto;
+	}
+	.#{$size}-push-two-third {
+		left: (100% / 3) * 2;
+		right: auto;
+	}
+	.#{$size}-push-half {
+		left: 50%;
+		right: auto;
+	}
+	.#{$size}-push-third {
+		left: (100% / 3);
+		right: auto;
+	}
+	.#{$size}-push-quarter {
+		left: 25%;
+		right: auto;
+	}
+
+	.#{$size}-three-quarter {
+		width: 75%;
+	}
+	.#{$size}-two-third {
+		width: (100% / 3) * 2;
+	}
+	.#{$size}-half {
+		width: 50%;
+	}
+	.#{$size}-third {
+		width: (100% / 3);
+	}
+	.#{$size}-quarter {
+		width: 25%;
+	}
+}
+
+@include grid-relative-classes($size:small);
+
+@media #{$medium-up} {
+	@include grid-relative-classes($size:medium);
+}
+
+@media #{$large-up} {
+	@include grid-relative-classes($size:large);
+}
+
+@media #{$xlarge-up} {
+    @include grid-relative-classes($size:xlarge);
+}

@@ -1,0 +1,33 @@
+$color-blue         : #435967;
+$color-blue-light   : #6692a7;
+$color-green        : #abb451;
+$color-red          : #ca6453;
+$color-grey-darkest : #151a1d;
+$color-grey-dark    : #333333;
+$color-grey-med     : #666666;
+$color-grey-med-light : #797979;
+$color-grey-light   : #eaeaea;
+$color-white        : #fff;
+$color-black        : #000;
+
+$color-body-bg   : $color-grey-light;
+$color-body-text : $color-grey-med;
+
+$font-default-size     : 16px;
+$font-line-height      : 1.75;
+$font-family-primary   : "Gm", sans-serif;
+
+$img-path              : '../imgs/';
+$font-path             : '../fonts/';
+
+$small-padding         : 1.25rem;
+
+$highdpi : '(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)';
+
+$mobile-menu-speed : 300ms;
+$sidebar-width: 11.25em;
+
+
+//$sprites   : sprite-map('sprites/*.png');
+//$sprites2x : sprite-map('sprites2x/*.png');
+

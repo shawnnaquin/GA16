@@ -1,0 +1,72 @@
+@mixin ico-psuedo {
+	display: inline-block;
+
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	text-indent: 0;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+.ia,
+[class^="icon-"],
+[class*=" icon-"] {
+	display: inline-block;
+	width: 2rem;
+	height: 2rem;
+
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	text-indent: 0;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+@mixin icon-email {
+	content: "\e600";
+}
+@mixin icon-print {
+	content: "\e601";
+}
+@mixin icon-download {
+	content: "\e602";
+}
+@mixin icon-view {
+	content: "\e603";
+}
+
+
+.icon-email {
+	&:before {
+		@include icon-email;
+	}
+}
+.icon-print {
+	&:before {
+		@include icon-print;
+	}
+}
+.icon-download {
+	&:before {
+		@include icon-download;
+	}
+}
+.icon-view {
+	&:before {
+		@include icon-view;
+	}
+}

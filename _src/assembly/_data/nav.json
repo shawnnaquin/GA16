@@ -1,0 +1,14 @@
+[
+	{
+		"text"  : "Link Text",
+		"title" : "Go to X",
+		"url"   : "#",
+		"class" : "blue"
+	},
+	{
+		"text"  : "Link Text",
+		"title" : "Go to X",
+		"url"   : "#",
+		"class" : "blue"
+	}
+]

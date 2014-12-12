@@ -1,0 +1,37 @@
+/*
+
+### Standards ###
+[selector] {
+	Box model (display, width, height, padding, margin, float)
+	Position (position, coordinates)
+	Font (font, type, text)
+	Colors
+	Backgrounds
+	Border
+}
+
+### Z-Index Spaces ###
+
+*/
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+p,
+ol,
+ul,
+dl {
+	font-size: inherit;
+}
+
+figure {
+	margin: 0;
+	padding: 0;
+}
