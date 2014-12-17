@@ -11,6 +11,13 @@
 	</div><!-- / galaxy -->
 </div><!-- / universe -->
 
+<!-- @if NODE_ENV == 'DEVELOPMENT' -->
 <script src="{{ assets }}js/main.js"></script>
+<!-- @endif -->
+
+<!-- @if NODE_ENV == 'PRODUCTION' -->
+<script src="{{ assets }}js/main.min.js"></script>
+<!-- @endif -->
+
 </body>
 </html>
