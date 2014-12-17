@@ -82,7 +82,6 @@ module.exports = function(grunt) {
 		assemble: {
 			options: {
 				flatten: true,
-				postprocess: require('pretty'),
 				assets: '<%= pkg.assetsPath %>',
 				data: '<%= pkg.buildPath %>assembly/_data/*.{json,yml}',
 
@@ -192,6 +191,21 @@ module.exports = function(grunt) {
 					src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match
 					dest: '<%= pkg.assetsPath %>img/'                  // Destination path prefix
 				}]
+			}
+		},
+		prettify: {
+			options: {
+				indent: 4,
+				indent_char: ' ',
+				condense: false,
+				indent_inner_html: true,
+			},
+			def: {
+				expand: true,
+				cwd: '<%= pkg.destination %>',
+				ext: '.html',
+				src: ['*.html'],
+				dest: '<%= pkg.destination %>'
 			}
 		}
 
