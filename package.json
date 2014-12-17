@@ -21,6 +21,8 @@
     "grunt-modernizr": "~0.5.1",
     "assemble": "~0.4.3",
     "grunt-prettify": "~0.4.0",
-    "grunt-contrib-cssmin": "~0.10.0"
+    "grunt-contrib-cssmin": "~0.10.0",
+    "grunt-env": "~0.4.2",
+    "grunt-preprocess": "~4.0.0"
   }
 }

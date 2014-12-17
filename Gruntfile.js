@@ -3,6 +3,18 @@ module.exports = function(grunt) {
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		env : {
+			options : {
+				/* Shared Options Hash */
+				//globalOption : 'foo'
+			},
+			dev: {
+				NODE_ENV : 'DEVELOPMENT'
+			},
+			prod : {
+				NODE_ENV : 'PRODUCTION'
+			}
+		},
 		jshint: {
 			src: [
 				'Gruntfile.js',
@@ -218,10 +230,21 @@ module.exports = function(grunt) {
 					'<%= pkg.assetsPath %>css/main.min.css' : ['<%= pkg.assetsPath %>css/main.css']
 				}
 			}
+		},
+		preprocess: {
+			def: {
+				expand: true,
+				cwd: '<%= pkg.destination %>',
+				ext: '.html',
+				src: ['*.html'],
+				dest: '<%= pkg.destination %>'
+			}
 		}
 
 	});
 
+	grunt.loadNpmTasks('grunt-env');
+	grunt.loadNpmTasks('grunt-preprocess');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-concat');
@@ -233,6 +256,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-autoprefixer');
 
 	// Default task(s).
-	grunt.registerTask('default',    ['modernizr', 'jshint', 'concat', 'compass:def', 'autoprefixer', 'assemble', 'prettify']);
-	grunt.registerTask('production', ['modernizr', 'jshint', 'concat', 'uglify', 'compass:prod', 'autoprefixer', 'assemble', 'prettify', 'cssmin']);
+	grunt.registerTask('default',    ['env:dev', 'modernizr', 'jshint', 'concat', 'compass:def', 'autoprefixer', 'assemble', 'preprocess', 'prettify']);
+	grunt.registerTask('production', ['env:prod', 'modernizr', 'jshint', 'concat', 'uglify', 'compass:prod', 'autoprefixer', 'assemble', 'preprocess', 'prettify', 'cssmin']);
 };
