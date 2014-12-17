@@ -20,6 +20,7 @@
     "grunt-autoprefixer": "~0.6.5",
     "grunt-modernizr": "~0.5.1",
     "assemble": "~0.4.3",
-    "grunt-prettify": "~0.4.0"
+    "grunt-prettify": "~0.4.0",
+    "grunt-contrib-cssmin": "~0.10.0"
   }
 }

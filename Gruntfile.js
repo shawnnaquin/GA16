@@ -179,7 +179,7 @@ module.exports = function(grunt) {
 					imagesDir: '<%= pkg.assetsPath %>img',
 					relativeAssets: true,
 					outputStyle: 'compressed',
-					environment: 'production',
+					noLineComments: true,
 				}
 			}
 		},
@@ -207,6 +207,17 @@ module.exports = function(grunt) {
 				src: ['*.html'],
 				dest: '<%= pkg.destination %>'
 			}
+		},
+		cssmin: {
+			add_banner: {
+				options: {
+					banner: '/*! <%= pkg.name %> - <%= grunt.template.today("yyyy-mm-dd h:MM:ss TT") %> */',
+					keepSpecialComments : 0
+				},
+				files: {
+					'<%= pkg.assetsPath %>css/main.min.css' : ['<%= pkg.assetsPath %>css/main.css']
+				}
+			}
 		}
 
 	});
@@ -222,6 +233,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-autoprefixer');
 
 	// Default task(s).
-	grunt.registerTask('default',    ['modernizr', 'jshint', 'concat', 'compass:def', 'autoprefixer', 'assemble']);
-	grunt.registerTask('production', ['modernizr', 'jshint', 'concat', 'uglify', 'compass:prod', 'autoprefixer', 'assemble']);
+	grunt.registerTask('default',    ['modernizr', 'jshint', 'concat', 'compass:def', 'autoprefixer', 'assemble', 'prettify']);
+	grunt.registerTask('production', ['modernizr', 'jshint', 'concat', 'uglify', 'compass:prod', 'autoprefixer', 'assemble', 'prettify', 'cssmin']);
 };
