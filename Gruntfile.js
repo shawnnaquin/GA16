@@ -116,14 +116,7 @@ module.exports = function(grunt) {
 				'<%= pkg.buildPath %>assembly/**/*.hbs',
 				'**/*.scss'
 			],
-			tasks: [
-				'modernizr',
-				'jshint',
-				'concat',
-				'compass:def',
-				'autoprefixer',
-				'assemble'
-			]
+			tasks: ['default']
 		},
 		concat: {
 			options: {
@@ -182,6 +175,9 @@ module.exports = function(grunt) {
 					cssDir:    '<%= pkg.assetsPath %>css',
 					imagesDir: '<%= pkg.assetsPath %>img',
 					relativeAssets: true,
+					environment: 'development',
+					outputStyle: 'expanded',
+					noLineComments: false
 				}
 			},
 			prod: {
@@ -214,7 +210,7 @@ module.exports = function(grunt) {
 			},
 			def: {
 				expand: true,
-				cwd: '<%= pkg.destination %>',
+				wd: '<%= pkg.destination %>',
 				ext: '.html',
 				src: ['*.html'],
 				dest: '<%= pkg.destination %>'
@@ -239,8 +235,18 @@ module.exports = function(grunt) {
 				src: ['*.html'],
 				dest: '<%= pkg.destination %>'
 			}
+		},
+		css_purge: {
+			production: {
+				options: {
+					"verbose": false,
+					"no_duplicate_property": true,
+				},
+				files: {
+					'<%= pkg.assetsPath %>css/main.min.css': ['<%= pkg.assetsPath %>css/main.css']
+				}
+			}
 		}
-
 	});
 
 	grunt.loadNpmTasks('grunt-env');
@@ -254,8 +260,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('assemble');
 	grunt.loadNpmTasks('grunt-modernizr');
 	grunt.loadNpmTasks('grunt-autoprefixer');
+	grunt.loadNpmTasks('grunt-prettify');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-css-purge');
 
 	// Default task(s).
 	grunt.registerTask('default',    ['env:dev', 'modernizr', 'jshint', 'concat', 'compass:def', 'autoprefixer', 'assemble', 'preprocess', 'prettify']);
-	grunt.registerTask('production', ['env:prod', 'modernizr', 'jshint', 'concat', 'uglify', 'compass:prod', 'autoprefixer', 'assemble', 'preprocess', 'prettify', 'cssmin']);
+	grunt.registerTask('production', ['env:prod', 'modernizr', 'jshint', 'concat', 'uglify', 'compass:prod', 'autoprefixer', 'assemble', 'preprocess', 'prettify', 'css_purge', 'cssmin']);
 };
