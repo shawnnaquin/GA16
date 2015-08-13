@@ -1,52 +1,64 @@
-@import 'theme/setup';
+@import
+	'theme/setup',
 
-// Reset
-@import '../foundation/scss/normalize';
+	// reset
+	'lib/sanitize',
 
-// Foundation
-@import 'theme/settings';
-@import '../foundation/scss/foundation/components/block-grid';
-@import '../foundation/scss/foundation/components/grid';
-@import '../foundation/scss/foundation/components/type';
-@import '../foundation/scss/foundation/components/buttons';
+	// foundation
+	'../foundation/scss/foundation/settings',
+	'../foundation/scss/foundation/components/block-grid',
+	'../foundation/scss/foundation/components/grid',
+	'../foundation/scss/foundation/components/type',
+	'../foundation/scss/foundation/components/buttons',
 
-@import 'theme/fonts';
-@import 'theme/icons';
+	'theme/fonts',
+	'theme/icons',
 
-// Plugins/Mixins
-@import 'lib/mixins';
-@import 'lib/grid-extension';
-@import 'lib/retina-sprites';
+	// plugins
+	'lib/mixins',
+	'lib/grid-extension',
+	'lib/retina-sprites',
+	// 'lib/blockui',
+	// 'lib/slick',
 
-// Theme
-@import 'theme/default/type';
-@import 'theme/default/atoms';
-@import 'theme/default/organisms';
-@import 'theme/default/structure';
-@import 'theme/default/templates';
+	// theme
+	'theme/default/type',
+	'theme/default/atoms',
+	'theme/default/organisms',
+	'theme/default/structure',
+	'theme/default/templates',
 
-@import 'theme/compat/ie8';
+	'theme/compat/ie8';
 
 /*
 @media #{$medium-up} {
-	@import 'theme/medium/organisms';
-	@import 'theme/medium/structure';
-	@import 'theme/medium/templates';
+	@import
+		'theme/medium/type',
+		'theme/medium/atoms',
+		'theme/medium/organisms',
+		'theme/medium/structure',
+		'theme/medium/templates';
 }
 */
 
 /*
 @media #{$large-up} {
-	@import 'theme/large/type';
-	@import 'theme/large/atoms';
-	@import 'theme/large/organisms';
-    @import 'theme/large/structure';
-    @import 'theme/large/templates';
+	@import
+		'theme/large/type',
+		'theme/large/atoms',
+		'theme/large/organisms',
+		'theme/large/structure',
+		'theme/large/templates';
 }
 */
 
 /*
 @media #{$xlarge-up} {
-    @import 'theme/xlarge/structure';
+    @import
+    	'theme/xlarge/type',
+    	'theme/xlarge/atoms',
+    	'theme/xlarge/organisms',
+    	'theme/xlarge/structure',
+    	'theme/xlarge/templates';
 }
 */
