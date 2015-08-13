@@ -6,11 +6,14 @@
 			minWidth: 0,
 			onEnter: function() {
 				App.main.init();
+			},
+			onLeave: function(){
+				// NOTHING
 			}
 		},
 		{
 			id: 'small',
-			maxWidth: 1023,
+			maxWidth: 640,
 			onEnter: function(){
 				App.small.init();
 			},
@@ -18,19 +21,20 @@
 				App.small.destroy();
 			}
 		},
-		/*{
+		{
 			id: 'medium',
-			minWidth: 1023,
+			minWidth: 641,
+			maxWidth: 1025,
 			onEnter: function(){
-				AppMain.mod.medium.init();
+				App.medium.init();
 			},
 			onLeave: function(){
-				AppMain.mod.medium.destroy();
+				App.medium.destroy();
 			}
-		},*/
+		},
 		{
 			id: 'large',
-			minWidth: 1024,
+			minWidth: 1025,
 			onEnter: function(){
 				App.large.init();
 			},
