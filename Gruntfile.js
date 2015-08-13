@@ -1,8 +1,11 @@
 module.exports = function(grunt) {
 
+	require('load-grunt-tasks')(grunt);
+
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+
 		env : {
 			options : {
 				/* Shared Options Hash */
@@ -15,24 +18,76 @@ module.exports = function(grunt) {
 				NODE_ENV : 'PRODUCTION'
 			}
 		},
-		jshint: {
-			src: [
-				'Gruntfile.js',
-				'<%= pkg.buildPath %>js/app/**/*.js'
-			],
+
+		assemble: {
 			options: {
-				smarttabs: true,
-				supernew: true,
-			}
-		},
-		autoprefixer: {
-			options: {
-				browsers: ['last 2 version', 'ie 8', 'ie 9']
+				flatten: true,
+				assets: '<%= pkg.assetsPath %>',
+				data: '<%= pkg.buildPath %>assembly/_data/*.{json,yml}',
+
+				// Templates
+				partials:  '<%= pkg.buildPath %>assembly/_includes/**/*.hbs',
+				layoutdir: '<%= pkg.buildPath %>assembly/_layouts',
+				layout: 'default.hbs',
 			},
-			dist: {
-				src: '<%= pkg.assetsPath %>css/*.css'
+			site: {
+				src: ['<%= pkg.buildPath %>assembly/_pages/*.hbs'],
+				dest: '<%= pkg.destination %>'
 			}
 		},
+
+		preprocess: {
+			def: {
+				expand: true,
+				cwd: '<%= pkg.destination %>',
+				ext: '.html',
+				src: ['*.html'],
+				dest: '<%= pkg.destination %>'
+			}
+		},
+
+		replace: {
+			def : {
+				files: [{
+					expand: true,
+					cwd: '<%= pkg.destination %>',
+					src: ['*.html'],
+					dest: '<%= pkg.destination %>'
+				}],
+				options: {
+					patterns: [{
+						match: /\{%/g,
+						replacement: '{{'
+					},{
+						match: /%\}/g,
+						replacement: '}}'
+					},{
+						match: /\{%%/g,
+						replacement: '{{{'
+					},{
+						match: /%%\}/g,
+						replacement: '}}}'
+					}]
+				}
+			}
+		},
+
+		prettify: {
+			options: {
+				indent: 4,
+				indent_char: ' ',
+				condense: false,
+				indent_inner_html: true,
+			},
+			def: {
+				expand: true,
+				wd: '<%= pkg.destination %>',
+				ext: '.html',
+				src: ['*.html'],
+				dest: '<%= pkg.destination %>'
+			}
+		},
+
 		modernizr: {
 
 			dist: {
@@ -81,7 +136,6 @@ module.exports = function(grunt) {
 						'<%= pkg.buildPath %>js/**/*.js'
 					]
 				},
-				//"src": []
 			},
 
 			// When parseFiles = true, matchCommunityTests = true will attempt to
@@ -91,151 +145,57 @@ module.exports = function(grunt) {
 			// Have custom Modernizr tests? Add paths to their location here.
 			//"customTests" : []
 		},
-		assemble: {
-			options: {
-				flatten: true,
-				assets: '<%= pkg.assetsPath %>',
-				data: '<%= pkg.buildPath %>assembly/_data/*.{json,yml}',
 
-				// Templates
-				partials:  '<%= pkg.buildPath %>assembly/_includes/**/*.hbs',
-				layoutdir: '<%= pkg.buildPath %>assembly/_layouts',
-				layout: 'default.hbs',
-			},
-			site: {
-				src: ['<%= pkg.buildPath %>assembly/_pages/*.hbs'],
-				dest: '<%= pkg.destination %>'
+		jshint: {
+			src: ['Gruntfile.js', '<%= pkg.buildPath %>js/app/**/*.js'],
+			options: {
+				smarttabs: true,
+				supernew: true,
+				reporter: require('jshint-stylish'),
 			}
 		},
-		watch: {
-			options: {
-				livereload: true,
-			},
-			files: [
-				'<%= pkg.buildPath %>js/**/*.js',
-				'<%= pkg.buildPath %>assembly/**/*.hbs',
-				'**/*.scss'
-			],
-			tasks: ['default']
-		},
+
 		concat: {
 			options: {
 				separator : ';',
 				stripBanners : true,
-				banner : ''
 			},
 			def: {
 				files: {
-					'<%= pkg.assetsPath %>js/head.js'            : '<%= pkg.buildPath %>js/head/*.js',
-					'<%= pkg.assetsPath %>js/<%= pkg.name %>.js' : [
+					'<%= pkg.assetsPath %>js/head.js' : '<%= pkg.buildPath %>js/head/*.js',
+					'<%= pkg.assetsPath %>js/compat.js' : '<%= pkg.buildPath %>js/compat/*.js',
+
+					'<%= pkg.assetsPath %>js/<%= pkg.name %>.js': [
 						'<%= pkg.buildPath %>js/vendor/jquery-1.11.1.js',
+
 						'<%= pkg.buildPath %>foundation/js/foundation/foundation.js',
+
 						'<%= pkg.buildPath %>js/lib/*.js',
+
+						'<%= pkg.buildPath %>js/app/setup.js',
 						'<%= pkg.buildPath %>js/app/app.js',
 						'<%= pkg.buildPath %>js/app/modules/*.js',
 						'<%= pkg.buildPath %>js/app/interface.js'
 					],
-					'<%= pkg.assetsPath %>js/compat.js'          : [
-						'<%= pkg.buildPath %>js/compat/css3-multi-column.js',
-						'<%= pkg.buildPath %>js/compat/respond.js'
-					],
-					'<%= pkg.assetsPath %>js/ie8.js'          : [
-						'<%= pkg.buildPath %>js/compat/ie8.js'
-					]
 				}
 			}
 		},
+
 		uglify: {
 			options: {
+				screwIE8: true,
+				preserveComments: false,
 				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
 			},
 			def: {
 				files: {
-					'<%= pkg.assetsPath %>js/head.min.js'    : ['<%= pkg.assetsPath %>js/head.js' ],
-					'<%= pkg.assetsPath %>js/compat.min.js'    : ['<%= pkg.assetsPath %>js/compat.js' ],
+					'<%= pkg.assetsPath %>js/head.min.js' : ['<%= pkg.assetsPath %>js/head.js' ],
+					'<%= pkg.assetsPath %>js/compat.min.js' : ['<%= pkg.assetsPath %>js/compat.js' ],
 					'<%= pkg.assetsPath %>js/<%= pkg.name %>.min.js' : ['<%= pkg.assetsPath %>js/<%= pkg.name %>.js']
 				}
-			},
-			deps: {
-				files: [
-					{
-						expand: true,     // Enable dynamic expansion.
-						cwd:  '<%= pkg.buildPath %>js/plugins/',      // Src matches are relative to this path.
-						src: ['**/*.js'], // Actual pattern(s) to match.
-						dest: '<%= pkg.assetsPath %>js/plugins/',   // Destination path prefix.
-						ext:  '.min.js',   // Dest filepaths will have this extension.
-					},
-				],
 			}
 		},
-		compass: {
-			def: {
-				options: {
-					sassDir:   '<%= pkg.buildPath %>scss',
-					cssDir:    '<%= pkg.assetsPath %>css',
-					imagesDir: '<%= pkg.assetsPath %>img',
-					relativeAssets: true,
-					environment: 'development',
-					outputStyle: 'expanded',
-					noLineComments: false
-				}
-			},
-			prod: {
-				options: {
-					sassDir:   '<%= pkg.buildPath %>scss',
-					cssDir:    '<%= pkg.assetsPath %>css',
-					imagesDir: '<%= pkg.assetsPath %>img',
-					relativeAssets: true,
-					outputStyle: 'compressed',
-					noLineComments: true,
-				}
-			}
-		},
-		imagemin: {
-			dynamic: {                         // Another target
-				files: [{
-					expand: true,                  // Enable dynamic expansion
-					cwd: '<%= pkg.buildPath %>img/',                   // Src matches are relative to this path
-					src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match
-					dest: '<%= pkg.assetsPath %>img/'                  // Destination path prefix
-				}]
-			}
-		},
-		prettify: {
-			options: {
-				indent: 4,
-				indent_char: ' ',
-				condense: false,
-				indent_inner_html: true,
-			},
-			def: {
-				expand: true,
-				wd: '<%= pkg.destination %>',
-				ext: '.html',
-				src: ['*.html'],
-				dest: '<%= pkg.destination %>'
-			}
-		},
-		cssmin: {
-			add_banner: {
-				options: {
-					banner: '/*! <%= pkg.name %> - <%= grunt.template.today("yyyy-mm-dd h:MM:ss TT") %> */',
-					keepSpecialComments : 0
-				},
-				files: {
-					'<%= pkg.assetsPath %>css/main.min.css' : ['<%= pkg.assetsPath %>css/main.css']
-				}
-			}
-		},
-		preprocess: {
-			def: {
-				expand: true,
-				cwd: '<%= pkg.destination %>',
-				ext: '.html',
-				src: ['*.html'],
-				dest: '<%= pkg.destination %>'
-			}
-		},
+
 		css_purge: {
 			production: {
 				options: {
@@ -243,28 +203,100 @@ module.exports = function(grunt) {
 					"no_duplicate_property": true,
 				},
 				files: {
-					'<%= pkg.assetsPath %>css/main.min.css': ['<%= pkg.assetsPath %>css/main.css']
+					'<%= pkg.assetsPath %>css/main.css': ['<%= pkg.assetsPath %>css/main.css']
+				}
+			}
+		},
+
+		compass: {
+			options: {
+				sassDir: '<%= pkg.buildPath %>scss',
+				cssDir: '<%= pkg.assetsPath %>css',
+				imagesDir: '<%= pkg.assetsPath %>img',
+				relativeAssets: true,
+				importPath: [
+					'<%= pkg.buildPath %>foundation/scss',
+				]
+			},
+
+			development: {
+				options: {
+					environment: 'development',
+				}
+			},
+
+			production: {
+				options: {
+					environment: 'production',
+					outputStyle: 'compressed'
+				}
+			}
+		},
+
+		postcss: {
+			development: {
+				src: '<%= pkg.assetsPath %>css/*.css',
+				options: {
+					processors: [
+						require('autoprefixer-core')({browsers: 'last 2 versions'})
+					]
+				}
+			},
+
+			production: {
+				src: '<%= pkg.assetsPath %>css/*.css',
+				options: {
+					processors: [
+						require('autoprefixer-core')({browsers: 'last 2 versions'}),
+						require('csswring')({removeAllComments: true})
+					]
+				}
+			}
+		},
+
+		watch: {
+			scripts: {
+				files: [ '<%= pkg.buildPath %>js/app/**/*.js', ],
+				tasks: [ 'jshint', 'concat' ]
+			},
+
+			scss: {
+				files: [ '**/*.scss' ],
+				tasks: [ 'compass:development', 'css_purge', 'postcss:development' ]
+			},
+
+			assemble: {
+				files: [ '<%= pkg.buildPath %>assembly/**/*.hbs', ],
+				tasks: [ 'env:dev', 'modernizr', 'assemble', 'preprocess', 'replace' ]
+			}
+		},
+
+		browserSync: {
+			bsFiles: {
+				src : [
+					'assets/css/*.css',
+					'assets/js/*.js',
+					'*.html'
+				]
+
+			},
+			options: {
+				watchTask: true,
+				server: {
+					baseDir: "./"
 				}
 			}
 		}
+
 	});
 
-	grunt.loadNpmTasks('grunt-env');
-	grunt.loadNpmTasks('grunt-preprocess');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-compass');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-imagemin');
-	grunt.loadNpmTasks('assemble');
-	grunt.loadNpmTasks('grunt-modernizr');
-	grunt.loadNpmTasks('grunt-autoprefixer');
-	grunt.loadNpmTasks('grunt-prettify');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.loadNpmTasks('grunt-css-purge');
+
+
+
 
 	// Default task(s).
-	grunt.registerTask('default',    ['env:dev', 'modernizr', 'jshint', 'concat', 'compass:def', 'autoprefixer', 'assemble', 'preprocess', 'prettify']);
-	grunt.registerTask('production', ['env:prod', 'modernizr', 'jshint', 'concat', 'uglify', 'compass:prod', 'autoprefixer', 'assemble', 'preprocess', 'prettify', 'css_purge', 'cssmin']);
+	grunt.registerTask('default',    ['env:dev', 'modernizr', 'jshint', 'concat', 'compass:development', 'css_purge', 'postcss:development', 'assemble', 'preprocess', 'replace']);
+	grunt.registerTask('browser',    ['default', 'browserSync', 'watch']);
+	grunt.registerTask('production', ['env:prod', 'modernizr', 'jshint', 'concat', 'uglify', 'compass:production', 'postcss:production', 'assemble', 'preprocess', 'replace', 'css_purge']);
+
 };
