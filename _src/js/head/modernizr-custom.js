@@ -1,5 +1,5 @@
 /* Modernizr (Custom Build) | MIT & BSD
- * Build: http://modernizr.com/download/#-flexbox-shiv-load-cssclasses-respond
+ * Build: http://modernizr.com/download/#-flexbox-shiv-load-cssclasses-svg-respond
  */
 ;
 
@@ -28,6 +28,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     domPrefixes = omPrefixes.toLowerCase().split(' '),
 
+    ns = {'svg': 'http://www.w3.org/2000/svg'},
 
     tests = {},
     inputs = {},
@@ -210,6 +211,9 @@ window.Modernizr = (function( window, document, undefined ) {
         }
     }    tests['flexbox'] = function() {
       return testPropsAll('flexWrap');
+    };
+    tests['svg'] = function() {
+        return !!document.createElementNS && !!document.createElementNS(ns.svg, 'svg').createSVGRect;
     };
     for ( var feature in tests ) {
         if ( hasOwnProp(tests, feature) ) {

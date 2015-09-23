@@ -29,9 +29,44 @@ ol,
 ul,
 dl {
 	font-size: inherit;
+	color:$color-white;
 }
 
 figure {
 	margin: 0;
 	padding: 0;
+}
+
+#galaxy, #universe {
+	height:100%;
+}
+
+.full-width {
+   width: 100%;
+   margin-left: auto;
+   margin-right: auto;
+   max-width: initial;
+}
+
+div.top-line {
+  pointer-events: none;
+  z-index:z('header');
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:5em;
+  float:left;
+  border-top:0.2em $color-teal solid;
+  padding:.5em;
+  a {
+    pointer-events:auto;
+    width:2em;
+    display:block;
+    float:left;
+    img {
+      width:100%;
+      height:100%;
+    }
+  }
 }

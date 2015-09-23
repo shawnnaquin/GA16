@@ -5,11 +5,19 @@
 {{> head }}
 </head>
 <body  class="{{#if pageclass}}{{ pageclass }}{{/if}}">
+<div class='top-line'><a class='gradient-icon'><img src='/assets/imgs/hamburger-opt.svg'/></a></div>
 <div id="universe">
 	<div id="galaxy">
 		{{> body }}
 	</div><!-- / galaxy -->
 </div><!-- / universe -->
+
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJiYQ2XXWKI8dkdmlTwSSNSygmoFm-4eM&callback=initMap">
+</script>
+<script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js">
+</script>
+
 
 <!-- @if NODE_ENV == 'DEVELOPMENT' -->
 <script src="{{ assets }}js/main.js"></script>
@@ -18,6 +26,7 @@
 <!-- @if NODE_ENV == 'PRODUCTION' -->
 <script src="{{ assets }}js/main.min.js"></script>
 <!-- @endif -->
+
 
 </body>
 </html>
