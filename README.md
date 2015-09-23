@@ -11,6 +11,7 @@ need to reconvert video from new source sent to CG
 
 #maps
 currently using google maps
+
 1. the number of hits may be a concern
 2. using 'infoBubble' instead of 'infoWindow' or 'infoBox'
  1. infoWindow seems un-stylable
