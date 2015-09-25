@@ -30,7 +30,7 @@
 
 	'theme/compat/ie8';
 
-/*
+
 @media #{$medium-up} {
 	@import
 		'theme/medium/type',
@@ -39,9 +39,9 @@
 		'theme/medium/structure',
 		'theme/medium/templates';
 }
-*/
 
-/*
+
+
 @media #{$large-up} {
 	@import
 		'theme/large/type',
@@ -50,9 +50,9 @@
 		'theme/large/structure',
 		'theme/large/templates';
 }
-*/
 
-/*
+
+
 @media #{$xlarge-up} {
     @import
     	'theme/xlarge/type',
@@ -61,4 +61,3 @@
     	'theme/xlarge/structure',
     	'theme/xlarge/templates';
 }
-*/

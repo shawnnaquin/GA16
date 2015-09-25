@@ -108,24 +108,25 @@ function initMap() {
 infoBubble = new InfoBubble({
       map: map,
       content: '<div class="mylabel">hello</div>',
-      position: new google.maps.LatLng(-32.0, 149.0),
+      position: new google.maps.LatLng(-30, 151),
       shadowStyle: 1,
       padding: 0,
-      backgroundColor: 'rgb(57,57,57)',
+      backgroundColor: '#FFFFFF',
       borderRadius: 5,
-      arrowSize: 10,
-      borderWidth: 1,
-      borderColor: '#2c2c2c',
+      arrowSize: 15,
+      borderWidth: 5,
+      borderColor: '#38a57b',
       disableAutoPan: true,
-      hideCloseButton: true,
+      hideCloseButton: false,
       arrowPosition: 30,
       backgroundClassName: 'transparent',
-      arrowStyle: 2,
-      minHeight: 500
+      arrowStyle: 0,
+      minWidth: 150,
+      minHeight: 100
     });
 
-    infoBubble.open(map, marker);
+    marker.addListener('click', function() {
+      infoBubble.open(map, marker);
+    });
 
 }
-
-
