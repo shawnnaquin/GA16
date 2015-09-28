@@ -451,6 +451,7 @@ body.home {
         display:block;
         background:url('../imgs/arrow-right-opt.svg') no-repeat;
         transition:all 100ms ease;
+        pointer-events:default;
       }
       a.arrow:hover {
         width:2.5em;
@@ -471,8 +472,9 @@ body.home {
           font-weight:700;
           font-size:0.8em;
           line-height:1em;
+          pointer-events:auto;
         }
-        a.right {
+        a.ga16 {
           background:$color-teal;
           overflow:hidden;
           svg {
