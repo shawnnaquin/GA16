@@ -65,6 +65,10 @@
 
 if ( $('body').hasClass('home') ) { 
   initMap();
+  
+  $('.on-top').delay(800).animate({
+    'margin-top': '-50px', 'opacity': 1,
+  }, 150);
 }
 
 function initMap() {
@@ -178,7 +182,10 @@ function initMap() {
           if( progress === 1 ) {
             classie.remove( container, 'loading' );
             classie.add( container, 'loaded' );
+            window.location.href = "home.html";
             clearInterval( interval );
+            $('body.loading').css('background-color', '#444444');
+
 
             var onEndHeaderAnimation = function(ev) {
               if( support.animations ) {
@@ -210,6 +217,7 @@ function initMap() {
   initAnimate();
 
 })();
+
 
 
 }(jQuery, this, this.document));
