@@ -1,5 +1,5 @@
 /* Modernizr (Custom Build) | MIT & BSD
- * Build: http://modernizr.com/download/#-flexbox-shiv-load-cssclasses-svg-respond
+ * Build: http://modernizr.com/download/#-flexbox-shiv-load-cssclasses-svg-cssanimations-prefixed-respond
  */
 ;
 
@@ -211,6 +211,9 @@ window.Modernizr = (function( window, document, undefined ) {
         }
     }    tests['flexbox'] = function() {
       return testPropsAll('flexWrap');
+    };
+    tests['cssanimations'] = function() {
+        return testPropsAll('animationName');
     };
     tests['svg'] = function() {
         return !!document.createElementNS && !!document.createElementNS(ns.svg, 'svg').createSVGRect;
@@ -452,7 +455,17 @@ window.Modernizr = (function( window, document, undefined ) {
     Modernizr.testAllProps  = testPropsAll;
 
 
-    Modernizr.testStyles    = injectElementWithStyles;    docElement.className = docElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2') +
+    Modernizr.testStyles    = injectElementWithStyles;
+    Modernizr.prefixed      = function(prop, obj, elem){
+      if(!obj) {
+        return testPropsAll(prop, 'pfx');
+      } else {
+            return testPropsAll(prop, obj, elem);
+      }
+    };
+
+
+    docElement.className = docElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2') +
 
                                                     (enableClasses ? ' js ' + classes.join(' ') : '');
 
