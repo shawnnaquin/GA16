@@ -68,7 +68,7 @@ if ( $('body').hasClass('home') ) {
   
   $('.on-top').delay(800).animate({
     'margin-top': '-50px', 'opacity': 1,
-  }, 150);
+  }, 50);
 }
 
 function initMap() {
