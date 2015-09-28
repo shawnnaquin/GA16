@@ -95,7 +95,7 @@ module.exports = function(grunt) {
 				"devFile" : "<%= pkg.buildPath %>js/vendor/modernizr-dev.js",
 
 				// [REQUIRED] Path to save out the built file.
-				"outputFile" : "<%= pkg.buildPath %>js/head/modernizr-custom.js",
+				"outputFile" : "<%= pkg.buildPath %>js/head/11-modernizr-custom.js",
 
 				// Based on default settings on http://modernizr.com/download/
 				"extra" : {
