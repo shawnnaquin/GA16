@@ -1,12 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
-
-@mixin centering {
-  clear:left;
-  position:relative;
-  float:none;
-  margin:0 auto;
-}
-
 #register-replace {
   div:nth-child(2) {
     margin-left:0.3em;
@@ -20,9 +11,9 @@
   }
 }
 #about {
-  opacity:0;
   transform:translateY(100px);
-  transition:transform 150ms ease;
+  @include opacity-off;
+  @include fast-transition(transform);
   .button-row .button {
     height:3em;
     line-height:1em;
@@ -374,8 +365,7 @@ body.loading {
   
   #ip-container {
     padding-top:3%;
-    //height:95.5%;
-    @include centering;
+    @include block-center;
 
     svg.cross {
       position:absolute;
@@ -473,15 +463,8 @@ body.loading {
   }//container
 }//body.loading
 
-@keyframes visiblility {
-
-    0%   {opacity:0; transform: translateY(100%);}
-    100% {opacity:1; transform: translateY(0);}
-}
-
 body.home {
-    animation-name: visiblility;
-    animation-duration: 1s;
+    animation: visiblility 1s;
   
   .background {
     position:absolute; 
@@ -495,15 +478,8 @@ body.home {
     pointer-events:none;
     top:25em;
     a.arrow {
-      width:2em;
-      height:2em;
-      position:relative;
-      float:none;
-      margin:0 auto;
-      display:block;
-      background:url('../imgs/arrow-right-opt.svg') no-repeat;
-      transition:all 100ms ease;
-      pointer-events:auto;
+      @extend .arrow-o;
+      width:2em; height:2em;
     }
     a.arrow:hover {
       width:2.5em;

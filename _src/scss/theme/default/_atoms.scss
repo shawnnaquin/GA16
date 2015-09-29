@@ -1,0 +1,85 @@
+@mixin left-float {
+  float:left;
+}
+
+@mixin right-float {
+  float:right;
+}
+
+@mixin undisplay {
+  display:none;
+}
+
+@mixin invisibile {
+  visibility:hidden;
+}
+
+@mixin visible {
+  visibility:visible;
+}
+
+@mixin opacity-off {
+  opacity:0;
+}
+
+@mixin opacity-on {
+  opacity:1;
+}
+
+@mixin opacity-some {
+  opacity:.8;
+}
+@mixin opacity-minimal {
+  opacity:.3;
+}
+
+@mixin block-center {
+  display:block;
+  position:relative;
+  float:none;
+  margin:0 auto;
+}
+
+@mixin full-height {
+  height:100%;
+}
+
+@keyframes visiblility {
+    0%   {opacity:0; transform: translateY(100%);}
+    100% {opacity:1; transform: translateY(0);}
+}
+
+@mixin no-pointer {
+  pointer-events:none;
+}
+
+@mixin pointer {
+  pointer-events:auto;
+}
+
+@mixin top-right($top, $right) {
+  position:absolute;
+  top:$top;
+  right:$right;
+}
+
+@mixin top-left($top, $left) {
+  position:absolute;
+  top:$top;
+  left:$left;
+}
+
+@mixin fast-transition($properties...) {
+  transition:100ms ease;
+  transition-property: $properties;
+}
+
+@mixin med-transition($properties...) {
+  transition:250ms ease;
+  transition-property: $properties;
+}
+
+@mixin slow-transition($properties...) {
+  transition:500ms ease;
+  transition-property: $preperties;
+}

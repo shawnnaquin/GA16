@@ -1,3 +1,13 @@
+      
+.arrow-o { 
+  @include block-center;
+  @include pointer;
+  @include fast-transition(width, height);
+  background:url('../imgs/arrow-right-opt.svg') no-repeat;
+}
+
+//////
+
 span.input {
   float:left;
   clear:both;
