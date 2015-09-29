@@ -1,5 +1,5 @@
 /* Modernizr (Custom Build) | MIT & BSD
- * Build: http://modernizr.com/download/#-flexbox-shiv-load-cssclasses-svg-cssanimations-prefixed-respond
+ * Build: http://modernizr.com/download/#-flexbox-shiv-load-cssclasses-input-svg-cssanimations-prefixed-respond
  */
 ;
 
@@ -19,7 +19,7 @@ window.Modernizr = (function( window, document, undefined ) {
     modElem = document.createElement(mod),
     mStyle = modElem.style,
 
-    inputElem  ,
+    inputElem  = document.createElement('input')  ,
 
 
     toString = {}.toString,    omPrefixes = 'Webkit Moz O ms',
@@ -218,6 +218,17 @@ window.Modernizr = (function( window, document, undefined ) {
     tests['svg'] = function() {
         return !!document.createElementNS && !!document.createElementNS(ns.svg, 'svg').createSVGRect;
     };
+    function webforms() {
+                                            Modernizr['input'] = (function( props ) {
+            for ( var i = 0, len = props.length; i < len; i++ ) {
+                attrs[ props[i] ] = !!(props[i] in inputElem);
+            }
+            if (attrs.list){
+                                  attrs.list = !!(document.createElement('datalist') && window.HTMLDataListElement);
+            }
+            return attrs;
+        })('autocomplete autofocus list placeholder max min multiple pattern required step'.split(' '));
+        }
     for ( var feature in tests ) {
         if ( hasOwnProp(tests, feature) ) {
                                     featureName  = feature.toLowerCase();
@@ -227,6 +238,7 @@ window.Modernizr = (function( window, document, undefined ) {
         }
     }
 
+    Modernizr.input || webforms();
 
 
      Modernizr.addTest = function ( feature, test ) {

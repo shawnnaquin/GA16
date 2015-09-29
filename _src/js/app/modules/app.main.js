@@ -66,39 +66,52 @@
   function registbtn() {
     $('a.register').hide();
     $('a.ga16').removeClass('right').addClass('left');
-    $('.info-buttons, .arrow').css('margin','2em 0 0 0');
+    $('.info-buttons').css('margin','2em 0 0 0');
     $('.info').removeClass('small-6').removeClass('small-offset-3');
     $('.info').addClass('small-5').addClass('small-offset-7').css('text-align','left');
     $('.crowd').css('display', 'block').animate({ 'opacity': '.8'}, 'slow');
-    
-    $('video').animate({
-      'opacity': '0',
-    }, 'slow');
+    $('.video-overlay').css('background-color', 'rgba(52,212,150,.5');
+      $('video').animate({'opacity': '0'}, 100);
+      $('.video-overlay').load('register.html #about', function(){
+        $(this).children(':first').animate({'opacity': '1'}, 'slow').css('transform','translateY(0)');
+      });
+    }
 
-  }
+    function closebtn() {
 
-  function closebtn() {
-    $('a.register').show();
-    $('a.ga16').addClass('right').removeClass('left');
-    $('.info-buttons, .arrow, .info, .crowd').attr('style','');
-    $('.info').removeClass('small-5').removeClass('small-offset-7');
-    $('.info').addClass('small-6').addClass('small-offset-3');
+      $('a.register').show();
+      $('a.ga16').addClass('right').removeClass('left');
+      $('.info-buttons, .info, .crowd').attr('style','');
+      $('.info').removeClass('small-5').removeClass('small-offset-7');
+      $('.info').addClass('small-6').addClass('small-offset-3');
+      $('video').animate({'opacity': '1'}, 100);
+      $('#about').animate({'opacity': '0'}, 100).css('transform','translateY(100px)');
+    }
 
-    $('video').animate({
-      'opacity': '1',
-    }, 'slow');
+    if ( $('body').hasClass('home') ) { 
+      initMap();
 
-  }
+      $('.on-top').delay(800).animate({
+        'margin-top': '-2em', 'opacity': 1,
+      }, 150);
 
-if ( $('body').hasClass('home') ) { 
-  initMap();
+      $('.register').click(registbtn);
+      
+      $(document).on('click', 'a.closeit', function(e) {
+        closebtn();
+      });
   
-  $('.on-top').delay(800).animate({
-    'margin-top': '-50px', 'opacity': 1,
-  }, 150);
 
-  $('.register').click(registbtn);
-  $('.ga16').click(closebtn);
+  // since page is reloaded must use 'on'
+
+      $(document).on('click', 'a.register', function(e) {
+        $('.about-replace').load('register2.html #register-replace', function (){
+          $('button-row').html('Step 3 | Checkout');
+        });
+      });
+
+
+
 }
 
 function initMap() {
@@ -118,42 +131,42 @@ function initMap() {
     draggable : false,
     overviewMapControl: false,
     overviewMapControlOptions: {
-        opened: false,
+      opened: false,
     },
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     styles : [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]
   });
 
-  var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'Uluru (Ayers Rock)',
-    icon: 'http://localhost:3000/assets/imgs/marker-opt.svg'
-  });
+var marker = new google.maps.Marker({
+  position: myLatLng,
+  map: map,
+  title: 'Uluru (Ayers Rock)',
+  icon: 'http://localhost:3000/assets/imgs/marker-opt.svg'
+});
 
-  infoBubble = new InfoBubble({
-    map: map,
-    content: '<div class="mylabel">hello</div>',
-    position: new google.maps.LatLng(-30, 151),
-    shadowStyle: 1,
-    padding: 0,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 5,
-    arrowSize: 15,
-    borderWidth: 5,
-    borderColor: '#38a57b',
-    disableAutoPan: true,
-    hideCloseButton: false,
-    arrowPosition: 30,
-    backgroundClassName: 'transparent',
-    arrowStyle: 0,
-    minWidth: 150,
-    minHeight: 100
-  });
+infoBubble = new InfoBubble({
+  map: map,
+  content: '<div class="mylabel">hello</div>',
+  position: new google.maps.LatLng(-30, 151),
+  shadowStyle: 1,
+  padding: 0,
+  backgroundColor: '#FFFFFF',
+  borderRadius: 5,
+  arrowSize: 15,
+  borderWidth: 5,
+  borderColor: '#38a57b',
+  disableAutoPan: true,
+  hideCloseButton: false,
+  arrowPosition: 30,
+  backgroundClassName: 'transparent',
+  arrowStyle: 0,
+  minWidth: 150,
+  minHeight: 100
+});
 
-  marker.addListener('click', function() {
-    infoBubble.open(map, marker);
-  });
+marker.addListener('click', function() {
+  infoBubble.open(map, marker);
+});
 
 }
 /**
@@ -166,27 +179,27 @@ function initMap() {
  * Copyright 2014, Codrops
  * http://www.codrops.com
  */
-(function() {
+ (function() {
 
   var support = { animations : Modernizr.cssanimations },
-    container = document.getElementById( 'ip-container' ),
-    header = container.querySelector( 'header.ip-header' ),
-    loader = new PathLoader( document.getElementById( 'ip-loader-circle' ) ),
-    animEndEventNames = { 'WebkitAnimation' : 'webkitAnimationEnd', 'OAnimation' : 'oAnimationEnd', 'msAnimation' : 'MSAnimationEnd', 'animation' : 'animationend' },
+  container = document.getElementById( 'ip-container' ),
+  header = container.querySelector( 'header.ip-header' ),
+  loader = new PathLoader( document.getElementById( 'ip-loader-circle' ) ),
+  animEndEventNames = { 'WebkitAnimation' : 'webkitAnimationEnd', 'OAnimation' : 'oAnimationEnd', 'msAnimation' : 'MSAnimationEnd', 'animation' : 'animationend' },
     // animation end event name
     animEndEventName = animEndEventNames[ Modernizr.prefixed( 'animation' ) ];
 
-  function initAnimate() {
-    var onEndInitialAnimation = function() {
-      if( support.animations ) {
-        this.removeEventListener( animEndEventName, onEndInitialAnimation );
-      }
+    function initAnimate() {
+      var onEndInitialAnimation = function() {
+        if( support.animations ) {
+          this.removeEventListener( animEndEventName, onEndInitialAnimation );
+        }
 
-      startLoading();
-    };
+        startLoading();
+      };
 
     // disable scrolling
-    window.addEventListener( 'scroll', noscroll );
+    // window.addEventListener( 'scroll', noscroll );
 
     // initial animation
     classie.add( container, 'loading' );
@@ -203,10 +216,10 @@ function initMap() {
     // simulate loading something..
     var simulationFn = function(instance) {
       var progress = 0,
-        interval = setInterval( function() {
-          progress = Math.min( progress + Math.random() * 0.1, 1 );
+      interval = setInterval( function() {
+        progress = Math.min( progress + Math.random() * 0.1, 1 );
 
-          instance.setProgress( progress );
+        instance.setProgress( progress );
 
           // reached the end
           if( progress === 1 ) {
@@ -235,16 +248,16 @@ function initMap() {
             }
           }
         }, 80 );
-    };
+};
 
-    loader.setProgressFn( simulationFn );
-  }
-  
-  function noscroll() {
-    window.scrollTo( 0, 0 );
-  }
+loader.setProgressFn( simulationFn );
+}
 
-  initAnimate();
+function noscroll() {
+  window.scrollTo( 0, 0 );
+}
+
+initAnimate();
 
 })();
 

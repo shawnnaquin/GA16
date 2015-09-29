@@ -30,11 +30,22 @@ ul,
 dl {
 	font-size: inherit;
 	color:$color-white;
+  font-weight:300;
 }
 
 figure {
 	margin: 0;
 	padding: 0;
+}
+h1, h2, h3, h4, h5, h6, button, .button {
+  font-family:Open Sans, sans-serif;
+  font-weight:300;
+  color:$color-white;
+  margin-bottom:0.5em;
+}
+.button {
+  background-color:black;
+  font-weight:700;
 }
 
 #galaxy, #universe {
