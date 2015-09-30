@@ -41,7 +41,20 @@
   }
 }
 
+.close-o {
+  @include wh(100%, 100%);
+  fill:none;
+  stroke: $color-white;
+  stroke-width: 3px;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+}
 //////
+// this is all tympanus stuff below
+//////
+
+// forms 
 
 span.input {
   float:left;
@@ -74,7 +87,7 @@ span.input-left:nth-child(odd) {
   position: relative;
   display: block;
   float: right;
-  padding: 0.8em;
+  padding: 0 1em;
   width: 60%;
   border: none;
   border-radius: 0;
@@ -184,6 +197,8 @@ span.input-left:nth-child(odd) {
 }
 
 /////
+// begin loader
+////
 
   
 .ip-header {
@@ -215,6 +230,7 @@ span.input-left:nth-child(odd) {
 
 .ip-loader {
   bottom: 20%;
+  width: 95.2%;
 }
 
 .ip-header .ip-inner {
@@ -236,13 +252,13 @@ span.input-left:nth-child(odd) {
 }
 
 .ip-header .ip-loader svg path.ip-loader-circlebg {
-  stroke: #ddd;
+  stroke: #555;
 }
 
 .ip-header .ip-loader svg path.ip-loader-circle {
   -webkit-transition: stroke-dashoffset 0.2s;
   transition: stroke-dashoffset 0.2s;
-  stroke: #ef6e7e;
+  stroke: $color-teal;
 }
 
 /* Animations */

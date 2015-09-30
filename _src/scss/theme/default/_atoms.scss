@@ -1,8 +1,8 @@
-@mixin left-float {
+@mixin float-left {
   float:left;
 }
 
-@mixin right-float {
+@mixin float-right {
   float:right;
 }
 
@@ -68,6 +68,13 @@
   top:$top;
   left:$left;
 }
+
+@mixin bottom-left($bottom, $left) {
+  position:absolute;
+  bottom:$bottom;
+  left:$left;
+}
+
 @mixin wh($width, $height) {
   width: $width;
   height: $height;
@@ -84,10 +91,20 @@
 
 @mixin slow-transition($properties...) {
   transition:500ms ease;
-  transition-property: $preperties;
+  transition-property: $properties;
 }
 
 @mixin exslow-transition($properties...) {
   transition:1000ms ease;
-  transition-property: $preperties;
+  transition-property: $properties;
+}
+@mixin mp-reset {
+  margin:0;
+  padding:0;
+}
+@mixin block {
+  display:block;
+}
+@mixin inline {
+  display:inline-block;
 }

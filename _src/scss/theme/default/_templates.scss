@@ -1,3 +1,15 @@
+
+.button-row .button {
+  @extend .btn-o;
+  @include small-s;
+  margin:3em 9em 0 0; 
+}
+
+#register-replace .button-row .button {
+    margin:3em -1em 0 0;
+}
+
+// register 2
 #register-replace {
   div:nth-child(2) {
     margin-left:0.3em;
@@ -9,22 +21,25 @@
     border: 4px solid $color-bright;
     border-radius: 5px;
   }
+  input.register{
+    @extend .btn-o;
+    @include small-s;
+    background:black;
+  }
+
 }
+
+//register initial
 #about {
   transform:translateY(100px);
   @include opacity-off;
   @include fast-transition(transform);
-  .button-row .button {
-    height:3em;
-    line-height:1em;
-    margin:3em 9em 0 0; 
-  }
+
   .button-row .button:hover {
     background-color:$color-bright;
   }
   p {
     padding:.5em 1em;
-    font-size:0.9em;
     line-height:1.7em;
   }
   div div.about-content p:nth-child(1) {
@@ -35,79 +50,66 @@
     clear:both;
     p {
       padding:0;
-      font-family: Open Sans, sans-serif;
-      font-weight:700;
+      @include open-sans;
+      @include heavy-w;
     }
     p.close {
-      font-weight:400;
-      display:inline-block;
-      float:left;
-      margin:0; padding:0;
-
+      @include medium-w;
+      @include mp-reset;
+      @include inline;
+      @include float-left;
     }
     .closeit {
-      display:block;
-      float:left;
-      width:1em;
-      height:1em;
+      @include wh(1em, 1em);
+      @include block;
+      @include float-left;
       margin-left:1em;
 
       svg line.close-x {
-        width:100%;
-        height:100%;
-        fill:none;
-        stroke: $color-white;
-        stroke-width: 3px;
-        stroke-linecap:round;
-        stroke-linejoin:round;
-        stroke-miterlimit:10;
+        @extend .close-o;
       }
     }
   }
-  .about-wrap {
+}// end about
 
-  }
-}
-
+//loading page
 body.loading {
 
-  
-  .top-line a {display:none;}
+  .top-line a {
+    @include undisplay;
+  }
   
   #ip-container {
     padding-top:3%;
     @include block-center(0, auto);
 
     svg.cross {
-      position:absolute;
-      left:22.5%;
+      @include top-left(10%, 29.5%);
+      @include wh(40%, auto);
       z-index:z('base');
-      width:55%;
-
       fill:$color-ltgray;
     }
 
     .loading-container {
-      position:absolute;
-      left: 28.5%;
-      width: 33%;
-
+      @include top-left(30%, 28.5%);
+      @include wh(33%, auto);
       svg {fill:$color-teal;}
 
       svg.loading {
+        @include float-left;
+        @include wh(28%, auto);
         padding:12% 6% 0 0;
-        float:left;
-        width:28%;
       }
 
       svg.go {
-        float:left;
-        width:60%;
+        @include float-left;
+        @include wh(60%, auto);
       }
     }//loading-container
   }//container
 }//body.loading
 
+// home page
 body.home {
   animation: visiblility 1s;
   @include medium-s;
@@ -118,7 +120,7 @@ body.home {
   }
   
   .arrow-container {
-    @include top-left(25em, auto);
+    @include bottom-left(30%, auto);
     @include no-pointer;
     @include wh(100%, 2em!important);
     z-index:z('normal')+2;
