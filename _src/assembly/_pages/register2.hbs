@@ -9,83 +9,91 @@ pageclass: register
   </div>
 
   <div class='row'>
-  <form>
+  <form action="" method="" id="register-form">
     <div class='small-8 small-offset-2 coloumns about-content'>
       <!-- start tympanus -->
       <span class="input input--kaede">
-          <input class="input__field input__field--kaede" type="text" id="input-35" />
-          <label class="input__label input__label--kaede" for="input-35">
+          <input class="input__field input__field--kaede" type="text" name="name" required='' minlength='2' aria-required='true' id="name" />
+          <label class="input__label input__label--kaede" for="name">
             <span class="input__label-content input__label-content--kaede">Name</span>
           </label>
       </span>
 
         <span class="input input--kaede input-left">
-          <input class="input__field input__field--kaede" type="text" id="input-36" />
-          <label class="input__label input__label--kaede" for="input-36">
+          <input class="input__field input__field--kaede" type="text" id="email" />
+          <label class="input__label input__label--kaede" for="email">
             <span class="input__label-content input__label-content--kaede">Email</span>
           </label>
         </span> 
 
         <span class="input input--kaede input-left">
-          <input class="input__field input__field--kaede" type="text" id="input-37" />
-          <label class="input__label input__label--kaede" for="input-37">
+          <input class="input__field input__field--kaede" type="text" id="home-phone" />
+          <label class="input__label input__label--kaede" for="home-phone">
             <span class="input__label-content input__label-content--kaede">Home Phone</span>
           </label>
         </span>
         
         <span class="input input--kaede">
-            <input class="input__field input__field--kaede" type="text" id="input-38" />
-            <label class="input__label input__label--kaede" for="input-38">
+            <input class="input__field input__field--kaede" type="text" id="cell-phone" />
+            <label class="input__label input__label--kaede" for="cell-phone">
               <span class="input__label-content input__label-content--kaede">Cell Phone</span>
             </label>
         </span>
         
         <span class="input input--kaede">
-            <input class="input__field input__field--kaede" type="email" name="email" required id="input-39" />
-            <label class="input__label input__label--kaede" for="input-39">
+            <input class="input__field input__field--kaede" type="email" name="email" required id="address" />
+            <label class="input__label input__label--kaede" for="address">
               <span class="input__label-content input__label-content--kaede">Address</span>
             </label>
         </span>
         
         <span class="input input--kaede">
-            <input class="input__field input__field--kaede" type="text" id="input-40" />
-            <label class="input__label input__label--kaede" for="input-40">
+            <input class="input__field input__field--kaede" type="text" id="address-2" />
+            <label class="input__label input__label--kaede" for="address-2">
               <span class="input__label-content input__label-content--kaede">Address 2</span>
             </label>
         </span>
 
         <span class="input input--kaede">
-            <input class="input__field input__field--kaede" type="text" id="input-41" />
-            <label class="input__label input__label--kaede" for="input-41">
+            <input class="input__field input__field--kaede" type="text" id="city" />
+            <label class="input__label input__label--kaede" for="city">
               <span class="input__label-content input__label-content--kaede">City</span>
             </label>
         </span>
 
         <span class="input input--kaede input-left">
-          <input class="input__field input__field--kaede" type="text" id="input-42" />
-          <label class="input__label input__label--kaede" for="input-42">
+          <input class="input__field input__field--kaede" type="text" id="state" />
+          <label class="input__label input__label--kaede" for="state">
             <span class="input__label-content input__label-content--kaede">State</span>
           </label>
         </span> 
 
         <span class="input input--kaede input-left">
-          <input class="input__field input__field--kaede" type="text" id="input-43" />
-          <label class="input__label input__label--kaede" for="input-43">
+          <input class="input__field input__field--kaede" type="text" id="zip" />
+          <label class="input__label input__label--kaede" for="zip">
             <span class="input__label-content input__label-content--kaede">Zip</span>
           </label>
         </span>
 
         <span class="input input--kaede">
-            <input class="input__field input__field--kaede" type="text" id="input-44" />
-            <label class="input__label input__label--kaede" for="input-44">
+            <input class="input__field input__field--kaede" type="text" id="attending" />
+            <label class="input__label input__label--kaede" for="attending">
               <span class="input__label-content input__label-content--kaede">Number attending with you</span>
             </label>
         </span>
         <!-- end tympanus -->
         <div class='row button-row'>
+        <div class='error'>
+          <p></p>
+          <svg xmlns="http://www.w3.org/2000/svg" version="1" id="Layer_1" x="0" y="0" viewBox="0 0 50 50" xml:space="preserve"><circle id="XMLID_1_" class="circle" cx="25" cy="25" r="25"/><g id="XMLID_3_"><path id="XMLID_9_" class="mark" d="M21.7 38.3c0-1.1 0.3-2 0.9-2.5 0.6-0.6 1.4-0.9 2.5-0.9 1.1 0 1.9 0.3 2.5 0.9 0.6 0.6 0.9 1.4 0.9 2.5 0 1.1-0.3 1.9-0.9 2.5 -0.6 0.6-1.4 0.9-2.4 0.9 -1.1 0-1.9-0.3-2.5-0.9C22 40.3 21.7 39.4 21.7 38.3zM27 31.1h-3.9L21.9 8.2h6.2L27 31.1z"/></g></svg>
+
+
+        
+        </div>
           <input type='submit' class="button right register" value="Step 3 | Checkout" />
         </div>
       </form>
+
     </div><!-- about wrap-->
   </div>
 

@@ -12,9 +12,30 @@
 
 	/* validator
 	------------------------------------------------------------------------------------------------------------------*/
+
+
 	$.validator.setDefaults({
-		errorElement: 'small',
-		errorClass: 'nope',
+		errorElement: 'label',
+		errorClass: 'input__label input__label--kaede error',
+
+    highlight: function(errorElement) {
+    	$(errorElement).parent().addClass('error-border');
+  	},
+    unhighlight: function(errorElement) {
+    	$(errorElement).parent().removeClass('error-border');
+  	},
+
+ 		invalidHandler: function(form, validator) {
+      var errors = validator.numberOfInvalids();
+
+      if (validator.errorList.length > 0) {
+
+      		$('div.error').show();
+	        $('div.error p').html( errors + ' errors, see above' );
+	     }
+
+    },
+
 		submitHandler: function(form){
 			$(form).ajaxSubmit({
 				dataType: 'json',
@@ -40,5 +61,8 @@
 			});
 		}
 	});
+
+	// validate signup form on keyup and submit
+
 
 }(jQuery, this, this.document));

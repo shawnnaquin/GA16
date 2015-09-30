@@ -2,6 +2,23 @@
 @mixin height100 {
   @include wh(auto, 100%);
 }
+.alert-o {
+  .circle{fill:$color-alert;}
+  .mark{fill:$color-white;}
+}
+
+.error-o{
+  @include open-sans;
+  @include medium-w;
+  line-height: 3em;
+  color: red;
+  background:rgba(255,173,86,.3);
+} 
+
+.label-border-o {
+  border: 4px solid;
+  border-radius: 5px;
+}
 
 .arrow-o { 
   @include block-center(0, auto);
@@ -102,7 +119,7 @@ span.input-left:nth-child(odd) {
   outline: none;
 }
 
-.input__label {
+.input__label, small.nope {
   display: inline-block;
   float: right;
   padding: 0 1em;
@@ -151,7 +168,7 @@ span.input-left:nth-child(odd) {
   transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-.input__label--kaede {
+.input__label--kaede, small.nope {
   z-index: 10;
   display: block;
   width: 100%;

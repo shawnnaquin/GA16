@@ -18,15 +18,34 @@
     border-radius:3px;
   }
   input:focus {
-    border: 4px solid $color-bright;
-    border-radius: 5px;
+    @extend .label-border-o;
+    border-color:$color-bright;
   }
   input.register{
     @extend .btn-o;
     @include small-s;
     background:black;
   }
-
+  label.error {
+    @extend .error-o;
+  }
+ span.error-border input {
+    @extend .label-border-o;
+    border-color:$color-alert;
+  }
+  div.error {
+    @include undisplay;
+    @include float-left;
+    margin-left:1em;
+    clear:left;
+    svg {
+    @include block;
+    @include float-left;
+    @extend .alert-o;
+    @include wh(1.5em, 1.5em);
+    margin-left:0.5em;
+    }
+  }
 }
 
 //register initial
@@ -69,6 +88,12 @@
         @extend .close-o;
       }
     }
+  }
+  #register-replace div.error p {
+    @include mp-reset;
+    @include float-left;
+    @include medium-w;
+    font-style: italic;
   }
 }// end about
 

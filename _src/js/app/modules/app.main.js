@@ -107,6 +107,18 @@
       $(document).on('click', 'a.register', function(e) {
         $('.about-replace').load('register2.html #register-replace', function (){
           $('button-row').html('Step 3 | Checkout');
+            
+            $('#register-form').validate({
+
+              rules: {
+                name: "required",
+              },
+              messages: {
+                name: "Please enter your name",
+              }
+
+            });
+
           (function() {
         // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
         if (!String.prototype.trim) {
@@ -296,8 +308,6 @@ function noscroll() {
 initAnimate();
 
 })();
-
-
 
 }(jQuery, this, this.document));
 
