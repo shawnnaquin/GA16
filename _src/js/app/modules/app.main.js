@@ -62,10 +62,28 @@
 			init    : init
 		};
 	}());
+  
+  $('a.gradient-icon').click(function() {
+    $('.popup').show();
+    $('.popup').animate({
+      'width': '100%',
+      'height': '100%',
+      'opacity': '1',
+    }, 500);
+  });
+
+  $('.popup a.closeit').click(function() {
+    $('.popup').animate({
+      'width': '0%',
+      'opacity': '0',
+
+    }, 500);
+  });
 
   function registbtn() {
+    $('#map-overlay').hide();
     $('a.register').hide();
-    $('a.ga16').removeClass('right').addClass('left');
+    $('a.ga16').removeClass('right').addClass('left').show();
     $('.info-buttons').css('margin','2em 0 0 0');
     $('.info').removeClass('small-6').removeClass('small-offset-3');
     $('.info').addClass('small-5').addClass('small-offset-7').css('text-align','left');
@@ -77,15 +95,26 @@
       });
     }
 
+  function ga16() {
+    $('a.ga16').hide();
+    $('a.register').removeClass('left').addClass('right');
+    $('.info-buttons').css('margin','2em 0 0 0');
+    $('.info').removeClass('small-6').removeClass('small-offset-3');
+    $('.info').addClass('small-5').css('text-align','right');
+
+    }
+
     function closebtn() {
 
-      $('a.register').show();
+      $('a.register, a.ga16').show();
       $('a.ga16').addClass('right').removeClass('left');
+      $('a.register').addClass('left').removeClass('right');
       $('.info-buttons, .info, .crowd').attr('style','');
       $('.info').removeClass('small-5').removeClass('small-offset-7');
       $('.info').addClass('small-6').addClass('small-offset-3');
       $('video').animate({'opacity': '1'}, 100);
       $('#about').animate({'opacity': '0'}, 100).css('transform','translateY(100px)');
+      $('#map-overlay').hide();
     }
 
     if ( $('body').hasClass('home') ) { 
@@ -96,8 +125,15 @@
       }, 150);
 
       $('.register').click(registbtn);
+      $(document).on('click', 'a.ga16', function(e) {
+        ga16();
+
+        $('#map-overlay').load('social.html #loadsocial').css('color', 'white');
+        $('#map-overlay').show();
+
+      });
       
-      $(document).on('click', 'a.closeit', function(e) {
+      $(document).on('click', '#loadsocial a.closeit, #about a.closeit', function(e) {
         closebtn();
       });
   
@@ -112,9 +148,11 @@
 
               rules: {
                 name: "required",
+                email: "required",
               },
               messages: {
                 name: "Please enter your name",
+                email: "Invalid Email",
               }
 
             });

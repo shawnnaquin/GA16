@@ -1,4 +1,3 @@
-
 .button-row .button {
   @extend .btn-o;
   @include small-s;
@@ -34,12 +33,11 @@
     border-color:$color-alert;
   }
   div.error {
-    @include undisplay;
     @include float-left;
     margin-left:1em;
     clear:left;
     svg {
-    @include block;
+    @include undisplay;
     @include float-left;
     @extend .alert-o;
     @include wh(1.5em, 1.5em);
@@ -49,21 +47,6 @@
 }
 
 //register initial
-#about {
-  transform:translateY(100px);
-  @include opacity-off;
-  @include fast-transition(transform);
-
-  .button-row .button:hover {
-    background-color:$color-bright;
-  }
-  p {
-    padding:.5em 1em;
-    line-height:1.7em;
-  }
-  div div.about-content p:nth-child(1) {
-      padding-top:2em;
-  }
   header {
     margin-top:.8em;
     clear:both;
@@ -88,6 +71,19 @@
         @extend .close-o;
       }
     }
+  }
+
+#about {
+  transform:translateY(100px);
+  @include opacity-off;
+  @include fast-transition(transform);
+
+  .button-row .button:hover {
+    background-color:$color-bright;
+  }
+
+  div div.about-content p:nth-child(1) {
+      padding-top:2em;
   }
   #register-replace div.error p {
     @include mp-reset;
@@ -136,6 +132,18 @@ body.loading {
 
 // home page
 body.home {
+
+  .popup {
+    @include top-left(0, 50%);
+    @include wh(0, 100%);
+    z-index:z('header')+1;
+    background:$color-teal;
+    transform: translateX(-50%);
+    overlow:hidden;
+    display:none;
+    opacity:0;
+  }
+
   animation: visiblility 1s;
   @include medium-s;
   
@@ -191,13 +199,17 @@ body.home {
 
   .row {
     @include wh(100%, 100%);
-    
+    #map-overlay {
+      @include undisplay;
+      background:black;
+      height:100%;
+    }
     #map {
       @include wh(50%, 100%);
       background-color: #333;
-      div div:nth-child(2) a{
+    div.gm-style div:nth-child(2) a{
         display:none !important;
-      }
+      } 
     }
 
     .loop {

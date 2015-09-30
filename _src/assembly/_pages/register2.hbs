@@ -13,16 +13,16 @@ pageclass: register
     <div class='small-8 small-offset-2 coloumns about-content'>
       <!-- start tympanus -->
       <span class="input input--kaede">
-          <input class="input__field input__field--kaede" type="text" name="name" required='' minlength='2' aria-required='true' id="name" />
+          <input class="input__field input__field--kaede" type="name" name="name" required='' minlength='2' aria-required='true' id="name" />
           <label class="input__label input__label--kaede" for="name">
-            <span class="input__label-content input__label-content--kaede">Name</span>
+            <span class="input__label-content input__label-content--kaede">* Name</span>
           </label>
       </span>
 
         <span class="input input--kaede input-left">
-          <input class="input__field input__field--kaede" type="text" id="email" />
+          <input class="input__field input__field--kaede" type="email" name='email' required='' minlength='2' aria-required='true' id="email" />
           <label class="input__label input__label--kaede" for="email">
-            <span class="input__label-content input__label-content--kaede">Email</span>
+            <span class="input__label-content input__label-content--kaede">* Email</span>
           </label>
         </span> 
 
@@ -41,7 +41,7 @@ pageclass: register
         </span>
         
         <span class="input input--kaede">
-            <input class="input__field input__field--kaede" type="email" name="email" required id="address" />
+            <input class="input__field input__field--kaede" name="address" id="address" />
             <label class="input__label input__label--kaede" for="address">
               <span class="input__label-content input__label-content--kaede">Address</span>
             </label>
@@ -84,11 +84,8 @@ pageclass: register
         <!-- end tympanus -->
         <div class='row button-row'>
         <div class='error'>
-          <p></p>
+          <p>* required</p>
           <svg xmlns="http://www.w3.org/2000/svg" version="1" id="Layer_1" x="0" y="0" viewBox="0 0 50 50" xml:space="preserve"><circle id="XMLID_1_" class="circle" cx="25" cy="25" r="25"/><g id="XMLID_3_"><path id="XMLID_9_" class="mark" d="M21.7 38.3c0-1.1 0.3-2 0.9-2.5 0.6-0.6 1.4-0.9 2.5-0.9 1.1 0 1.9 0.3 2.5 0.9 0.6 0.6 0.9 1.4 0.9 2.5 0 1.1-0.3 1.9-0.9 2.5 -0.6 0.6-1.4 0.9-2.4 0.9 -1.1 0-1.9-0.3-2.5-0.9C22 40.3 21.7 39.4 21.7 38.3zM27 31.1h-3.9L21.9 8.2h6.2L27 31.1z"/></g></svg>
-
-
-        
         </div>
           <input type='submit' class="button right register" value="Step 3 | Checkout" />
         </div>
