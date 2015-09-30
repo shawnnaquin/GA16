@@ -33,11 +33,11 @@
   opacity:.3;
 }
 
-@mixin block-center {
+@mixin block-center($mtb, $mlr) {
   display:block;
   position:relative;
   float:none;
-  margin:0 auto;
+  margin:$mtb $mlr;
 }
 
 @mixin full-height {
@@ -68,7 +68,10 @@
   top:$top;
   left:$left;
 }
-
+@mixin wh($width, $height) {
+  width: $width;
+  height: $height;
+}
 @mixin fast-transition($properties...) {
   transition:100ms ease;
   transition-property: $properties;
@@ -81,5 +84,10 @@
 
 @mixin slow-transition($properties...) {
   transition:500ms ease;
+  transition-property: $preperties;
+}
+
+@mixin exslow-transition($properties...) {
+  transition:1000ms ease;
   transition-property: $preperties;
 }

@@ -42,6 +42,7 @@ h1, h2, h3, h4, h5, h6, button, .button {
   font-weight:300;
   color:$color-white;
   margin-bottom:0.5em;
+  @include large-s;
 }
 .button {
   background-color:black;
