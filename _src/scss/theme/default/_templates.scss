@@ -20,11 +20,13 @@
     @extend .label-border-o;
     border-color:$color-bright;
   }
+
   input.register{
     @extend .btn-o;
     @include small-s;
     background:black;
   }
+
   label.error {
     @extend .error-o;
   }
@@ -188,10 +190,18 @@ body.home {
         a.button {
           @extend .btn-o;
           background:black;
+          @include med-transition(background);
+        }
+        a.button:hover{
+          background:$color-bright;
         }
         a.ga16{
           @extend .ga16-btn-o;
           background: $color-teal;
+          @include slow-transition(background);
+        }
+        a.ga16:hover {
+          background:$color-black;
         }
       }
     }

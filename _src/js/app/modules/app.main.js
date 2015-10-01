@@ -1,5 +1,6 @@
 (function ($, window, document, undefined) {
-
+  
+  
 	App.main = (function () {
 
 		var elements = {
@@ -62,7 +63,20 @@
 			init    : init
 		};
 	}());
+
+$('a').click(function() {  
+  //change the after-hash-sign-params to the value of the clicked link
+  $.address.value($(this).attr('href'));
+});
+
+$.address.change(function(event) { 
+  //define an event handler based on the params...
+  if (event.value == '/deep-link') {
+    doit();
+  }
   
+});  
+
   $('a.gradient-icon').click(function() {
     $('.popup').show();
     $('.popup').animate({
@@ -96,6 +110,7 @@
     }
 
   function ga16() {
+    fade();
     $('a.ga16').hide();
     $('a.register').removeClass('left').addClass('right');
     $('.info-buttons').css('margin','2em 0 0 0');
@@ -105,7 +120,7 @@
     }
 
     function closebtn() {
-
+      fade();
       $('a.register, a.ga16').show();
       $('a.ga16').addClass('right').removeClass('left');
       $('a.register').addClass('left').removeClass('right');
@@ -117,6 +132,15 @@
       $('#map-overlay').hide();
     }
 
+    function fade() {
+      $('div.info').fadeOut(0).fadeIn(500);
+    }
+      function doit () {
+        ga16();
+        $('#map-overlay').load('social.html #loadsocial').css('color', 'white');
+        $('#map-overlay').show();
+      }
+
     if ( $('body').hasClass('home') ) { 
       initMap();
 
@@ -125,13 +149,15 @@
       }, 150);
 
       $('.register').click(registbtn);
+
+      /*
       $(document).on('click', 'a.ga16', function(e) {
         ga16();
-
         $('#map-overlay').load('social.html #loadsocial').css('color', 'white');
         $('#map-overlay').show();
 
       });
+*/
       
       $(document).on('click', '#loadsocial a.closeit, #about a.closeit', function(e) {
         closebtn();
