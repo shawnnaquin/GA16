@@ -50,6 +50,8 @@
 
 //register initial
   header {
+    @include top-left(0,0);
+    z-index:z('header')+5;
     margin-top:.8em;
     clear:both;
     p {
@@ -134,16 +136,82 @@ body.loading {
 
 // home page
 body.home {
+  background:$color-teal;
 
   .popup {
+    @include wh(0,100%);
+    @include undisplay;
     @include top-left(0, 50%);
-    @include wh(0, 100%);
     z-index:z('header')+1;
-    background:$color-teal;
+    background:$color-teal url('../imgs/church.jpg') no-repeat;
+    background-size:cover;
+    margin-top:.2em;
+    overflow:hidden;
     transform: translateX(-50%);
-    overlow:hidden;
-    display:none;
-    opacity:0;
+
+    .popup-overlay {
+      @include wh(100%, 100%);
+      @include top-left(0,0);
+      z-index:z('header')+2;
+      background: linear-gradient(to top, rgba(56, 165, 123, 1) 0%, rgba(56, 165, 123, .8) 80%, rgba(56, 165, 123, .5) 100%);
+    }
+
+    .popup-info {
+      @include wh(100%,100%);
+      @include top-left(0,0);
+      z-index:z('header')+3;
+      svg.go {
+        @include block;
+        @include block-center(3em,auto);
+        @include wh (33%, auto);
+        fill:white;
+      }
+      svg.line {
+        @extend .line-o;
+        @include block-center (0, auto);
+        @include wh(70%, 0.3em);
+        margin-bottom:2em;
+        stroke:$color-black;
+      }
+      p {
+        @include large-s;
+        text-align:center;
+        line-height:1.5em;
+      }
+      .social-links {
+        @include float-left;
+        @include wh(100%, auto);
+        .social-center {
+          @include large-s;
+          @include wh(9em, auto);
+          @include block-center(0,auto);
+          a {
+            @include block;
+            @include float-left;
+            @include wh(4.5em, auto);
+            @include medium-s;
+            @include medium-w;
+            @include slow-transition(color);
+            color:$color-black;
+            text-align:center;
+          }
+        }
+
+        a:hover {
+          color:$color-alert;
+        }
+        a.button {
+          @extend .btn-o;
+          @include block-center(4em, auto);
+          background:$color-black;
+          @include med-transition(background);
+        }
+        a.button:hover {
+          background:$color-alert;
+          color:white;
+        }
+      }
+    }
   }
 
   animation: visiblility 1s;

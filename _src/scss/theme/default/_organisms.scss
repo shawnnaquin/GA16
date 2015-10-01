@@ -21,6 +21,12 @@ a.gradient-icon:hover svg line.hamburger{
   stroke:$color-bright;
 }
 
+.line-o {
+  fill:none;
+  stroke-miterlimit:10;
+  stroke-width:1;
+}
+
 .error-o{
   @include open-sans;
   @include medium-w;

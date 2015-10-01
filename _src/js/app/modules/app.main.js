@@ -78,8 +78,8 @@ $.address.change(function(event) {
 });  
 
   $('a.gradient-icon').click(function() {
-    $('.popup').show();
-    $('.popup').animate({
+    $('.popup, .popup-overlay, .popup-info').show();
+    $('.popup, .popup-overlay, .popup-info').animate({
       'width': '100%',
       'height': '100%',
       'opacity': '1',

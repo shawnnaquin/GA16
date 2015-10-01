@@ -27,7 +27,9 @@ body {
 p,
 ol,
 ul,
-dl {
+dl,
+a {
+  @include open-sans;
 	font-size: inherit;
 	color:$color-white;
   font-weight:300;
