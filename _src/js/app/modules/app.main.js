@@ -64,19 +64,44 @@
 		};
 	}());
 
-$('a').click(function() {  
-  //change the after-hash-sign-params to the value of the clicked link
-  $.address.value($(this).attr('href'));
-});
 
-$.address.change(function(event) { 
-  //define an event handler based on the params...
-  if (event.value == '/deep-link') {
-    doit();
-  }
-  
-});  
+// addressing stuff //////////////
 
+  $('a').click(function() {  
+    //change the after-hash-sign-params to the value of the clicked link
+    $.address.value($(this).attr('href'));
+  });
+
+  $.address.change(function(event) { 
+    //define an event handler based on the params...
+    if (event.value == '/deep-link') {
+      loadSocial();
+    }
+    
+  });
+
+// end addressing stuff //////////////
+
+
+
+////// this should integrate into the addressing stuff above
+
+  if ( $('body').hasClass('home') ) { 
+    
+    // google maps
+    initMap();
+
+    // animate home info in
+    $('.on-top').delay(800).animate({'margin-top': '-2em', 'opacity': 1,}, 150);
+
+  } // end body.home 
+
+///////////////////////////////////////
+
+
+// click handlers ///////////////////
+
+  // hamburger menu 
   $('a.gradient-icon').click(function() {
     $('.popup, .popup-overlay, .popup-info').show();
     $('.popup, .popup-overlay, .popup-info').animate({
@@ -86,112 +111,63 @@ $.address.change(function(event) {
     }, 500);
   });
 
+  // popup close button
   $('.popup a.closeit').click(function() {
     $('.popup').animate({
       'width': '0%',
       'opacity': '0',
-
     }, 500);
   });
-
-  function registbtn() {
-    $('#map-overlay').hide();
-    $('a.register').hide();
-    $('a.ga16').removeClass('right').addClass('left').show();
-    $('.info-buttons').css('margin','2em 0 0 0');
-    $('.info').removeClass('small-6').removeClass('small-offset-3');
-    $('.info').addClass('small-5').addClass('small-offset-7').css('text-align','left');
-    $('.crowd').css('display', 'block').animate({ 'opacity': '.8'}, 'slow');
-    $('.video-overlay').css('background-color', 'rgba(52,212,150,.5');
-      $('video').animate({'opacity': '0'}, 100);
-      $('.video-overlay').load('register.html #about', function(){
-        $(this).children(':first').animate({'opacity': '1'}, 'slow').css('transform','translateY(0)');
-      });
-    }
-
-  function ga16() {
-    fade();
-    $('a.ga16').hide();
-    $('a.register').removeClass('left').addClass('right');
-    $('.info-buttons').css('margin','2em 0 0 0');
-    $('.info').removeClass('small-6').removeClass('small-offset-3');
-    $('.info').addClass('small-5').css('text-align','right');
-
-    }
-
-    function closebtn() {
-      fade();
-      $('a.register, a.ga16').show();
-      $('a.ga16').addClass('right').removeClass('left');
-      $('a.register').addClass('left').removeClass('right');
-      $('.info-buttons, .info, .crowd').attr('style','');
-      $('.info').removeClass('small-5').removeClass('small-offset-7');
-      $('.info').addClass('small-6').addClass('small-offset-3');
-      $('video').animate({'opacity': '1'}, 100);
-      $('#about').animate({'opacity': '0'}, 100).css('transform','translateY(100px)');
-      $('#map-overlay').hide();
-    }
-
-    function fade() {
-      $('div.info').fadeOut(0).fadeIn(500);
-    }
-      function doit () {
-        ga16();
-        $('#map-overlay').load('social.html #loadsocial').css('color', 'white');
-        $('#map-overlay').show();
-      }
-
-    if ( $('body').hasClass('home') ) { 
-      initMap();
-
-      $('.on-top').delay(800).animate({
-        'margin-top': '-2em', 'opacity': 1,
-      }, 150);
-
-      $('.register').click(registbtn);
-
-      /*
-      $(document).on('click', 'a.ga16', function(e) {
-        ga16();
-        $('#map-overlay').load('social.html #loadsocial').css('color', 'white');
-        $('#map-overlay').show();
-
-      });
-*/
-      
-      $(document).on('click', '#loadsocial a.closeit, #about a.closeit', function(e) {
-        closebtn();
-      });
   
+  // since following pages are reloaded must use 'on'
 
-  // since page is reloaded must use 'on'
+  // close button
+  $(document).on('click', '#loadsocial a.closeit, #about a.closeit', function(e) {
+    closebtn();
+  });
+  $(document).on('click', 'a.register', function(e) {
+    registbtn();
+  });
 
-      $(document).on('click', 'a.register', function(e) {
-        $('.about-replace').load('register2.html #register-replace', function (){
-          $('button-row').html('Step 3 | Checkout');
-            
-            $('#register-form').validate({
+  // on register click
+  $(document).on('click', 'a.register2', function(e) {
 
-              rules: {
-                name: "required",
-                email: "required",
-              },
-              messages: {
-                name: "Please enter your name",
-                email: "Invalid Email",
-              }
+      // load in form page / start form page
+    $('.about-replace').load('register2.html #register-replace', function (){
+    
+      $('button-row').html('Step 3 | Checkout');
+      
+      // validation rules
 
-            });
+      $('#register-form').validate({
 
-          (function() {
+        rules: {
+          name: "required",
+          email: "required",
+        },
+        messages: {
+          name: "Please enter your name",
+          email: "Invalid Email",
+        }
+
+      }); // end validate rules
+
+      
+
+      // tympanus input forms
+      
+      (function() {
         // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
         if (!String.prototype.trim) {
+        
           (function() {
             // Make sure we trim BOM and NBSP
             var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+            
             String.prototype.trim = function() {
               return this.replace(rtrim, '');
             };
+
           })();
         }
 
@@ -215,13 +191,66 @@ $.address.change(function(event) {
             classie.remove( ev.target.parentNode, 'input--filled' );
           }
         }
-      })();
-        });
-      });
+      })(); // end tympanus input forms
+
+    }); // end load in form page
+
+  }); // end on register click
+
+// end click handlers ////////////////
 
 
+// click functions ///////////////////
+  
+  function fade() {
+    $('div.info').fadeOut(0).fadeIn(500);
+  }
+  
+  function loadSocial () {
+    fade();
 
-}
+    $('#map-overlay').load('social.html #loadsocial').css('color', 'white');
+    $('#map-overlay').show();
+
+    $('a.ga16').hide();
+    $('a.register').removeClass('left').addClass('right');
+    $('.info-buttons').css('margin','2em 0 0 0');
+    $('.info').removeClass('small-6').removeClass('small-offset-3');
+    $('.info').addClass('small-5').css('text-align','right');
+  }
+
+  function closebtn() {
+    fade();
+    $('a.register, a.ga16').show();
+    $('a.ga16').addClass('right').removeClass('left');
+    $('a.register').addClass('left').removeClass('right');
+    $('.info-buttons, .info, .crowd').attr('style','');
+    $('.info').removeClass('small-5').removeClass('small-offset-7');
+    $('.info').addClass('small-6').addClass('small-offset-3');
+    $('video').animate({'opacity': '1'}, 100);
+    $('#about').animate({'opacity': '0'}, 100).css('transform','translateY(100px)');
+    $('#map-overlay').hide();
+  }
+
+  function registbtn() {
+    $('#map-overlay').hide();
+    $('a.register').hide();
+    $('a.ga16').removeClass('right').addClass('left').show();
+    $('.info-buttons').css('margin','2em 0 0 0');
+    $('.info').removeClass('small-6').removeClass('small-offset-3');
+    $('.info').addClass('small-5').addClass('small-offset-7').css('text-align','left');
+    $('.crowd').css('display', 'block').animate({ 'opacity': '.8'}, 'slow');
+    $('.video-overlay').css('background-color', 'rgba(52,212,150,.5');
+    $('video').animate({'opacity': '0'}, 100);
+    $('.video-overlay').load('register.html #about', function(){
+      $(this).children(':first').animate({'opacity': '1'}, 'slow').css('transform','translateY(0)');
+    });
+  } // end function register
+
+// end click functions ///////////////////
+
+
+///////////////// start google maps function ////
 
 function initMap() {
   // Create a map object and specify the DOM element for display.
@@ -278,8 +307,10 @@ marker.addListener('click', function() {
 });
 
 }
+///// end google maps function
 
 
+////// tympanus loading animation
 /**
  * main.js
  * http://www.codrops.com
@@ -374,9 +405,3 @@ initAnimate();
 })();
 
 }(jQuery, this, this.document));
-
-
-
-
-
-

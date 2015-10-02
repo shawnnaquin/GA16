@@ -2,7 +2,7 @@
 @mixin height100 {
   @include wh(auto, 100%);
 }
-.alert-o {
+@mixin alert-o {
   .circle{fill:$color-alert;}
   .mark{fill:$color-white;}
 }
@@ -21,13 +21,13 @@ a.gradient-icon:hover svg line.hamburger{
   stroke:$color-bright;
 }
 
-.line-o {
+@mixin line-o {
   fill:none;
   stroke-miterlimit:10;
   stroke-width:1;
 }
 
-.error-o{
+@mixin error-o{
   @include open-sans;
   @include medium-w;
   line-height: 3em;
@@ -35,23 +35,23 @@ a.gradient-icon:hover svg line.hamburger{
   background:rgba(255,173,86,.3);
 } 
 
-.label-border-o {
+@mixin label-border-o {
   border: 4px solid;
   border-radius: 5px;
 }
 
-.arrow-o { 
+@mixin arrow-o { 
   @include block-center(0, auto);
   @include pointer;
   @include fast-transition(width, height);
   background:url('../imgs/arrow-right-opt.svg') no-repeat;
 }
 
-.go-o {
+@mixin go-o {
   fill:$color-bright;
 }
 
-.btn-o {
+@mixin btn-o {
   @include wh(15em, 3.5em);
   @include pointer;
   @include open-sans;
@@ -61,7 +61,7 @@ a.gradient-icon:hover svg line.hamburger{
   line-height:1em;
 }
 
-.ga16-btn-o {
+@mixin ga16-btn-o {
   overflow:hidden;
   svg {
     @include top-left(-0.5em, 1em);
@@ -78,7 +78,7 @@ a.gradient-icon:hover svg line.hamburger{
   }
 }
 
-.close-o {
+@mixin close-o {
   @include wh(100%, 100%);
   fill:none;
   stroke: $color-white;
@@ -101,7 +101,7 @@ span.input {
 }
 
 span.input-left {
-  width:47%;
+  width:100%;
   margin-right:1.7em;
   float:left;
   clear:none;

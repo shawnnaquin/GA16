@@ -1,5 +1,5 @@
-.button-row .button {
-  @extend .btn-o;
+/*.button-row .button {
+  @include btn-o;
   @include small-s;
   margin:3em 9em 0 0; 
 }
@@ -17,21 +17,21 @@
     border-radius:3px;
   }
   input:focus {
-    @extend .label-border-o;
+    @include label-border-o;
     border-color:$color-bright;
   }
 
   input.register{
-    @extend .btn-o;
+    @include btn-o;
     @include small-s;
     background:black;
   }
 
   label.error {
-    @extend .error-o;
+    @include error-o;
   }
  span.error-border input {
-    @extend .label-border-o;
+    @include label-border-o;
     border-color:$color-alert;
   }
   div.error {
@@ -41,7 +41,7 @@
     svg {
     @include undisplay;
     @include float-left;
-    @extend .alert-o;
+    @include alert-o;
     @include wh(1.5em, 1.5em);
     margin-left:0.5em;
     }
@@ -72,7 +72,7 @@
       margin-left:1em;
 
       svg line.close-x {
-        @extend .close-o;
+        @include close-o;
       }
     }
   }
@@ -167,7 +167,7 @@ body.home {
         fill:white;
       }
       svg.line {
-        @extend .line-o;
+        @include line-o;
         @include block-center (0, auto);
         @include wh(70%, 0.3em);
         margin-bottom:2em;
@@ -201,7 +201,7 @@ body.home {
           color:$color-alert;
         }
         a.button {
-          @extend .btn-o;
+          @include btn-o;
           @include block-center(4em, auto);
           background:$color-black;
           @include med-transition(background);
@@ -228,7 +228,7 @@ body.home {
     @include wh(100%, 2em!important);
     z-index:z('normal')+2;
     a.arrow {
-      @extend .arrow-o;
+      @include arrow-o;
       @include wh(2em, 2em);
     }
     a.arrow:hover {
@@ -246,7 +246,7 @@ body.home {
       text-align:center;
       padding-top:8em;
       svg.go {
-        @extend .go-o;
+        @include go-o;
         @include wh (10em, auto);
       }
       h1 {
@@ -256,7 +256,7 @@ body.home {
         @include block-center(5em, auto);
         @include wh (100%, 1em);
         a.button {
-          @extend .btn-o;
+          @include btn-o;
           background:black;
           @include med-transition(background);
         }
@@ -264,7 +264,7 @@ body.home {
           background:$color-bright;
         }
         a.ga16{
-          @extend .ga16-btn-o;
+          @include ga16-btn-o;
           background: $color-teal;
           @include slow-transition(background);
         }
@@ -316,3 +316,4 @@ body.home {
     }
   }
 }// end body.home
+*/
