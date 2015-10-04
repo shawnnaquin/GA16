@@ -71,21 +71,29 @@
 
 function heightFn() {
 
+  var heightClasses = '.video-overlay, .loop, #map, #map-overlay, .on-top';
+  var aboutReplace = $('.about-replace').height();
   var aboutHeight = $('#about').height();
+  var onTop = $('.on-top').height();
   var bodyHeight  = $('body').height();
+  console.log ('aR'+aboutReplace+' aH'+aboutHeight+' oT'+onTop+' bH'+bodyHeight);
 
-  if ( aboutHeight >= $(document).height() ) {  
-    alert(bodyHeight);
-    $('.video-overlay, .loop, #map').css('height', aboutHeight);
+  var highestNum = Math.max(aboutReplace, aboutHeight, onTop);
+
+  if (highestNum >= $(document).height() ) {
+    
+    $(heightClasses).css('height', highestNum);
+    
     initMap();
-    alert('doing');
+    
   }
-
-  else {
-    $('.video-overlay, .loop, #map').css('height', '100%');
-  }
-
   
+  else {
+    $(heightClasses).css('height', '100%');
+    
+  }
+
+
   if ( $('body').height() <= $('body').width() && $('body').height() < 590 && $('body').width() <= 1024 ) {
     $('.on-top').addClass('font-size');
   }
@@ -291,6 +299,7 @@ function heightFn() {
     $('video').animate({'opacity': '0'}, 100);
     $('.video-overlay').load('register.html #about', function(){
       title();
+
       $(this).children(':first').animate({'opacity': '1'}, 'slow').css('transform','translateY(0)');
     });
     setTimeout(heightFn, 100);
@@ -300,7 +309,7 @@ function heightFn() {
 
 
 ///////////////// start google maps function ////
-
+/*
 function initMap() {
   // Create a map object and specify the DOM element for display.
   var myLatLng = {lat: 36.156571, lng: -86.774734};
@@ -355,7 +364,73 @@ marker.addListener('click', function() {
   infoBubble.open(map, marker);
 });
 
-}
+}*/
+
+var map, infoBubble, infoBubble2;
+      function initMap() {
+        var mapCenter = new google.maps.LatLng(36.156571, -86.774734);
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: mapCenter,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          styles : [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}]
+        });
+
+        var marker = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(36.156571, -86.774734),
+          draggable: true
+        });
+
+        var contentString = '<div id="content">'+
+        '<h1>Uluru</h1>'+
+        '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+        'sandstone rock formation in the southern part of the '+
+        'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+        'south west of the nearest large town, Alice Springs; 450&#160;km '+
+        '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+        'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+        'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+        'Aboriginal people of the area. It has many springs, waterholes, '+
+        'rock caves and ancient paintings. Uluru is listed as a World '+
+        'Heritage Site.</p>'+
+        '<p>Attribution: Uluru, <a href="http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+        'http://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+        '(last visited June 22, 2009).</p>'+
+        '</div>';
+
+        infoBubble = new InfoBubble({
+          shadowStyle: 1,
+          padding: 0,
+          backgroundColor: '#FFFFFF',
+          borderRadius: 5,
+          arrowSize: 15,
+          borderWidth: 5,
+          borderColor: '#38a57b',
+          disableAutoPan: true,
+          hideCloseButton: false,
+          arrowPosition: 30,
+          backgroundClassName: 'transparent',
+          arrowStyle: 0,
+          minWidth: 150,
+          minHeight: 100,
+          content: div
+
+        });
+
+        infoBubble.open(map, marker);
+
+        var div = document.createElement('DIV');
+        div.innerHTML = contentString;
+
+        google.maps.event.addListener(marker, 'click', function() {
+          if (!infoBubble.isOpen()) {
+            infoBubble.open(map, marker);
+          }
+        });
+      }
+      google.maps.event.addDomListener(window, 'load', initMap);
+
 ///// end google maps function
 
 if ( document.title === 'Loading') {
