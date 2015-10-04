@@ -57,8 +57,9 @@ a.gradient-icon:hover svg line.hamburger{
   @include open-sans;
   @include heavy-w;
   @include small-s;
+  @include mp-reset;
   text-transform: uppercase;
-  line-height:1em;
+  line-height:3.5em;
 }
 
 @mixin ga16-btn-o {
@@ -71,7 +72,7 @@ a.gradient-icon:hover svg line.hamburger{
     fill: $color-ltgray;
   }
   span {
-    @include top-left(33%, 0);
+    @include top-left(0, 0);
     @include wh(100%, 100%);
     z-index:z('normal')+1;
     display:block;

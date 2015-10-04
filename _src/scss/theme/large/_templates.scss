@@ -1,3 +1,26 @@
-  body.home .on-top {
-    font-size:1em;
+
+.button-row .button {
+  @include small-s;
+}
+
+body.home .on-top {
+  font-size:1em;
+}
+
+#about {
+  p {@include medium-s; margin-bottom:1em; line-height:1.5em;}
+  h1 {@include exlarge-s; margin-top:1em;}
+}
+#register-replace {
+  span.input {
+    width:100%;
   }
+  span.input-left {
+    width:47%;
+    margin-right:3%;
+  }
+  input.register {
+    @include small-s;
+  }
+}
+

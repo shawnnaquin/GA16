@@ -65,11 +65,48 @@
 	}());
 
 
+ $(window).resize(function() {
+  heightFn();
+});
+
+function heightFn() {
+
+  var aboutHeight = $('#about').height();
+  var bodyHeight  = $('body').height();
+
+  if ( aboutHeight >= $(document).height() ) {  
+    alert(bodyHeight);
+    $('.video-overlay, .loop, #map').css('height', aboutHeight);
+    initMap();
+    alert('doing');
+  }
+
+  else {
+    $('.video-overlay, .loop, #map').css('height', '100%');
+  }
+
+  
+  if ( $('body').height() <= $('body').width() && $('body').height() < 590 && $('body').width() <= 1024 ) {
+    $('.on-top').addClass('font-size');
+  }
+
+  else if ( $('body').height() <= $('body').width() && $('body').height() < 800 && $('body').width() >= 1024 ) {
+    $('.on-top').addClass('font-size');
+  }
+
+  else {
+    $('.on-top').removeClass('font-size');
+  }
+
+}
+
 // addressing stuff //////////////
 
   $('a').click(function() {  
     //change the after-hash-sign-params to the value of the clicked link
     $.address.value($(this).attr('href'));
+    setTimeout(heightFn, 100);
+
   });
 
   $.address.change(function(event) { 
@@ -90,6 +127,7 @@
     
     // google maps
     initMap();
+    heightFn();
 
     // animate home info in
     $('.on-top').delay(800).animate({'margin-top': '-2em', 'opacity': 1,}, 150);
@@ -124,6 +162,7 @@
   // close button
   $(document).on('click', '#loadsocial a.closeit, #about a.closeit', function(e) {
     closebtn();
+
   });
   $(document).on('click', 'a.register', function(e) {
     registbtn();
@@ -205,31 +244,39 @@
   function fade() {
     $('div.info').fadeOut(0).fadeIn(500);
   }
+  function title() {
+    var theTitle = $('#title').html();
+    $('title').html(theTitle);
+  }
   
   function loadSocial () {
     fade();
-
+    closebtn();
     $('#map-overlay').load('social.html #loadsocial').css('color', 'white');
     $('#map-overlay').show();
 
     $('a.ga16').hide();
     $('a.register').removeClass('left').addClass('right');
+    $('.info').removeClass('small-8 small-offset-2 large-6 large-offset-3');
+    $('.info').addClass('small-5');
     $('.info-buttons').css('margin','2em 0 0 0');
-    $('.info').removeClass('small-6').removeClass('small-offset-3');
-    $('.info').addClass('small-5').css('text-align','right');
+    $('.info').css('text-align','right');
   }
 
   function closebtn() {
-    fade();
+    
     $('a.register, a.ga16').show();
     $('a.ga16').addClass('right').removeClass('left');
     $('a.register').addClass('left').removeClass('right');
     $('.info-buttons, .info, .crowd').attr('style','');
-    $('.info').removeClass('small-5').removeClass('small-offset-7');
-    $('.info').addClass('small-6').addClass('small-offset-3');
+    $('.info').removeClass('small-5 small-offset-7');
+    $('.info').addClass('small-8 small-offset-2 large-6 large-offset-3');
     $('video').animate({'opacity': '1'}, 100);
     $('#about').animate({'opacity': '0'}, 100).css('transform','translateY(100px)');
     $('#map-overlay').hide();
+    $('#about').html('');
+    heightFn();
+
   }
 
   function registbtn() {
@@ -237,14 +284,16 @@
     $('a.register').hide();
     $('a.ga16').removeClass('right').addClass('left').show();
     $('.info-buttons').css('margin','2em 0 0 0');
-    $('.info').removeClass('small-6').removeClass('small-offset-3');
-    $('.info').addClass('small-5').addClass('small-offset-7').css('text-align','left');
+    $('.info').removeClass('small-8 small-offset-2 large-6 large-offset-3');
+    $('.info').addClass('small-5 small-offset-7').css('text-align','left');
     $('.crowd').css('display', 'block').animate({ 'opacity': '.8'}, 'slow');
     $('.video-overlay').css('background-color', 'rgba(52,212,150,.5');
     $('video').animate({'opacity': '0'}, 100);
     $('.video-overlay').load('register.html #about', function(){
+      title();
       $(this).children(':first').animate({'opacity': '1'}, 'slow').css('transform','translateY(0)');
     });
+    setTimeout(heightFn, 100);
   } // end function register
 
 // end click functions ///////////////////
@@ -309,7 +358,7 @@ marker.addListener('click', function() {
 }
 ///// end google maps function
 
-
+if ( document.title === 'Loading') {
 ////// tympanus loading animation
 /**
  * main.js
@@ -403,5 +452,6 @@ function noscroll() {
 initAnimate();
 
 })();
+}
 
 }(jQuery, this, this.document));

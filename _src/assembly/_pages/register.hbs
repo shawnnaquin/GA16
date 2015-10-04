@@ -4,6 +4,7 @@ pageclass: register
 ---
 
 <div id='about'>
+<div id='title' style='display:none;'>{{title}}</div>
 
   <div class='row'>
     <header id="header" class='small-12 columns'>
@@ -17,13 +18,15 @@ pageclass: register
     </header><!-- /header -->
   </div>
 
-<div class='about-replace'>
+<div class='about-replace small-12 columns'>
   <div class='row'>
-    <h1 class='small-8 small-offset-2 columns'>About the Assembly</h1>
+    <div class='small-8 small-offset-2 columns'>
+    <h1>About the Assembly</h1>
+    </div>
   </div>
 
   <div class='row'>
-    <div class='small-8 small-offset-2 coloumns about-content'>      
+    <div class='small-8 small-offset-2 columns about-content'>      
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nisl mauris, 
       </p>
@@ -41,7 +44,7 @@ pageclass: register
 
 
   <div class='row button-row'>
-    <a class="button right register2">Step 2 | Register</a>
+    <a class="button right register2" id='{{ title }}'>Step 2 | Register</a>
   </div>
 </div><!-- about-replace -->
 </div><!-- about -->

@@ -1,11 +1,11 @@
 .button-row .button {
   @include btn-o;
-  @include small-s;
-  margin:3em 9em 0 0; 
+  @include exsmall-s;
+  margin:3em 9em 6em 0; 
 }
 
 #register-replace .button-row .button {
-    margin:3em -1em 0 0;
+    margin:3em -1em 6em 0;
 }
 
 // register 2
@@ -14,8 +14,17 @@
     margin-left:0.3em;
   }
   span.input {
+    width:100%;
+    margin-bottom:0.1em;
+  }
+  span.input-left {
+    width:100;
+    margin-right:0%;
+  }
+  span.input {
     border-radius:3px;
   }
+
   input:focus {
     @include label-border-o;
     border-color:$color-bright;
@@ -23,7 +32,7 @@
 
   input.register{
     @include btn-o;
-    @include small-s;
+    @include exsmall-s;
     background:black;
   }
 
@@ -81,6 +90,7 @@
   transform:translateY(100px);
   @include opacity-off;
   @include fast-transition(transform);
+  p {@include small-s; margin-bottom:.5em; line-height:1.3em;}
 
   .button-row .button:hover {
     background-color:$color-bright;
@@ -94,6 +104,10 @@
     @include float-left;
     @include medium-w;
     font-style: italic;
+  }
+  h1{
+    @include medium-s;
+    margin-top:1em;
   }
 }// end about
 
@@ -174,7 +188,7 @@ body.home {
         stroke:$color-black;
       }
       p {
-        @include large-s;
+        @include medium-s;
         text-align:center;
         line-height:1.5em;
       }
@@ -240,7 +254,7 @@ body.home {
     @include top-left(0, 0);
     @include no-pointer;
     @include opacity-off;
-    @include exsmall-s;
+    @include medium-s;
     z-index:z('normal')+1;
     .info {
       text-align:center;
@@ -279,13 +293,16 @@ body.home {
     @include wh(100%, 100%);
     #map-overlay {
       @include undisplay;
+      z-index:z('normal');
       background:black;
       height:100%;
     }
     #map {
       @include wh(50%, 100%);
+      position:absolute;
       background-color: #333;
-    div.gm-style div:nth-child(2) a{
+      margin-left:50%;
+      div.gm-style div:nth-child(2) a{
         display:none !important;
       } 
     }
@@ -304,7 +321,6 @@ body.home {
         @include wh(auto, auto);
         @include top-left(auto, auto);
         z-index:z('normal');
-        min-width:100%;
         margin-left:-1em;
       }
       .video-overlay {
