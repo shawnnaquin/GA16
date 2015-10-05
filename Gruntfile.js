@@ -169,6 +169,8 @@ module.exports = function(grunt) {
 						'<%= pkg.buildPath %>js/vendor/jquery-1.11.1.js',
 
 						'<%= pkg.buildPath %>foundation/js/foundation/foundation.js',
+						'<%= pkg.buildPath %>foundation/js/foundation/foundation.reveal.js',
+
 
 						'<%= pkg.buildPath %>js/lib/*.js',
 

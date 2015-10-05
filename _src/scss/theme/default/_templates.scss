@@ -272,14 +272,17 @@ body.home {
       }
       h1 {
         padding:2em 0 1em 0;
+        @include large-s;
       }
       .info-buttons {
         @include block-center(5em, auto);
-        @include wh (100%, 1em);
+        @include wh (12em,auto);
+
         a.button {
           @include btn-o;
           background:black;
           @include med-transition(background);
+          margin-top:2em;
         }
         a.button:hover{
           background:$color-bright;
@@ -302,20 +305,20 @@ body.home {
       @include undisplay;
       z-index:z('normal');
       background:black;
-      height:100%;
+      @include wh(50%,100%);
     }
     #map {
-      @include wh(50%, 100%);
+      @include wh(100%, 100%);
       position:absolute;
       background-color: #333;
-      margin-left:50%;
+      margin-left:100%;
       img[src='http://maps.gstatic.com/intl/en_us/mapfiles/iw_close.gif'] 
         { content:url('../imgs/marker-opt.svg'); }
       .gm-style > div {
         background:#2b2b2b;
       }
       .gm-style div:nth-child(2) a{
-        display:none !important;
+        //display:none !important;
       } 
       .gm-style > div:nth-last-child(1) {
         top:auto!important;
@@ -327,12 +330,13 @@ body.home {
     }
 
     .loop {
-      @include wh(50%, 100%);
+      @include wh(100%, 100%);
       background:$color-black;
       overflow:hidden;
       img.crowd {
         @include undisplay;
         @include opacity-minimal;
+        @include wh(100%, auto);
       }
       
       video {

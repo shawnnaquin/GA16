@@ -1,8 +1,17 @@
+.reveal-modal {
+  background-color:transparent;
+  padding:0;
+  border:0;
+  box-shadow:none;
+}
+
 .font-size {
   font-size:.8em!important;
   color:yellow!important;
 }
-
+iframe {
+  width:100%;
+}
 @mixin float-left {
   float:left;
 }

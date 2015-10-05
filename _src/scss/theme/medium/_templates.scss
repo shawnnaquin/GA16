@@ -272,6 +272,7 @@ body.home {
       }
       h1 {
         padding:2em 0 1em 0;
+        @include exlarge-s;
       }
       .info-buttons {
         @include block-center(5em, auto);
@@ -299,10 +300,10 @@ body.home {
   .row {
     @include wh(100%, 100%);
     #map-overlay {
+      @include wh(50%,100%);
       @include undisplay;
       z-index:z('normal');
       background:black;
-      height:100%;
     }
     #map {
       @include wh(50%, 100%);
@@ -315,7 +316,7 @@ body.home {
         background:#2b2b2b;
       }
       .gm-style div:nth-child(2) a{
-        display:none !important;
+        //display:none !important;
       } 
       .gm-style > div:nth-last-child(1) {
         top:auto!important;
@@ -333,6 +334,8 @@ body.home {
       img.crowd {
         @include undisplay;
         @include opacity-minimal;
+        @include wh(100%, auto);
+
       }
       
       video {

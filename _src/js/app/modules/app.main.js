@@ -67,19 +67,21 @@ var heightClasses = '.video-overlay, .loop, #map, #map-overlay, .background, .po
 
 var aboutReplace = 0;
 var aboutHeight = 0;
+var socialHeight = 0;
 var bodyHeight  = $('body').height();
 var info = $('.info').height();
+
 
   heightFn();
 
  $(window).resize(function() {
-
+  initMap();
    heightFn();
 });
 
 function heightFn() {
 
-  var highestNum = Math.max(aboutReplace+100, aboutHeight+150, info+100, bodyHeight+100);
+  var highestNum = Math.max(aboutReplace, aboutHeight, info+200, bodyHeight+100);
   
   console.log ('aR'+aboutReplace +' aH'+aboutHeight+' bH'+bodyHeight+' info'+info);
   
@@ -134,7 +136,7 @@ function heightFn() {
     closeIt();
   });
   
-  $('a.register, a.popup-close').click(function() {  
+  $('a.register, a.popup-close, a.ga16').click(function() {  
     //change the after-hash-sign-params to the value of the clicked link
     $.address.value($(this).attr('href'));
 
@@ -149,30 +151,45 @@ function heightFn() {
     else if (event.value == '/register') {
       register();
     }
-    else{}
+
+    else if (event.value == '/social') {
+      loadSocial();
+
+    }
+
+    else {}
     
   });
 
 // end addressing stuff //////////////
 
 
-
 ////// this should integrate into the addressing stuff above
 
   if ( $('body').hasClass('home') ) { 
     // google maps
-    initMap();
-
+    //initMap();
     // animate home info in
     $('.on-top').delay(800).animate({'margin-top': '-2em', 'opacity': 1,}, 150);
 
   } // end body.home 
+$( window ).resize(function() {
+  iframeSize();
+});
 
+function iframeSize () {
+    var iframeH = $('iframe').width();
+  console.log(iframeH);
+  $('iframe').css('height', iframeH*0.55);
+}
+
+$("#myModal").on("opened.fndtn.reveal", function(){
+  iframeSize();
+});
 ///////////////////////////////////////
 
 
 // click handlers ///////////////////
-
   // hamburger menu
   function hamburger() {
     $('.popup, .popup-overlay, .popup-info').show();
@@ -259,9 +276,11 @@ function heightFn() {
   
   function loadSocial () {
     fade();
-    closebtn();
+    closeIt();
 
-    $('#map-overlay').load('social.html #loadsocial').css('color', 'white');
+    socialHeight = $('#loadsocial').height();
+    heightFn();
+
 
     $('#map-overlay').show();
 
@@ -315,7 +334,7 @@ function heightFn() {
       $(document).on("click","a.register2",function() {
 
         register2();
-        aboutReplace = ('.about-replace').height();
+        aboutReplace = $('.about-replace').height();
         heightFn();
 
     });
@@ -452,6 +471,7 @@ var map, infoBubble;
 
       var map, infoBubble;
       function initMap() {
+
         var mapCenter = new google.maps.LatLng(36.156, -86.774);
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
@@ -467,13 +487,13 @@ var map, infoBubble;
           icon: icon,
         });
 
-        var contentString = '<div></div>';
+        var contentString = '<div class="info-content"><div class="info-content-top"><h1 style="color:black;">VENUE</h1></div><div class="info-content-bottom"><p>Music City Center</p><a id="#hamburger-button" href="#" style="display:block;">Find out more &raquo;</a></div></div>';
 
         infoBubble = new InfoBubble({
-          conent: contentString,
+          content: contentString,
           shadowStyle: 1,
           padding: 0,
-          backgroundColor: '#FFFFFF',
+          backgroundColor: '#38a57b',
           borderRadius: 5,
           arrowSize: 15,
           borderWidth: 5,
@@ -495,11 +515,15 @@ var map, infoBubble;
           if (!infoBubble.isOpen()) {
             infoBubble.open(map, marker);
           }
-          });
+        
+        });
       }
-      google.maps.event.addDomListener(window, 'load', initMap);
-
-///// end google maps function
+      
+      google.maps.event.addDomListener(window, 'load', function() {
+        initMap();
+      });
+      
+      ///// end google maps function
 
 if ( document.title === 'Loading') {
 ////// tympanus loading animation

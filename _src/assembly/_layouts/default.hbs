@@ -60,6 +60,11 @@
 
 </div>
 
+<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <iframe src="https://player.vimeo.com/video/107526451" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+
 <div id="universe">
 	<div id="galaxy">
 		{{> body }}
@@ -68,7 +73,7 @@
 <!-- &callback=initMap -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJiYQ2XXWKI8dkdmlTwSSNSygmoFm-4eM"></script>
 <script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js"></script>
-
+<script src="https://static.tagboard.com/public/js/embed.js"></script>
 
 <!-- @if NODE_ENV == 'DEVELOPMENT' -->
 <script src="{{ assets }}js/main.js"></script>

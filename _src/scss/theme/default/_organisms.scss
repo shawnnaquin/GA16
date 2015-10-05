@@ -1,4 +1,41 @@
-      
+.transparent {
+  @include wh(100%,100%);
+  .info-content {
+    @include wh(100%,100%);
+    .info-content-top, .info-content-bottom {
+    @include wh(100%,50%);
+    }
+    .info-content-top {
+      background:white;
+      h1 {
+        padding-top:.2em;
+        text-align: center;
+        color:#666;
+      }
+    }
+    .info-content-bottom {
+      background:#307f61;
+      p, a {
+        width:100%;
+        clear:left;
+        position:relative;
+        float:none;
+        margin:0 auto;
+        color:white;
+        text-align:center;
+        padding-top:.5em;
+        @include medium-w;
+        @include medium-s;
+      }
+      a {
+        color:$color-bright;
+        @include heavy-w;
+        padding-top:.2em;
+        display:block!important;
+      }
+    }
+  }
+}
 @mixin height100 {
   @include wh(auto, 100%);
 }
