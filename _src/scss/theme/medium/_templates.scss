@@ -330,7 +330,6 @@ body.home {
       @include wh(50%, 100%);
       background:$color-black;
       overflow:hidden;
-
       img.crowd {
         @include undisplay;
         @include opacity-minimal;

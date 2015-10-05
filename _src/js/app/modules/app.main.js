@@ -63,33 +63,33 @@
 			init    : init
 		};
 	}());
+var heightClasses = '.video-overlay, .loop, #map, #map-overlay, .background, .popup, .on-top';
+
+var aboutReplace = 0;
+var aboutHeight = 0;
+var bodyHeight  = $('body').height();
+var info = $('.info').height();
 
   heightFn();
 
  $(window).resize(function() {
+
    heightFn();
 });
 
-var heightClasses = '.video-overlay, .loop, #map, #map-overlay, .background, .popup';
-
-var aboutReplace = $('.about-replace').height();
-var aboutHeight = $('#about').height();
-var bodyHeight  = $('body').height();
-
 function heightFn() {
 
-  var info = $('.info').height();
-  
-  var highestNum = Math.max(aboutReplace, aboutHeight, info );
+  var highestNum = Math.max(aboutReplace+100, aboutHeight+150, info+100, bodyHeight+100);
   
   console.log ('aR'+aboutReplace +' aH'+aboutHeight+' bH'+bodyHeight+' info'+info);
+  
   if (highestNum >= bodyHeight) {
     $('body').css('height', highestNum);
     $(heightClasses).css('height', '100%');
   }
-  else {
+  /*else {
     $('body').css('height', '100%');
-  }
+  }*/
   /*
   if (highestNum <= bodyHeight) {
     $(heightClasses).css('height', '100%');
@@ -107,6 +107,7 @@ function heightFn() {
     
     initMap();
     
+
   }
   
   else {
@@ -133,7 +134,7 @@ function heightFn() {
     closeIt();
   });
   
-  $('a.register').click(function() {  
+  $('a.register, a.popup-close').click(function() {  
     //change the after-hash-sign-params to the value of the clicked link
     $.address.value($(this).attr('href'));
 
@@ -185,8 +186,9 @@ function heightFn() {
   // on register2 click
   function register2() {
       // load in form page / start form page
-    $('.video-overlay').load('register2.html .about-replace', function(){
-
+    $('.about-replace').load('register2.html #register-replace', function(){
+      aboutReplace = $('.about-replace').height();
+      heightFn();
       $('button-row').html('Step 3 | Checkout');
       
       // validation rules
@@ -272,7 +274,7 @@ function heightFn() {
   }
 
   function closeIt() {
-    
+    $('.video-overlay').css('overflow', 'hidden');
     $('a.register, a.ga16').show();
     $('a.ga16').addClass('right').removeClass('left');
     $('a.register').addClass('left').removeClass('right');
@@ -280,14 +282,19 @@ function heightFn() {
     $('.info').removeClass('small-5 small-offset-7');
     $('.info').addClass('small-8 small-offset-2 large-6 large-offset-3');
     $('video').animate({'opacity': '1'}, 100);
-    $('#about').animate({'opacity': '0'}, 100).css('transform','translateY(100px)');
+    $('#about').fadeOut();
+    aboutReplace = 0;
+    aboutHeight = 0;
+    heightFn();
     $('#map-overlay').hide();
     $(heightClasses).css('style', '100%');
-    $('#about').html();
+    $('video').css({ 'height': '100%', 'width': 'auto' });
     $('.popup').animate({'width': '0%', 'opacity': '0',}, 500);
+
   }
 
   function register() {
+
     $('#map-overlay').hide();
     $('a.register').hide();
     $('a.ga16').removeClass('right').addClass('left').show();
@@ -297,10 +304,20 @@ function heightFn() {
     $('.crowd').css('display', 'block').animate({ 'opacity': '.8'}, 'slow');
     $('.video-overlay').css('background-color', 'rgba(52,212,150,.5');
     $('video').animate({'opacity': '0'}, 100);
+    $('video').css({ 'height': '0', 'width': '0' });
     $('.video-overlay').load('register.html #about', function(){
       title();
+      aboutReplace = $('.about-replace').height();
+      aboutHeight = $('#about').height();
+      
+      heightFn();
+
       $(document).on("click","a.register2",function() {
+
         register2();
+        aboutReplace = ('.about-replace').height();
+        heightFn();
+
     });
 
       $(this).children(':first').animate({'opacity': '1'}, 'slow').css('transform','translateY(0)');
@@ -368,8 +385,8 @@ marker.addListener('click', function() {
 
 }*/
 
-
-var map, infoBubble, infoBubble2;
+/*
+var map, infoBubble;
       function initMap() {
 
         var mapCenter = new google.maps.LatLng(36.156571, -86.774734);
@@ -383,9 +400,7 @@ var map, infoBubble, infoBubble2;
         var marker = new google.maps.Marker({
           map: map,
           position: new google.maps.LatLng(36.156571, -86.774734),
-          draggable: true,
-          icon: 'http://localhost:3000/assets/imgs/marker-opt.svg'
-        });
+          draggable: true,        });
 
         var contentString = '<div id="infoBubbleContent">'+
         '<h1>Uluru</h1>'+
@@ -405,7 +420,6 @@ var map, infoBubble, infoBubble2;
         '</div>';
 
         infoBubble = new InfoBubble({
-          content: contentString,
           shadowStyle: 1,
           padding: 0,
           backgroundColor: '#FFFFFF',
@@ -426,17 +440,64 @@ var map, infoBubble, infoBubble2;
 
         infoBubble.open(map);
 
-        var div = document.createElement('DIV');
-        div.innerHTML = contentString;
-
         google.maps.event.addListener(marker, 'click', function() {
           if (!infoBubble.isOpen()) {
-            infoBubble.open(map, marker, contentString);
+            infoBubble.open(map, marker);
           }
         });
       }
-      google.maps.event.addDomListener(window, 'load', initMap);
 
+      google.maps.event.addDomListener(window, 'load', initMap);
+*/
+
+      var map, infoBubble;
+      function initMap() {
+        var mapCenter = new google.maps.LatLng(36.156, -86.774);
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: mapCenter,
+          styles : [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}],
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        icon = 'assets/imgs/marker-opt.svg';
+        var marker = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(36.156, -86.774),
+          draggable: true,
+          icon: icon,
+        });
+
+        var contentString = '<div></div>';
+
+        infoBubble = new InfoBubble({
+          conent: contentString,
+          shadowStyle: 1,
+          padding: 0,
+          backgroundColor: '#FFFFFF',
+          borderRadius: 5,
+          arrowSize: 15,
+          borderWidth: 5,
+          borderColor: '#38a57b',
+          disableAutoPan: true,
+          hideCloseButton: false,
+          arrowPosition: 30,
+          backgroundClassName: 'transparent',
+          arrowStyle: 0,
+          minWidth: 150,
+          minHeight: 100,
+          maxWidth: 150,
+          maxHeight: 100,
+        });
+
+        infoBubble.open(map);
+
+        google.maps.event.addListener(marker, 'click', function() {
+          if (!infoBubble.isOpen()) {
+            infoBubble.open(map, marker);
+          }
+          });
+      }
+      google.maps.event.addDomListener(window, 'load', initMap);
 
 ///// end google maps function
 
