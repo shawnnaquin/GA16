@@ -309,8 +309,20 @@ body.home {
       position:absolute;
       background-color: #333;
       margin-left:50%;
-      div.gm-style div:nth-child(2) a{
+      img[src='http://maps.gstatic.com/intl/en_us/mapfiles/iw_close.gif'] 
+        { content:url('../imgs/marker-opt.svg'); }
+      .gm-style > div {
+        background:#2b2b2b;
+      }
+      .gm-style div:nth-child(2) a{
         display:none !important;
+      } 
+      .gm-style > div:nth-last-child(1) {
+        top:auto!important;
+        bottom:20px;
+        .gm-style-mtc div {
+          background-color:#2b2b2b!important;
+        }
       } 
     }
 
@@ -325,8 +337,9 @@ body.home {
       }
       
       video {
-        @include wh(auto, auto);
-        @include top-left(auto, auto);
+        @include wh(auto, 100%);
+        bottom:-50%;
+        right:-50%;
         z-index:z('normal');
         margin-left:-1em;
       }

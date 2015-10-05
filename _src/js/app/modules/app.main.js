@@ -64,24 +64,45 @@
 		};
 	}());
 
+  heightFn();
 
  $(window).resize(function() {
-  heightFn();
+   heightFn();
 });
+
+var heightClasses = '.video-overlay, .loop, #map, #map-overlay, .background, .popup';
+
+var aboutReplace = $('.about-replace').height();
+var aboutHeight = $('#about').height();
+var bodyHeight  = $('body').height();
 
 function heightFn() {
 
-  var heightClasses = '.video-overlay, .loop, #map, #map-overlay, .on-top';
-  var aboutReplace = $('.about-replace').height();
-  var aboutHeight = $('#about').height();
-  var onTop = $('.on-top').height();
-  var bodyHeight  = $('body').height();
-  console.log ('aR'+aboutReplace+' aH'+aboutHeight+' oT'+onTop+' bH'+bodyHeight);
+  var info = $('.info').height();
+  
+  var highestNum = Math.max(aboutReplace, aboutHeight, info );
+  
+  console.log ('aR'+aboutReplace +' aH'+aboutHeight+' bH'+bodyHeight+' info'+info);
+  if (highestNum >= bodyHeight) {
+    $('body').css('height', highestNum);
+    $(heightClasses).css('height', '100%');
+  }
+  else {
+    $('body').css('height', '100%');
+  }
+  /*
+  if (highestNum <= bodyHeight) {
+    $(heightClasses).css('height', '100%');
+  }
 
-  var highestNum = Math.max(aboutReplace, aboutHeight, onTop);
+  else if (highestNum === info) {
+    // the padding top of .info === 128
+    $(heightClasses).css('height', highestNum+128);
+  }
+  
+  else if (highestNum > bodyHeight ) {
+    // extra room for buttons
 
-  if (highestNum >= $(document).height() ) {
-    
     $(heightClasses).css('height', highestNum);
     
     initMap();
@@ -90,9 +111,8 @@ function heightFn() {
   
   else {
     $(heightClasses).css('height', '100%');
-    
   }
-
+  */
 
   if ( $('body').height() <= $('body').width() && $('body').height() < 590 && $('body').width() <= 1024 ) {
     $('.on-top').addClass('font-size');
@@ -109,19 +129,26 @@ function heightFn() {
 }
 
 // addressing stuff //////////////
-
-  $('a').click(function() {  
+  $(document).on('click', 'a.closeit', function() {
+    closeIt();
+  });
+  
+  $('a.register').click(function() {  
     //change the after-hash-sign-params to the value of the clicked link
     $.address.value($(this).attr('href'));
-    setTimeout(heightFn, 100);
 
   });
 
   $.address.change(function(event) { 
     //define an event handler based on the params...
-    if (event.value == '/deep-link') {
-      loadSocial();
+    if (event.value == '/venue') {
+      hamburger();
     }
+
+    else if (event.value == '/register') {
+      register();
+    }
+    else{}
     
   });
 
@@ -132,10 +159,8 @@ function heightFn() {
 ////// this should integrate into the addressing stuff above
 
   if ( $('body').hasClass('home') ) { 
-    
     // google maps
     initMap();
-    heightFn();
 
     // animate home info in
     $('.on-top').delay(800).animate({'margin-top': '-2em', 'opacity': 1,}, 150);
@@ -147,41 +172,21 @@ function heightFn() {
 
 // click handlers ///////////////////
 
-  // hamburger menu 
-  $('a.gradient-icon').click(function() {
+  // hamburger menu
+  function hamburger() {
     $('.popup, .popup-overlay, .popup-info').show();
     $('.popup, .popup-overlay, .popup-info').animate({
       'width': '100%',
       'height': '100%',
       'opacity': '1',
     }, 500);
-  });
+  }
 
-  // popup close button
-  $('.popup a.closeit').click(function() {
-    $('.popup').animate({
-      'width': '0%',
-      'opacity': '0',
-    }, 500);
-  });
-  
-  // since following pages are reloaded must use 'on'
-
-  // close button
-  $(document).on('click', '#loadsocial a.closeit, #about a.closeit', function(e) {
-    closebtn();
-
-  });
-  $(document).on('click', 'a.register', function(e) {
-    registbtn();
-  });
-
-  // on register click
-  $(document).on('click', 'a.register2', function(e) {
-
+  // on register2 click
+  function register2() {
       // load in form page / start form page
-    $('.about-replace').load('register2.html #register-replace', function (){
-    
+    $('.video-overlay').load('register2.html .about-replace', function(){
+
       $('button-row').html('Step 3 | Checkout');
       
       // validation rules
@@ -198,8 +203,6 @@ function heightFn() {
         }
 
       }); // end validate rules
-
-      
 
       // tympanus input forms
       
@@ -242,12 +245,7 @@ function heightFn() {
 
     }); // end load in form page
 
-  }); // end on register click
-
-// end click handlers ////////////////
-
-
-// click functions ///////////////////
+  } // end on register2 click
   
   function fade() {
     $('div.info').fadeOut(0).fadeIn(500);
@@ -260,7 +258,9 @@ function heightFn() {
   function loadSocial () {
     fade();
     closebtn();
+
     $('#map-overlay').load('social.html #loadsocial').css('color', 'white');
+
     $('#map-overlay').show();
 
     $('a.ga16').hide();
@@ -271,7 +271,7 @@ function heightFn() {
     $('.info').css('text-align','right');
   }
 
-  function closebtn() {
+  function closeIt() {
     
     $('a.register, a.ga16').show();
     $('a.ga16').addClass('right').removeClass('left');
@@ -282,12 +282,12 @@ function heightFn() {
     $('video').animate({'opacity': '1'}, 100);
     $('#about').animate({'opacity': '0'}, 100).css('transform','translateY(100px)');
     $('#map-overlay').hide();
-    $('#about').html('');
-    heightFn();
-
+    $(heightClasses).css('style', '100%');
+    $('#about').html();
+    $('.popup').animate({'width': '0%', 'opacity': '0',}, 500);
   }
 
-  function registbtn() {
+  function register() {
     $('#map-overlay').hide();
     $('a.register').hide();
     $('a.ga16').removeClass('right').addClass('left').show();
@@ -299,10 +299,12 @@ function heightFn() {
     $('video').animate({'opacity': '0'}, 100);
     $('.video-overlay').load('register.html #about', function(){
       title();
+      $(document).on("click","a.register2",function() {
+        register2();
+    });
 
       $(this).children(':first').animate({'opacity': '1'}, 'slow').css('transform','translateY(0)');
     });
-    setTimeout(heightFn, 100);
   } // end function register
 
 // end click functions ///////////////////
@@ -366,8 +368,10 @@ marker.addListener('click', function() {
 
 }*/
 
+
 var map, infoBubble, infoBubble2;
       function initMap() {
+
         var mapCenter = new google.maps.LatLng(36.156571, -86.774734);
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
@@ -379,10 +383,11 @@ var map, infoBubble, infoBubble2;
         var marker = new google.maps.Marker({
           map: map,
           position: new google.maps.LatLng(36.156571, -86.774734),
-          draggable: true
+          draggable: true,
+          icon: 'http://localhost:3000/assets/imgs/marker-opt.svg'
         });
 
-        var contentString = '<div id="content">'+
+        var contentString = '<div id="infoBubbleContent">'+
         '<h1>Uluru</h1>'+
         '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
         'sandstone rock formation in the southern part of the '+
@@ -400,6 +405,7 @@ var map, infoBubble, infoBubble2;
         '</div>';
 
         infoBubble = new InfoBubble({
+          content: contentString,
           shadowStyle: 1,
           padding: 0,
           backgroundColor: '#FFFFFF',
@@ -414,22 +420,23 @@ var map, infoBubble, infoBubble2;
           arrowStyle: 0,
           minWidth: 150,
           minHeight: 100,
-          content: div
-
+          maxWidth: 150,
+          maxHeight: 100,
         });
 
-        infoBubble.open(map, marker);
+        infoBubble.open(map);
 
         var div = document.createElement('DIV');
         div.innerHTML = contentString;
 
         google.maps.event.addListener(marker, 'click', function() {
           if (!infoBubble.isOpen()) {
-            infoBubble.open(map, marker);
+            infoBubble.open(map, marker, contentString);
           }
         });
       }
       google.maps.event.addDomListener(window, 'load', initMap);
+
 
 ///// end google maps function
 
