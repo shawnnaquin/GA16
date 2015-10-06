@@ -282,7 +282,7 @@ module.exports = function(grunt) {
 			},
 
 			assemble: {
-				files: [ '<%= pkg.buildPath %>assembly/**/*.hbs', ],
+				files: [ '<%= pkg.buildPath %>assembly/**/*.hbs', '<%= pkg.buildPath %>nojs/**/*.hbs'],
 				tasks: [ 'env:dev', 'modernizr', 'assemble', 'preprocess', 'replace' ]
 			}
 		},

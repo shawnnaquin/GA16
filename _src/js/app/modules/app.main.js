@@ -64,6 +64,19 @@
 		};
 	}());
 
+if ( $('body').hasClass('version') ) {
+  if ( $(document).width() < 470 ) {
+    window.location = "landing.html";
+  }
+  else {
+    window.location = "loading.html";
+  }
+}
+else {
+
+}
+
+
 var heightClasses = '.video-overlay, .loop, #map, .map-overlay, .background, .popup, .on-top';
 
 var aboutReplace = 0;
@@ -488,7 +501,7 @@ var map, infoBubble;
           icon: icon,
         });
 
-        var contentString = '<div class="info-content"><div class="info-content-top"><h1 style="color:black;">VENUE</h1></div><div class="info-content-bottom"><p>Music City Center</p><a id="#hamburger-button" href="#" style="display:block;">Find out more &raquo;</a></div></div>';
+        var contentString = '<div class="info-content"><div class="info-content-top"><h1 style="color:black;">VENUE</h1></div><div class="info-content-bottom"><p>Music City Center</p><a id="#hamburger-button" href="signup.html" style="display:block;">Find out more &raquo;</a></div></div>';
 
         infoBubble = new InfoBubble({
           content: contentString,

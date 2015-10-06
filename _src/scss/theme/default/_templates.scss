@@ -1,3 +1,274 @@
+html {
+  background:#2b2b2b;
+}
+body.version {
+  .popup {
+    display:none;
+  }
+  svg.go {
+    display:block;
+    float:none;
+    margin:2em auto;
+    fill:$color-bright;
+    animation:logo 5s infinite;
+    width:50%;
+  }
+  #choose a {
+    display:block;
+    float:none;
+    margin:0 auto;
+    clear:left;
+    width:10em;
+    text-align:center;
+    margin-top:2em;
+    @include exlarge-s;
+    @include slow-transition(color);
+    color:white;
+  }
+    #choose a:hover {
+    color:$color-bright;
+  }
+}
+body.interior, body.interior #universe, body.interior #galaxy {
+  float: left;
+  height: auto;
+  width: 100%;
+  position: relative;
+}
+
+body.interior {
+
+  background:  linear-gradient(to top, rgba(56, 165, 123, 1) 0%, rgba(56, 165, 123, .8) 80%, rgba(56, 165, 123, .5) 100%),
+  url('../imgs/crowd.jpg') center / cover no-repeat;
+    #footer {
+    position:absolute;
+    z-index:z('normal')+999;
+    background:#2b2b2b;
+    padding:.5em;
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    p {
+      @include small-s;
+      margin:0; padding:0;
+      width:100%;
+      text-align:center;
+    }
+  }
+  #content {
+    @include open-sans;
+    position:relative;
+    float:left;
+    width:100%;
+    height:auto;
+    padding:1em;
+    margin-bottom:3em;
+    .main-links {
+      h1 {
+        text-align: center;
+        @include medium-s;
+
+      }
+      a:nth-child(1) {
+        margin-top:1em;
+        margin-bottom:0;
+      }
+      a {
+        display:block;
+        width:100%;
+        text-align:center;
+        margin:1em auto;
+        margin-bottom:1em;
+        float:none;
+        position:relative;
+        @include large-s;
+        @include heavy-w;
+      }
+    }
+    a {
+      color:$color-ltgray;
+      text-decoration:underline;
+    }
+    a:hover {
+      color:$color-bright;
+    }
+    a.button, input[type=submit] {
+      @include small-s;
+      text-decoration:none;
+      border-radius:0.3em;
+      width:100%;
+    }
+    a.button:hover, input[type=submit]:hover {
+      @include small-s;
+      background:$color-bright;
+      color:black;
+    }
+    form {
+      background:rgba(255,255,255,.5);
+      border-radius:0.5em;
+      margin-bottom:5em;
+    }
+
+    .popup {
+      svg.go {
+        display:block;
+        animation: logo 5s infinite;
+        fill: $color-bright;
+        width:50%;
+        float:none;
+        margin:0 auto;
+      }
+      .popup-replace {
+        svg.line {
+          stroke:black;
+          stroke-miterlimit:10;
+          stroke-width:1;
+        }
+      }
+      .popup-replace p {
+        text-align:center;
+
+      }
+      .social-links {
+        margin-top:2em;
+      }
+      .social-links a.button {
+        margin-top:1em;
+      }
+      .social-center {
+        float: none;
+        margin: 0 auto;
+        width: 5em;
+        margin-bottom: 2em;
+        height: 1em;
+
+        a {
+        color: black;
+        display: block;
+        float: none;
+        position: relative;
+        margin: 0 auto;
+        clear: none;
+        /* margin-right: 0.2em; */
+        text-align: center;
+        @include fast-transition(color);
+        @include medium-w;
+        width: 4em;
+        }
+        a:hover {
+          color:$color-bright;
+        }
+      }
+    }
+  }
+  // nav for interior pages
+  #nav {
+      position:relative;
+      float:left;
+      margin: 0;
+      z-index: 10;
+      display: block;
+      //styling underneath
+      background-color: #2b2b2b;
+      width:100%;
+  }
+   
+  #nav li { float: left; list-style:none;}
+  #nav li {
+    svg.go {
+      fill: #61ffc2;
+      height: 3em;
+      width: 3em;
+      margin-right: 1em;
+      display: block;
+    }
+  }
+  #nav li:hover { position: relative; }
+   
+  #nav li:hover > a {
+      background: #021A1A;
+   
+      box-shadow: 5px 5px 25px #000;
+      -moz-box-shadow: 5px 5px 25px #000;
+      -webkit-box-shadow: 5px 5px 25px #000;
+   
+      border-radius: 10px;
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+  }
+   
+  #nav li.sub:hover > a {
+      border-radius: 10px 10px 0 0;
+      -moz-border-radius: 10px 10px 0 0;
+      -webkit-border-radius: 10px 10px 0 0;
+  }
+   
+  #nav li a {
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 12px;
+      display: block;
+  }
+  #nav li a:hover { background-color: #021A1A; }
+   
+  #nav li ul {
+      background: #fff;
+      margin-top: -2px;
+      display: none;
+  }
+  #nav li:hover ul {
+      display:block;
+      position:absolute;
+  }
+   
+  #nav li ul {
+      background: rgba(255,255,255,0.5);
+      padding: 10px 5px;
+   
+      box-shadow: 5px 5px 25px #000;
+      -moz-box-shadow: 5px 5px 25px #000;
+      -webkit-box-shadow: 5px 5px 25px #000;
+   
+      border-radius: 0px 15px 15px 15px;
+      -moz-border-radius: 0px 15px 15px 15px;
+      -webkit-border-radius: 0px 5px 5px 5px;
+
+  }
+  #nav li ul li a, #nav li ul li a:hover {
+      background: transparent;
+      color: #000;
+      width: 150px;
+      font-size: 0.95em;
+      font-weight: normal;
+  }
+  #nav li ul li a:hover { text-decoration: underline;
+      box-shadow: none;
+      -moz-box-shadow: none;
+      -webkit-box-shadow: none;
+   
+      border-radius: 0;
+      -moz-border-radius: 0;
+      -webkit-border-radius: 0;
+  }
+}
+body.landing-nojs {
+
+  #content .popup svg.go {
+    display:block;
+    margin-bottom:2em;
+    animation: logo 5s infinite;
+    fill: $color-bright;
+  }
+}
+@keyframes logo {
+    0% {opacity:1;}
+    50% {opacity:0.5;}
+    100% {opacity:1;}
+
+}
+
 .close-reveal-modal {
     top: -3rem!important;
     right: 0rem;
@@ -325,12 +596,11 @@ body.home {
     #map {
       @include wh(100%, 100%);
       position:absolute;
-      background-color: #333;
       margin-left:100%;
       img[src='http://maps.gstatic.com/intl/en_us/mapfiles/iw_close.gif'] 
         { content:url('../imgs/marker-opt.svg'); }
       .gm-style > div {
-        background:#2b2b2b;
+        background: #2b2b2b url('../imgs/map.png') no-repeat center / cover;
       }
       .gm-style div:nth-child(2) a{
         //display:none !important;
@@ -370,3 +640,8 @@ body.home {
     }
   }
 }// end body.home
+body.version {
+  div.top-line a {
+    display:none;
+  }
+}
