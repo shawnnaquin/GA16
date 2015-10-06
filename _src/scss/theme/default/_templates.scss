@@ -1,3 +1,80 @@
+
+#small-over {
+  .on-top {
+    @include top-left(0, 0);
+    @include no-pointer;
+    @include opacity-off;
+    @include medium-s;
+    display:block;
+    z-index:z('normal')+1;
+    .info {
+      text-align:center;
+      padding-top:8em;
+      svg.go {
+        @include go-o;
+        @include wh (10em, auto);
+      }
+      h1 {
+        padding:2em 0 1em 0;
+        @include large-s;
+      }
+      .info-buttons {
+        @include block-center(5em, auto);
+        @include wh (12em,auto);
+
+        a.button {
+          @include btn-o;
+          background:black;
+          @include med-transition(background);
+          margin-top:2em;
+        }
+        a.button:hover{
+          background:$color-bright;
+        }
+        a.ga16{
+          @include ga16-btn-o;
+          background: $color-teal;
+          @include slow-transition(background);
+        }
+        a.ga16:hover {
+          background:$color-black;
+        }
+      }
+    }
+  }
+}
+
+#small-over {
+  display:block;
+  position:absolute;
+  z-index: z('normal')+300;
+  @include wh(100%,100%);
+  .loop-sm {
+    @include wh(100%, 100%);
+    background:$color-black;
+    overflow:hidden;
+    img.crowd {
+      @include undisplay;
+      @include opacity-minimal;
+      @include wh(100%, auto);
+    }
+    
+    .video {
+      @include wh(auto, 100%);
+      bottom:-50%;
+      right:-50%;
+      z-index:z('normal');
+      margin-left:-1em;
+    }
+    .video-overlay {
+      @include top-right(0, 0);
+      @include wh (100%, 100%);
+      z-index:z('normal')+1;
+      background: linear-gradient(to bottom, rgba(68,68,68,0.5) 40%,rgba(56,165,123,1) 100%);
+    }
+  }
+}
+
 .button-row .button {
   @include btn-o;
   @include exsmall-s;
@@ -87,7 +164,7 @@
   }
 
 #about {
-  transform:translateY(100px);
+  transform:translateY(10px);
   @include opacity-off;
   @include fast-transition(transform);
   @include wh(100%,100%);
@@ -113,7 +190,7 @@
   .about-replace {
     position: absolute;
     float: none;
-    top:  4em;
+    top: -0.65em;
     left: 0;
   }
 }// end about
@@ -256,12 +333,14 @@ body.home {
       @include wh(2.5em, 2.5em);
     }
   }
-  
+  #large-on-top {
+    display:none;
   .on-top {
     @include top-left(0, 0);
     @include no-pointer;
     @include opacity-off;
     @include medium-s;
+    display:block;
     z-index:z('normal')+1;
     .info {
       text-align:center;
@@ -298,6 +377,7 @@ body.home {
       }
     }
   }
+}
 
   .row {
     @include wh(100%, 100%);
@@ -339,7 +419,7 @@ body.home {
         @include wh(100%, auto);
       }
       
-      video {
+      .video-lg {
         @include wh(auto, 100%);
         bottom:-50%;
         right:-50%;

@@ -63,16 +63,17 @@
 			init    : init
 		};
 	}());
-var heightClasses = '.video-overlay, .loop, #map, #map-overlay, .background, .popup, .on-top';
+
+var heightClasses = '.video-overlay, .loop, #map, #map-overlay, .background, .popup, #larger-on-top .on-top';
 
 var aboutReplace = 0;
 var aboutHeight = 0;
 var socialHeight = 0;
 var bodyHeight  = $('body').height();
-var info = $('.info').height();
+var info = $('#large .info').height();
 
 
-  heightFn();
+heightFn();
 
  $(window).resize(function() {
   initMap();
@@ -89,9 +90,9 @@ function heightFn() {
     $('body').css('height', highestNum);
     $(heightClasses).css('height', '100%');
   }
-  /*else {
+  else {
     $('body').css('height', '100%');
-  }*/
+  }
   /*
   if (highestNum <= bodyHeight) {
     $(heightClasses).css('height', '100%');
@@ -114,8 +115,8 @@ function heightFn() {
   
   else {
     $(heightClasses).css('height', '100%');
-  }
-  */
+  }*/
+  
 
   if ( $('body').height() <= $('body').width() && $('body').height() < 590 && $('body').width() <= 1024 ) {
     $('.on-top').addClass('font-size');
@@ -154,7 +155,6 @@ function heightFn() {
 
     else if (event.value == '/social') {
       loadSocial();
-
     }
 
     else {}
@@ -162,7 +162,6 @@ function heightFn() {
   });
 
 // end addressing stuff //////////////
-
 
 ////// this should integrate into the addressing stuff above
 
@@ -186,11 +185,11 @@ function iframeSize () {
 $("#myModal").on("opened.fndtn.reveal", function(){
   iframeSize();
 });
-///////////////////////////////////////
 
 
 // click handlers ///////////////////
   // hamburger menu
+  
   function hamburger() {
     $('.popup, .popup-overlay, .popup-info').show();
     $('.popup, .popup-overlay, .popup-info').animate({
@@ -284,12 +283,12 @@ $("#myModal").on("opened.fndtn.reveal", function(){
 
     $('#map-overlay').show();
 
-    $('a.ga16').hide();
-    $('a.register').removeClass('left').addClass('right');
-    $('.info').removeClass('small-8 small-offset-2 large-6 large-offset-3');
-    $('.info').addClass('small-5');
-    $('.info-buttons').css('margin','2em 0 0 0');
-    $('.info').css('text-align','right');
+    $('#large-on-top a.ga16').hide();
+    $('#large-on-top a.register').removeClass('left').addClass('right');
+    $('#large-on-top .info').removeClass('small-8 small-offset-2 large-6 large-offset-3');
+    $('#large-on-top .info').addClass('small-5');
+    $('#large-on-top .info-buttons').css('margin','2em 0 0 0');
+    $('#large-on-top .info').css('text-align','right');
   }
 
   function closeIt() {
@@ -300,14 +299,14 @@ $("#myModal").on("opened.fndtn.reveal", function(){
     $('.info-buttons, .info, .crowd').attr('style','');
     $('.info').removeClass('small-5 small-offset-7');
     $('.info').addClass('small-8 small-offset-2 large-6 large-offset-3');
-    $('video').animate({'opacity': '1'}, 100);
+    $('.video-lg').animate({'opacity': '1'}, 100);
     $('#about').fadeOut();
     aboutReplace = 0;
     aboutHeight = 0;
     heightFn();
     $('#map-overlay').hide();
     $(heightClasses).css('style', '100%');
-    $('video').css({ 'height': '100%', 'width': 'auto' });
+    $('.video-lg').css({ 'height': '100%', 'width': 'auto' });
     $('.popup').animate({'width': '0%', 'opacity': '0',}, 500);
 
   }
@@ -315,16 +314,16 @@ $("#myModal").on("opened.fndtn.reveal", function(){
   function register() {
 
     $('#map-overlay').hide();
-    $('a.register').hide();
-    $('a.ga16').removeClass('right').addClass('left').show();
-    $('.info-buttons').css('margin','2em 0 0 0');
-    $('.info').removeClass('small-8 small-offset-2 large-6 large-offset-3');
-    $('.info').addClass('small-5 small-offset-7').css('text-align','left');
-    $('.crowd').css('display', 'block').animate({ 'opacity': '.8'}, 'slow');
-    $('.video-overlay').css('background-color', 'rgba(52,212,150,.5');
-    $('video').animate({'opacity': '0'}, 100);
-    $('video').css({ 'height': '0', 'width': '0' });
-    $('.video-overlay').load('register.html #about', function(){
+    $('#large-on-top a.register').hide();
+    $('#large-on-top a.ga16').removeClass('right').addClass('left').show();
+    $('#large-on-top .info-buttons').css('margin','2em 0 0 0');
+    $('#large-on-top .info').removeClass('small-8 small-offset-2 large-6 large-offset-3');
+    $('#large-on-top .info').addClass('small-5 small-offset-7').css('text-align','left');
+    $('#loop-lg .loop .crowd').css('display', 'block').animate({ 'opacity': '.8'}, 'slow');
+    $('#loop-lg .loop .video-overlay').css('background-color', 'rgba(52,212,150,.5');
+    $('#loop-lg .loop .video').animate({'opacity': '0'}, 100);
+    $('#loop-lg .loop .video').css({ 'height': '0', 'width': '0' });
+    $('#loop-lg .loop .video-overlay').load('register.html #about', function(){
       title();
       aboutReplace = $('.about-replace').height();
       aboutHeight = $('#about').height();

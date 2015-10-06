@@ -1,5 +1,5 @@
 /* Modernizr (Custom Build) | MIT & BSD
- * Build: http://modernizr.com/download/#-flexbox-shiv-load-cssclasses-svg-input-cssanimations-prefixed-respond
+ * Build: http://modernizr.com/download/#-flexbox-shiv-load-cssclasses-svg-input-video-cssanimations-prefixed-respond
  */
 ;
 
@@ -214,6 +214,24 @@ window.Modernizr = (function( window, document, undefined ) {
     };
     tests['cssanimations'] = function() {
         return testPropsAll('animationName');
+    };
+    tests['video'] = function() {
+        var elem = document.createElement('video'),
+            bool = false;
+
+            try {
+            if ( bool = !!elem.canPlayType ) {
+                bool      = new Boolean(bool);
+                bool.ogg  = elem.canPlayType('video/ogg; codecs="theora"')      .replace(/^no$/,'');
+
+                            bool.h264 = elem.canPlayType('video/mp4; codecs="avc1.42E01E"') .replace(/^no$/,'');
+
+                bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/,'');
+            }
+
+        } catch(e) { }
+
+        return bool;
     };
     tests['svg'] = function() {
         return !!document.createElementNS && !!document.createElementNS(ns.svg, 'svg').createSVGRect;

@@ -8,7 +8,7 @@
 				App.main.init();
 			},
 			onLeave: function(){
-				// NOTHING
+//
 			}
 		},
 		{

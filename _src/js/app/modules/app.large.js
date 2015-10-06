@@ -41,13 +41,5 @@
 			destroy : destroy,
 		};
 	}());
-$('.on-top, div.arrow-container, #map, .map-overlay, .loadsocial').show();
 
-$( window ).resize(function() {
-	$('.on-top, div.arrow-container, #map, .map-overlay, .loadsocial').show();
-});
-
-$(document).on('click', 'a.register, a.closeit, a.ga16', function(){
-	$('.on-top, div.arrow-container, #map, .map-overlay, .loadsocial').show();
-});
 }(jQuery, this, this.document));
