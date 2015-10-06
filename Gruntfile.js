@@ -23,33 +23,30 @@ module.exports = function(grunt) {
 			options: {
 				flatten: true,
 				assets: '<%= pkg.assetsPath %>',
-				data: '<%= pkg.buildPath %>assembly/_data/*.{json,yml}',
-
-				// Templates
-				partials:  '<%= pkg.buildPath %>assembly/_includes/**/*.hbs',
-				layoutdir: '<%= pkg.buildPath %>assembly/_layouts',
-				layout: 'default.hbs',
+				data: '<%= pkg.buildPath %>assembly/_data/*.{json,yml}'
 			},
+
 			site: {
+				options: {
+					// Templates
+					partials:  '<%= pkg.buildPath %>assembly/_includes/**/*.hbs',
+					layoutdir: '<%= pkg.buildPath %>assembly/_layouts',
+					layout: 'default.hbs'
+				},
 				src: ['<%= pkg.buildPath %>assembly/_pages/*.hbs'],
 				dest: '<%= pkg.destination %>'
 			},
-			
-			options: {
-				flatten: true,
-				assets: '<%= pkg.assetsPath %>',
-				data: '<%= pkg.buildPath %>assembly/_data/*.{json,yml}',
 
-				// Templates
-				partials:  '<%= pkg.buildPath %>assembly/_includes/**/*.hbs',
-				layoutdir: '<%= pkg.buildPath %>assembly/_layouts',
-				layout: 'default.hbs',
-			},
-			
-			site: {
-				src: ['<%= pkg.buildPath %>assembly/_pages/*.hbs'],
+			nojs: {
+				options: {
+					// Templates
+					partials:  '<%= pkg.buildPath %>nojs/_includes/**/*.hbs',
+					layoutdir: '<%= pkg.buildPath %>nojs/_layouts',
+					layout: 'nojs.hbs'
+				},
+				src: ['<%= pkg.buildPath %>nojs/_pages/*.hbs'],
 				dest: '<%= pkg.destination %>'
-			}
+			},
 		
 		},
 

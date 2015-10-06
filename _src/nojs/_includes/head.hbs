@@ -1,0 +1,23 @@
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>{{ title }}</title>
+
+<!-- @if NODE_ENV == 'DEVELOPMENT' -->
+	<link href="{{ assets }}css/main.css" rel="stylesheet" />
+<!-- @endif -->
+
+<!-- @if NODE_ENV='PRODUCTION' -->
+	<link href="{{ assets }}css/main.min.css" rel="stylesheet" />
+<!-- @endif -->
+
+	<!--[if lte IE 9]><script src="{{ assets }}js/compat.min.js"></script><![endif]-->
+
+	<!-- Favicons -->
+	<link rel="icon" sizes="152x152" href="{{ assets }}imgs/favicon-152.png" />
+	<link rel="icon" sizes="152x152" href="{{ assets }}imgs/favicon-152.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="196x196" href="{{ assets }}imgs/favicon-196.png" />
+	<link rel="shortcut icon" href="{{ assets }}imgs/favicon.ico" />
+	<link rel="icon" sizes="16x16 32x32" href="{{ assets }}imgs/favicon.ico">
+	
