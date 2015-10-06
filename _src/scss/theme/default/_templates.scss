@@ -118,6 +118,7 @@ body.interior {
         width:50%;
         float:none;
         margin:0 auto;
+        margin-bottom:2em;
       }
       .popup-replace {
         svg.line {
@@ -529,7 +530,7 @@ body.home {
   }
   
   .arrow-container {
-    @include bottom-left(45%, auto);
+    @include bottom-left(55%, auto);
     @include no-pointer;
     @include wh(100%, 2em!important);
     z-index:z('normal')+2;
@@ -644,4 +645,10 @@ body.version {
   div.top-line a {
     display:none;
   }
+}
+
+body.venue-nojs {
+#content .popup svg.go {
+  width:90%;
+}
 }
