@@ -119,12 +119,7 @@ a.gradient-icon:hover svg line.hamburger{
 
 @mixin close-o {
   @include wh(100%, 100%);
-  fill:none;
-  stroke: $color-white;
-  stroke-width: 3px;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  stroke-miterlimit:10;
+  fill:white;
 }
 //////
 // this is all tympanus stuff below
