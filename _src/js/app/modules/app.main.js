@@ -287,20 +287,23 @@ $("#myModal").on("opened.fndtn.reveal", function(){
   }
   
   function loadSocial () {
-    fade();
-    closeIt();
+    //fade();
+    //closeIt();
 
     socialHeight = $('#large-bg .map-overlay .loadsocial').height();
     //heightFn();
 
-
+    closeIt();
+    
     $('.map-overlay').show();
 
+    //$('.on-top').css('opacity','1');
+    $('#large-on-top').animate({'margin-left': '-23em'}, 100);
     $('#large-on-top .info a.ga16').hide();
     $('#large-on-top .info a.register').removeClass('left').addClass('right');
-    $('#large-on-top .info').removeClass('small-8 small-offset-2 large-6 large-offset-3');
-    $('#large-on-top .info').addClass('small-5');
-    $('#large-on-top .info .info-buttons').css('margin','2em 0 0 0');
+    //$('#large-on-top .info').removeClass('small-8 small-offset-2 large-6 large-offset-3');
+    //$('#large-on-top .info').addClass('small-5');
+    //$('#large-on-top .info .info-buttons').css('margin','2em 0 0 0');
     $('#large-on-top .info').css('text-align','right');
   }
 
@@ -314,6 +317,7 @@ $("#myModal").on("opened.fndtn.reveal", function(){
     $('#large-on-top .info').addClass('small-8 small-offset-2 large-6 large-offset-3');
     $('#large-bg .loop video').animate({'opacity': '1'}, 100);
     $('#large-bg .loop video').css({ 'height': '100%', 'width': 'auto' });
+    $('#large-on-top').animate({'margin-left': '0', 'margin-right': '0'}, 100);
 
     $('.about-replace').css({'transform': 'translateY(500px)', 'opacity': '0'});
     $('#about').fadeOut(800);
@@ -331,16 +335,19 @@ $("#myModal").on("opened.fndtn.reveal", function(){
   function register() {
 
     $('#large-bg .map-overlay').hide();
-    $('#large-on-top .info a.register').hide();
-    $('#large-on-top .info a.ga16').removeClass('right').addClass('left').show();
-    $('#large-on-top .info .info-buttons').css('margin','2em 0 0 0');
-    $('#large-on-top .info').removeClass('small-8 small-offset-2 large-6 large-offset-3');
-    $('#large-on-top .info').addClass('small-5 small-offset-7').css('text-align','left');
-    $('#large-bg .loop .crowd').css('display', 'block').animate({ 'opacity': '.8'}, 'slow');
-    $('#large-bg .loop .video-overlay').css('background-color', 'rgba(52,212,150,.5');
-    $('#large-bg .loop video').animate({'opacity': '0'}, 100);
-    $('#large-bg .loop video').css({ 'height': '0', 'width': '0' });
-    $('#large-bg .video-overlay').load('register.html #about', function(){
+
+      $('#large-on-top .info a.register').hide();
+      $('#large-on-top .info a.ga16').removeClass('right').addClass('left', 1000).show();
+//    $('#large-on-top .info .info-buttons').css('margin','2em 0 0 0');
+//    $('#large-on-top .info').removeClass('small-8 small-offset-2 large-6 large-offset-3');
+//    $('#large-on-top .info').addClass('small-5 small-offset-7', 1000).css('text-align','left');
+      $('#large-on-top .info').css('text-align','left');
+      $('#large-on-top').animate({'margin-left': '23em'}, 100);
+      $('#large-bg .loop .crowd').css('display', 'block').animate({ 'opacity': '.8'}, 'slow');
+      $('#large-bg .loop .video-overlay').css('background-color', 'rgba(52,212,150,.5');
+      $('#large-bg .loop video').animate({'opacity': '0'}, 100);
+      $('#large-bg .loop video').css({ 'height': '0', 'width': '0' });
+      $('#large-bg .video-overlay').load('register.html #about', function(){
       
       $('#about').animate({'opacity': '1'}, 2000).css('transform','translateY(0px)');
       title();
@@ -418,7 +425,7 @@ $("#myModal").on("opened.fndtn.reveal", function(){
       google.maps.event.addDomListener(window, 'load', function() {
         initMap();
       });
-      
+
       ///// end google maps function
 
 if ( document.title === 'Loading') {
