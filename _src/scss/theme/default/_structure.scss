@@ -31,8 +31,10 @@ body {
   left:0;
   right:0;
 }
-#universe {
-  animation: visiblility 1s;
+body.home {
+  #universe {
+    animation: visiblility 1s;
+  }
 }
 p,
 ol,
@@ -90,9 +92,11 @@ div.top-line {
     }
   }
 }
-.loop, #map {
-  //opacity:0;
-  animation:fadeIn 5s ease;
+body.home {
+  .loop {
+    //opacity:0;
+    animation:fadeIn 5s ease;
+  }
 }
 @keyframes fadeIn {
   0% {opacity:0;}
