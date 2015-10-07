@@ -276,7 +276,9 @@ body.landing-nojs {
     right: 0rem;
     text-shadow: 2px 2px 2px $color-bright;
 }
-
+#large-bg {
+  height:100%;
+}
 #large-on-top, #large-bg {
   display:none;
 }
@@ -287,7 +289,7 @@ body.landing-nojs {
 .button-row .button {
   @include btn-o;
   @include exsmall-s;
-  margin:3em 9em 6em 0; 
+  margin:3em 9em 20em 0; 
 }
 
 #register-replace .button-row .button {
@@ -318,6 +320,9 @@ body.landing-nojs {
       width:100%;
       margin-top:1em;
       text-align:center;
+      input.register {
+        margin-bottom:20em;
+      }
       div.error {
         width: 50%;
         float: none;
@@ -439,8 +444,14 @@ body.landing-nojs {
     position: absolute;
     float: none;
     top: 4em;
+    height: 100%;
+    overflow: scroll;
     left: 0;
     @include slow-transition(transform, opacity);
+    div:nth-child(1),div:nth-child(2) {
+      float:left;
+      height:auto;
+    }
   }
 }// end about
 
@@ -572,7 +583,6 @@ body.home {
     @include bottom-left(55%, auto);
     @include no-pointer;
     @include wh(100%, 3em!important);
-    top:23em;
     z-index:z('normal')+2;
     a.arrow {
       @include arrow-o;
@@ -614,6 +624,9 @@ body.home {
     @include no-pointer;
     @include opacity-off;
     @include medium-s;
+    height:100%;
+    max-height:100%;
+    overflow:hidden;
     animation-name: logoon;
     animation-duration:500ms;
     animation-delay:500ms;
@@ -732,6 +745,9 @@ body.home {
         background: linear-gradient(to bottom, rgba(68,68,68,0.5) 40%,rgba(56,165,123,1) 100%);
       }
     }
+  }
+  #about .about-replace .button-row a.register2 {
+    margin-bottom:20em;
   }
 }// end body.home
 
