@@ -317,7 +317,7 @@ $("#myModal").on("opened.fndtn.reveal", function(){
     $('#large-bg .loop video').animate({'opacity': '1'}, 100);
     $('#large-bg .loop video').css({ 'height': '100%', 'width': 'auto' });
 
-    $('.about-replace').fadeOut(500).css('transform','translateY(1000px)');
+    $('.about-replace').css({'transform': 'translateY(500px)', 'opacity': '0'});
     $('#about').fadeOut(800);
 
     aboutReplace = 0;

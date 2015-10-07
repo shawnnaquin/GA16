@@ -430,6 +430,7 @@ body.landing-nojs {
     float: none;
     top: 4em;
     left: 0;
+    @include slow-transition(transform, opacity);
   }
 }// end about
 
