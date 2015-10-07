@@ -296,7 +296,9 @@ $("#myModal").on("opened.fndtn.reveal", function(){
     closeIt();
     
     $('.map-overlay').show();
-
+    $('div.tagboard-embed').show();
+    $('.loadsocial div header').show();
+    $('.map-overlay').css('background','rgba(0,0,0,1)').show();
     //$('.on-top').css('opacity','1');
     $('#large-on-top').animate({'margin-left': '-23em'}, 100);
     $('#large-on-top .info a.ga16').hide();
@@ -334,8 +336,10 @@ $("#myModal").on("opened.fndtn.reveal", function(){
 
   function register() {
 
-    $('#large-bg .map-overlay').hide();
-
+      $('#large-bg .map-overlay').hide();
+      $('div.tagboard-embed').hide();
+      $('.loadsocial div header').hide();
+      $('.map-overlay').css('background','rgba(0,0,0,.5)').show();
       $('#large-on-top .info a.register').hide();
       $('#large-on-top .info a.ga16').removeClass('right').addClass('left', 1000).show();
 //    $('#large-on-top .info .info-buttons').css('margin','2em 0 0 0');
