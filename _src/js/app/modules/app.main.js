@@ -306,7 +306,7 @@ $("#myModal").on("opened.fndtn.reveal", function(){
     //$('#large-on-top .info').removeClass('small-8 small-offset-2 large-6 large-offset-3');
     //$('#large-on-top .info').addClass('small-5');
     //$('#large-on-top .info .info-buttons').css('margin','2em 0 0 0');
-    $('#large-on-top .info').css('text-align','right');
+    $('#large-on-top .info').css({'text-align': 'right'});
   }
 
   function closeIt() {
@@ -319,8 +319,8 @@ $("#myModal").on("opened.fndtn.reveal", function(){
     $('#large-on-top .info').addClass('small-8 small-offset-2 large-6 large-offset-3');
     $('#large-bg .loop video').animate({'opacity': '1'}, 100);
     $('#large-bg .loop video').css({ 'height': '100%', 'width': 'auto' });
-    $('#large-on-top').animate({'margin-left': '0', 'margin-right': '0'}, 100);
-
+    $('#large-on-top').animate({'margin-left': '0', 'margin-right': '0', 'width': '100%'}, 100);
+    $('#large-on-top .info').addClass('small-offset-2 large-offset-3');
     $('.about-replace').css({'transform': 'translateY(500px)', 'opacity': '0'});
     $('#about').fadeOut(800);
 
@@ -343,10 +343,10 @@ $("#myModal").on("opened.fndtn.reveal", function(){
       $('#large-on-top .info a.register').hide();
       $('#large-on-top .info a.ga16').removeClass('right').addClass('left', 1000).show();
 //    $('#large-on-top .info .info-buttons').css('margin','2em 0 0 0');
-//    $('#large-on-top .info').removeClass('small-8 small-offset-2 large-6 large-offset-3');
+      $('#large-on-top .info').removeClass('small-offset-2 large-offset-3');
 //    $('#large-on-top .info').addClass('small-5 small-offset-7', 1000).css('text-align','left');
-      $('#large-on-top .info').css('text-align','left');
-      $('#large-on-top').animate({'margin-left': '23em'}, 100);
+      $('#large-on-top .info').css({'text-align': 'left', 'width': '75%', 'margin-left': '10%'});
+      $('#large-on-top').animate({'margin-left': '50%', 'width': '50%'}, 100);
       $('#large-bg .loop .crowd').css('display', 'block').animate({ 'opacity': '.8'}, 'slow');
       $('#large-bg .loop .video-overlay').css('background-color', 'rgba(52,212,150,.5');
       $('#large-bg .loop video').animate({'opacity': '0'}, 100);
