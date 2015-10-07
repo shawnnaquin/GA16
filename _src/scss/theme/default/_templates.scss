@@ -532,14 +532,37 @@ body.home {
   .arrow-container {
     @include bottom-left(55%, auto);
     @include no-pointer;
-    @include wh(100%, 2em!important);
+    @include wh(100%, 3em!important);
+    top:23em;
     z-index:z('normal')+2;
     a.arrow {
       @include arrow-o;
-      @include wh(2em, 2em);
+      @include wh(2.5em,2.5em);
+      svg {
+        position:absolute;
+        @include top-left(0,0);
+        fill:white;
+        margin:0;
+        @include med-transition(width,height, margin);
+        @include wh(100%,auto);
+      }
+      svg#play {
+        z-index:z('normal');
+      }
+      svg#circle {
+        z-index:z('normal')+1;
+      }
     }
     a.arrow:hover {
-      @include wh(2.5em, 2.5em);
+      svg#play {
+        
+      }
+      svg#circle {
+        z-index:z('normal')+1;
+        margin:-10% 0 0 -10%;
+        width:120%;
+        height:auto;
+      }
     }
   }
 

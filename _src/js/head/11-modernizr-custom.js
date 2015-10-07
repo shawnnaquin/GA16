@@ -1,5 +1,5 @@
 /* Modernizr (Custom Build) | MIT & BSD
- * Build: http://modernizr.com/download/#-flexbox-shiv-load-cssclasses-svg-input-video-cssanimations-prefixed-respond
+ * Build: http://modernizr.com/download/#-flexbox-shiv-load-cssclasses-input-svg-video-cssanimations-prefixed-respond
  */
 ;
 

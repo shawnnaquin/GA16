@@ -82,7 +82,6 @@ a.gradient-icon:hover svg line.hamburger{
   @include block-center(0, auto);
   @include pointer;
   @include fast-transition(width, height);
-  background:url('../imgs/arrow-right-opt.svg') no-repeat;
 }
 
 @mixin go-o {

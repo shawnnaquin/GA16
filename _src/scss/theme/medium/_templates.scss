@@ -264,16 +264,11 @@ body.home {
   }
   
   .arrow-container {
-    @include bottom-left(30%, auto);
-    @include no-pointer;
-    @include wh(100%, 2em!important);
-    z-index:z('normal')+2;
+    top:30.2em;
     a.arrow {
-      @include arrow-o;
-      @include wh(2em, 2em);
+
     }
     a.arrow:hover {
-      @include wh(2.5em, 2.5em);
     }
   }
 

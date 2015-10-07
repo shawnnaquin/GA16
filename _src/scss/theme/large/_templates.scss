@@ -3,8 +3,13 @@
   @include small-s;
 }
 
-body.home .on-top {
-  font-size:1em;
+body.home {
+  .on-top {
+    font-size:1em;
+  }
+  .arrow-container {
+    top:46.5em;
+  }
 }
 
 #about {

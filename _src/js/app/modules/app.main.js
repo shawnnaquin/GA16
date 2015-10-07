@@ -132,7 +132,7 @@ function heightFn() {
   }*/
   
 
-  if ( $('body').height() <= $('body').width() && $('body').height() < 590 && $('body').width() <= 1024 ) {
+  /* if ( $('body').height() <= $('body').width() && $('body').height() < 590 && $('body').width() <= 1024 ) {
     $('.on-top').addClass('font-size');
   }
 
@@ -143,7 +143,7 @@ function heightFn() {
   else {
     $('.on-top').removeClass('font-size');
   }
-
+*/
 }
 
 // addressing stuff //////////////
