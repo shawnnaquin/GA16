@@ -216,6 +216,7 @@ $("#myModal").on("opened.fndtn.reveal", function(){
   // on register2 click
   function register2() {
       // load in form page / start form page
+    $('.about-replace').css('display','none');
     $('.about-replace').load('register2.html #register-replace', function(){
       aboutReplace = $('.about-replace').height();
       //heightFn();
@@ -275,7 +276,7 @@ $("#myModal").on("opened.fndtn.reveal", function(){
         }
       })(); // end tympanus input forms
 
-    }); // end load in form page
+    }).fadeIn(); // end load in form page
 
   } // end on register2 click
   
@@ -340,6 +341,7 @@ $("#myModal").on("opened.fndtn.reveal", function(){
     $('#large-bg .loop video').animate({'opacity': '0'}, 100);
     $('#large-bg .loop video').css({ 'height': '0', 'width': '0' });
     $('#large-bg .video-overlay').load('register.html #about', function(){
+      
       $('#about').animate({'opacity': '1'}, 2000).css('transform','translateY(0px)');
       title();
       aboutReplace = $('.about-replace').height();
