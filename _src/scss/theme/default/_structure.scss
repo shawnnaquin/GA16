@@ -82,6 +82,7 @@ div.top-line {
     @include wh(2em, auto);
     @include block;
     @include float-left;
+    margin: 0.4em 1em 1em 1em;
     img {
       @include wh(100%, 100%);
     }

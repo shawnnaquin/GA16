@@ -52,6 +52,7 @@ a.gradient-icon svg line.hamburger{
   stroke-linejoin:round;
   stroke-miterlimit:10;
   @include exslow-transition(stroke);
+
 }
 
 a.gradient-icon:hover svg line.hamburger{
