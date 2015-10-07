@@ -298,15 +298,17 @@ body.landing-nojs {
   div:nth-child(2) {
     margin-left:0.3em;
   }
-  /*
-  span.input {
+
+  /*span.input {
     width:100%;
     margin-bottom:0.1em;
-  }
+  }*/
+  /*
   span.input-left {
     width:60%;
     margin-right:0%;
-  }
+  }*/
+
   span.input {
     border-radius:3px;
   }
@@ -329,7 +331,7 @@ body.landing-nojs {
     @include label-border-o;
     border-color:$color-alert;
   }
-  */
+
   div.error {
     @include float-left;
     margin-left:1em;

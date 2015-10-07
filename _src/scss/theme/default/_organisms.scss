@@ -75,7 +75,8 @@ a.gradient-icon:hover svg line.hamburger{
 
 @mixin label-border-o {
   border: 4px solid;
-  border-radius: 5px;
+  border-top-left-radius:3px;
+  border-bottom-left-radius:3px;
 }
 
 @mixin arrow-o { 
@@ -130,12 +131,26 @@ a.gradient-icon:hover svg line.hamburger{
 //////
 
 // forms 
+input:not([type]), input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], input[type="name"] textarea, input:not([type]):focus, input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="color"]:focus, textarea:focus {
+  width:60%;
+  border:none;
+  border:0;
+  box-shadow:none;
+  background-color: white;
+  color: inherit;
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+  height: inherit;
+  margin: 0em;
+  padding: inherit;
+  box-sizing: border-box;
+  transition: none;
+}
 
 span.input {
   float:left;
   clear:both;
-
-
 }
 
 span.input-left {
@@ -269,11 +284,7 @@ span.input-left:nth-child(odd) {
     pointer-events: none;
   }
 }
-input:not([type]), input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], input[type="name"] textarea, input:not([type]):focus, input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="color"]:focus, textarea:focus {
-  width:auto;
-  border:none;
-  box-shadow:none;
-}
+
 /////
 // begin loader
 ////
