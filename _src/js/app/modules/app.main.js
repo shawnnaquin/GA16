@@ -77,30 +77,37 @@ else {
 }
 
 
-var heightClasses = '.video-overlay, .loop, #map, .map-overlay, .background, .popup, .on-top';
 
-var aboutReplace = 0;
-var aboutHeight = 0;
-var socialHeight = 0;
-var bodyHeight  = $('body').height();
-var info = $('.info').height();
 
 
 heightFn();
 
  $(window).resize(function() {
   initMap();
-  gHeight();
+  heightFn();
 });
 
 function heightFn() {
-
+  //this is a fix for safari
   var gHeight = $('#galaxy').height();
   $('#large-bg, #large-on-top').height(gHeight);
 
 
   /// may be usable below ///// 
   /*
+  // define in global scope and use them in other functions with heightFn();
+  
+  // things you may want to apply height to
+  var heightClasses = '.video-overlay, .loop, #map, .map-overlay, .background, .popup, .on-top';
+
+  // vars you may need to get the height of things
+  var aboutReplace = 0;
+  var aboutHeight = 0;
+  var socialHeight = 0;
+  var bodyHeight  = $('body').height();
+  var info = $('.info').height();
+
+  // get highest value
   var highestNum = Math.max(aboutReplace, aboutHeight, info+200, bodyHeight+100);
   
   console.log ('aR'+aboutReplace +' aH'+aboutHeight+' bH'+bodyHeight+' info'+info);
@@ -196,7 +203,7 @@ $( window ).resize(function() {
 
 function iframeSize () {
     var iframeH = $('iframe').width();
-  console.log(iframeH);
+  //console.log(iframeH);
   $('iframe').css('height', iframeH*0.55);
 }
 
@@ -222,8 +229,10 @@ $("#myModal").on("opened.fndtn.reveal", function(){
       // load in form page / start form page
     $('.about-replace').css('display','none');
     $('.about-replace').load('register2.html #register-replace', function(){
-      aboutReplace = $('.about-replace').height();
+      
+      //aboutReplace = $('.about-replace').height();
       //heightFn();
+      
       $('button-row').html('Step 3 | Checkout');
       
       // validation rules
@@ -292,7 +301,7 @@ $("#myModal").on("opened.fndtn.reveal", function(){
     $('title').html(theTitle);
   }
   
-  function loadSocial () {
+  function loadSocial() {
     //fade();
     //closeIt();
 
@@ -330,8 +339,8 @@ $("#myModal").on("opened.fndtn.reveal", function(){
     $('.about-replace').css({'transform': 'translateY(500px)', 'opacity': '0'});
     $('#about').fadeOut(800);
 
-    aboutReplace = 0;
-    aboutHeight = 0;
+    //aboutReplace = 0;
+    //aboutHeight = 0;
     //heightFn();
     $('#large-bg .map-overlay').hide();
     $(heightClasses).css('style', '100%');
@@ -361,15 +370,15 @@ $("#myModal").on("opened.fndtn.reveal", function(){
       
       $('#about').animate({'opacity': '1'}, 2000).css('transform','translateY(0px)');
       title();
-      aboutReplace = $('.about-replace').height();
-      aboutHeight = $('#about').height();
+      //aboutReplace = $('.about-replace').height();
+      //aboutHeight = $('#about').height();
       
       //heightFn();
 
       $(document).on("click","a.register2",function() {
 
         register2();
-        aboutReplace = $('.about-replace').height();
+        //aboutReplace = $('.about-replace').height();
         //heightFn();
 
       });
