@@ -305,7 +305,6 @@ body.home {
           @include med-transition(background);
         }
         a.button:hover{
-          background:$color-bright;
         }
         a.ga16{
           @include ga16-btn-o;
