@@ -183,8 +183,6 @@ function heightFn() {
     // google maps
     //initMap();
     // animate home info in
-    $('.on-top').delay(800).animate({'margin-top': '-2em', 'opacity': 1,}, 150);
-
   } // end body.home 
 $( window ).resize(function() {
   iframeSize();

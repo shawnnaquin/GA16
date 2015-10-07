@@ -473,8 +473,7 @@ body.loading {
 
 // home page
 body.home {
-  background:$color-teal;
-
+  background:#2b2b2b;
   .popup {
     @include wh(0,100%);
     @include undisplay;
@@ -551,7 +550,7 @@ body.home {
     }
   }
 
-  animation: visiblility 1s;
+  // animation: visiblility 1s;
   @include medium-s;
   
   .background {
@@ -595,24 +594,51 @@ body.home {
       }
     }
   }
+    @keyframes logoon {
+      0%    {opacity:0;}
+      100%  {opacity:1;}
+    }
 
   .on-top {
     @include top-left(0, 0);
     @include no-pointer;
     @include opacity-off;
     @include medium-s;
+    animation-name: logoon;
+    animation-duration:500ms;
+    animation-delay:500ms;
+    animation-iteration-count:1;
+    animation-fill-mode: forwards;
+    .info svg.go {
+      opacity:0;
+    }
+    .info h1 {
+      opacity:0;
+    }
     display:block;
     z-index:z('normal')+1;
     .info {
       text-align:center;
       padding-top:8em;
       svg.go {
+        //opacity:0;
         @include go-o;
         @include wh (10em, auto);
+        animation-name: logoon;
+        animation-duration:1s;
+        animation-delay:1s;
+        animation-iteration-count:1;
+        animation-fill-mode: forwards;
       }
+
       h1 {
         padding:2em 0 1em 0;
         @include large-s;
+        animation-name: logoon;
+        animation-duration:1s;
+        animation-delay:950ms;
+        animation-iteration-count:1;
+        animation-fill-mode: forwards;
       }
       .info-buttons {
         @include block-center(5em, auto);
