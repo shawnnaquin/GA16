@@ -649,6 +649,7 @@ body.home {
       @include wh(100%, 100%);
       background:$color-black;
       overflow:hidden;
+      @include mp-reset;
       img.crowd {
         @include undisplay;
         @include opacity-minimal;
