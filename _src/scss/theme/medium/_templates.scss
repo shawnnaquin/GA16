@@ -106,10 +106,7 @@ body.interior {
 
 #about {
   display:block;
-
-  transform:translateY(100px);
   @include opacity-off;
-  @include fast-transition(transform);
   @include wh(100%,100%);
   p {@include small-s; margin-bottom:.5em; line-height:1.3em;}
 

@@ -340,6 +340,7 @@ $("#myModal").on("opened.fndtn.reveal", function(){
     $('#large-bg .loop video').animate({'opacity': '0'}, 100);
     $('#large-bg .loop video').css({ 'height': '0', 'width': '0' });
     $('#large-bg .video-overlay').load('register.html #about', function(){
+      $('#about').animate({'opacity': '1'}, 2000).css('transform','translateY(0px)');
       title();
       aboutReplace = $('.about-replace').height();
       aboutHeight = $('#about').height();
@@ -352,9 +353,7 @@ $("#myModal").on("opened.fndtn.reveal", function(){
         aboutReplace = $('.about-replace').height();
         //heightFn();
 
-    });
-
-      $(this).children(':first').animate({'opacity': '1'}, 'slow').css('transform','translateY(0)');
+      });
     });
   } // end function register
 
