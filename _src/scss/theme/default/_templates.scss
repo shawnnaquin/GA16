@@ -277,7 +277,9 @@ body.landing-nojs {
     text-shadow: 2px 2px 2px $color-bright;
 }
 #large-bg {
+  float:left;
   height:100%;
+  min-height:100%;
 }
 #large-on-top, #large-bg {
   display:none;

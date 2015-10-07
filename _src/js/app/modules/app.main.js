@@ -86,15 +86,21 @@ var bodyHeight  = $('body').height();
 var info = $('.info').height();
 
 
-//heightFn();
+heightFn();
 
  $(window).resize(function() {
   initMap();
-   //heightFn();
+  gHeight();
 });
 
 function heightFn() {
 
+  var gHeight = $('#galaxy').height();
+  $('#large-bg, #large-on-top').height(gHeight);
+
+
+  /// may be usable below ///// 
+  /*
   var highestNum = Math.max(aboutReplace, aboutHeight, info+200, bodyHeight+100);
   
   console.log ('aR'+aboutReplace +' aH'+aboutHeight+' bH'+bodyHeight+' info'+info);
@@ -106,7 +112,7 @@ function heightFn() {
   else {
     $('body').css('height', '100%');
   }
-
+*///// above may be usable, below isnt ////// 
   /*
   if (highestNum <= bodyHeight) {
     $(heightClasses).css('height', '100%');
