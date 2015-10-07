@@ -30,7 +30,11 @@
 
       if (validator.errorList.length > 0) {
 
-      		$('div.error svg').show();
+      		$('div.error svg').show().css({
+      			'display': 'block',
+      		  'position': 'absolute',
+						'margin-left': '-1em', });
+      		
 	        $('div.error p').html( errors + ' errors, see above' );
 	     }
 

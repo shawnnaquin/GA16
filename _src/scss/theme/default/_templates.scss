@@ -290,7 +290,8 @@ body.landing-nojs {
 }
 
 #register-replace .button-row .button {
-    margin:3em -1em 6em 0;
+    width: 15em;
+    margin: 2em auto;
 }
 
 // register 2
@@ -308,7 +309,26 @@ body.landing-nojs {
     width:60%;
     margin-right:0%;
   }*/
-
+  form {
+    float: left;
+    width: 100%;
+    .button-row {
+      float:left;
+      width:100%;
+      margin-top:1em;
+      text-align:center;
+      div.error {
+        width: 50%;
+        float: none;
+        margin: 0 auto;
+        height: 1em;
+        p {
+          width:100%;
+          text-align:center;
+        }
+      }
+    }
+  }
   span.input {
     border-radius:3px;
   }
@@ -338,10 +358,11 @@ body.landing-nojs {
     clear:left;
     svg {
     @include undisplay;
-    @include float-left;
+    float:none;
     @include alert-o;
     @include wh(1.5em, 1.5em);
-    margin-left:0.5em;
+    clear:left;
+    margin:0 auto;
     }
   }
 }
