@@ -22,110 +22,73 @@ body.interior {
 }
 
 #register-replace .button-row .button {
-    margin:3em -1em 6em 0;
 }
 
 // register 2
 #register-replace {
   div:nth-child(2) {
-    margin-left:0.3em;
   }
   span.input {
-    width:100%;
-    margin-bottom:0.1em;
   }
   span.input-left {
-    width:100;
-    margin-right:0%;
   }
   span.input {
-    border-radius:3px;
   }
 
   input:focus {
-    @include label-border-o;
-    border-color:$color-bright;
+
   }
 
   input.register{
-    @include btn-o;
-    @include exsmall-s;
-    background:black;
+
   }
 
   label.error {
-    @include error-o;
   }
  span.error-border input {
-    @include label-border-o;
-    border-color:$color-alert;
+
   }
   div.error {
-    @include float-left;
-    margin-left:1em;
-    clear:left;
+
     svg {
-    @include undisplay;
-    @include float-left;
-    @include alert-o;
-    @include wh(1.5em, 1.5em);
-    margin-left:0.5em;
+
     }
   }
 }
 
 //register initial
   header {
-    @include top-left(0,0);
-    z-index:z('header')+5;
-    margin-top:1.1em;
-    clear:both;
+
     p {
-      padding:0;
-      @include open-sans;
-      @include heavy-w;
+
     }
     p.close {
-      @include medium-w;
-      @include mp-reset;
-      @include inline;
-      @include float-left;
+
     }
     .closeit {
-      line-height: .9;
-      @include wh(0.8em, auto);
-      @include block;
-      @include float-left;
-      margin-left:1em;
+
 
       svg line.close-x {
-        @include close-o;
+
       }
     }
   }
 
 #about {
-  display:block;
-  @include opacity-off;
-  @include wh(100%,100%);
-  p {@include small-s; margin-bottom:.5em; line-height:1.3em;}
+  p {
+
+  }
 
   .button-row .button:hover {
-    background-color:$color-bright;
   }
 
   div div.about-content p:nth-child(1) {
-      padding-top:2em;
   }
   #register-replace div.error p {
-    @include mp-reset;
-    @include float-left;
-    @include medium-w;
-    font-style: italic;
+
   }
   h1{
-    @include medium-s;
-    margin-top:1em;
+
   }
   .about-replace {
   }
@@ -135,34 +98,27 @@ body.interior {
 body.loading {
 
   .top-line a {
-    @include undisplay;
   }
   
   #ip-container {
-    padding-top:3%;
-    @include block-center(0, auto);
+
 
     svg.cross {
-      @include top-left(10%, 29.5%);
-      @include wh(40%, auto);
-      z-index:z('base');
-      fill:$color-ltgray;
+
     }
 
     .loading-container {
-      @include top-left(30%, 28.5%);
-      @include wh(33%, auto);
-      svg {fill:$color-teal;}
+
+      svg {
+
+      }
 
       svg.loading {
-        @include float-left;
-        @include wh(28%, auto);
-        padding:12% 6% 0 0;
+
       }
 
       svg.go {
-        @include float-left;
-        @include wh(60%, auto);
+
       }
     }//loading-container
   }//container
@@ -173,87 +129,47 @@ body.home {
   background:$color-teal;
 
   .popup {
-    @include wh(0,100%);
-    @include undisplay;
-    @include top-left(0, 50%);
-    z-index:z('header')+1;
-    background:$color-teal url('../imgs/church.jpg') no-repeat;
-    background-size:cover;
-    margin-top:.2em;
-    overflow:hidden;
-    transform: translateX(-50%);
 
     .popup-overlay {
-      @include wh(100%, 100%);
-      @include top-left(0,0);
-      z-index:z('header')+2;
-      background: linear-gradient(to top, rgba(56, 165, 123, 1) 0%, rgba(56, 165, 123, .8) 80%, rgba(56, 165, 123, .5) 100%);
     }
 
     .popup-info {
-      @include wh(100%,100%);
-      @include top-left(0,0);
-      z-index:z('header')+3;
+
       svg.go {
-        @include block;
-        @include block-center(3em,auto);
-        @include wh (33%, auto);
-        fill:white;
+
       }
       svg.line {
-        @include line-o;
-        @include block-center (0, auto);
-        @include wh(70%, 0.3em);
-        margin-bottom:2em;
-        stroke:$color-black;
+
       }
       p {
-        @include medium-s;
-        text-align:center;
-        line-height:1.5em;
+
       }
       .social-links {
-        @include float-left;
-        @include wh(100%, auto);
+
         .social-center {
-          @include large-s;
-          @include wh(9em, auto);
-          @include block-center(0,auto);
+
           a {
-            @include block;
-            @include float-left;
-            @include wh(4.5em, auto);
-            @include medium-s;
-            @include medium-w;
-            @include slow-transition(color);
-            color:$color-black;
-            text-align:center;
+
           }
         }
 
         a:hover {
-          color:$color-alert;
+
         }
         a.button {
-          @include btn-o;
-          @include block-center(4em, auto);
-          background:$color-black;
-          @include med-transition(background);
+
         }
         a.button:hover {
-          background:$color-alert;
-          color:white;
+
         }
       }
     }
   }
 
-  animation: visiblility 1s;
-  @include medium-s;
+
   
   .background {
-    @include top-left(0,0);
-    z-index:z('normal');
+
   }
   
   .arrow-container {
@@ -266,100 +182,55 @@ body.home {
   }
 
   .on-top {
-    @include top-left(0, 0);
-    @include no-pointer;
-    @include opacity-off;
-    @include medium-s;
-    z-index:z('normal')+1;
-    display:block;
+
 
     .info {
-      text-align:center;
-      padding-top:8em;
+
       svg.go {
-        @include go-o;
-        @include wh (10em, auto);
+;
       }
       h1 {
-        padding:2em 0 1em 0;
         @include exlarge-s;
       }
       .info-buttons {
-        @include block-center(5em, auto);
         @include wh (100%, 1em);
         a.button {
-          @include btn-o;
-          background:black;
-          @include med-transition(background);
         }
         a.button:hover{
         }
         a.ga16{
-          @include ga16-btn-o;
-          background: $color-teal;
-          @include slow-transition(background);
         }
         a.ga16:hover {
-          background:$color-black;
         }
       }
     }
   }
 
   .row {
-    @include wh(100%, 100%);
     .map-overlay {
-      position:absolute;
-      @include wh(50%,100%);
-      @include undisplay;
-      z-index:z('normal');
-      background:black;
-      margin-left:50%;
     }
     #map {
       @include wh(50%, 100%);
-      position:absolute;
-      background-color: #333;
       margin-left:50%;
-      img[src='http://maps.gstatic.com/intl/en_us/mapfiles/iw_close.gif'] 
-        { content:url('../imgs/marker-opt.svg'); }
       .gm-style > div {
-        background: #2b2b2b url('../imgs/map.png') no-repeat center / cover;
       }
       .gm-style div:nth-child(2) a{
-        //display:none !important;
       } 
       .gm-style > div:nth-last-child(1) {
-        top:auto!important;
-        bottom:20px;
+
         .gm-style-mtc div {
-          background-color:#2b2b2b!important;
         }
       } 
     }
     .loop {
       @include wh(50%, 100%);
-      background:$color-black;
-      overflow:hidden;
       img.crowd {
-        @include undisplay;
-        @include opacity-minimal;
-        @include wh(100%, auto);
-
       }
       
       .video {
-        @include wh(auto, 100%);
-        bottom:-50%;
-        right:-50%;
-        z-index:z('normal');
-        margin-left:-1em;
+
       }
       .video-overlay {
-        @include top-right(0, 0);
-        @include wh (100%, 100%);
-        z-index:z('normal')+1;
-        background: linear-gradient(to bottom, rgba(68,68,68,0.5) 40%,rgba(56,165,123,1) 100%);
       }
     }
   }

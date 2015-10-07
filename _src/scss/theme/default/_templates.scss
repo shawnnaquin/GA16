@@ -377,7 +377,11 @@ body.landing-nojs {
   @include opacity-off;
   @include slow-transition(transform);
   @include wh(100%,100%);
-  p {@include small-s; margin-bottom:.5em; line-height:1.3em;}
+  p {
+    @include small-s; 
+    margin-bottom:.5em; 
+    line-height:1.3em;
+  }
 
   .button-row .button:hover {
     background-color:$color-bright;
@@ -612,6 +616,8 @@ body.home {
   .row {
     @include wh(100%, 100%);
     .map-overlay {
+      position:absolute;
+      margin-left:50%;
       @include undisplay;
       z-index:z('normal');
       background:black;
@@ -619,6 +625,7 @@ body.home {
     }
     #map {
       @include wh(100%, 100%);
+      background-color: #2b2b2b;
       position:absolute;
       margin-left:100%;
       img[src='http://maps.gstatic.com/intl/en_us/mapfiles/iw_close.gif'] 
@@ -648,7 +655,7 @@ body.home {
         @include wh(100%, auto);
       }
       
-      .video-lg {
+      .video {
         @include wh(auto, 100%);
         bottom:-50%;
         right:-50%;
@@ -664,6 +671,7 @@ body.home {
     }
   }
 }// end body.home
+
 body.version {
   div.top-line a {
     display:none;
