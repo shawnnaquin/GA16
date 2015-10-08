@@ -228,7 +228,6 @@ $("#myModal").on("opened.fndtn.reveal", function(){
       'width': '100%',
       'opacity': '1',
     }, 500);
-
     popupHeightFn();
   }
   
@@ -331,7 +330,7 @@ $("#myModal").on("opened.fndtn.reveal", function(){
     //fade();
     //closeIt();
 
-    socialHeight = $('#large-bg .map-overlay .loadsocial').height();
+    //socialHeight = $('#large-bg .map-overlay .loadsocial').height();
     //heightFn();
 
     closeIt();
