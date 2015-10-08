@@ -343,7 +343,7 @@ $("#myModal").on("opened.fndtn.reveal", function(){
     //aboutHeight = 0;
     //heightFn();
     $('#large-bg .map-overlay').hide();
-    $(heightClasses).css('style', '100%');
+    // $(heightClasses).css('style', '100%');
     $('#large-bg-loop video').css({ 'height': '100%', 'width': 'auto' });
     $('.popup').animate({'width': '0%', 'opacity': '0',}, 500);
 
