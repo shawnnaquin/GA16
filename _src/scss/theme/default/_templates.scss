@@ -721,8 +721,11 @@ body.home {
       .gm-style > div {
         background: #2b2b2b url('../imgs/map.png') no-repeat center / cover;
       }
-      .gm-style div:nth-child(2) a{
-        //display:none !important;
+      .gm-style:nth-child(1) > div:nth-child(2) {
+        opacity:0!important;
+      } 
+      .gm-style:nth-child(1) > div:nth-child(8) {
+        opacity:0!important;
       } 
       .gm-style > div:nth-last-child(1) {
         top:auto!important;
