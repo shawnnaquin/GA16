@@ -410,7 +410,7 @@ $("#myModal").on("opened.fndtn.reveal", function(){
         var marker = new google.maps.Marker({
           map: map,
           position: new google.maps.LatLng(36.156, -86.774),
-          draggable: true,
+          draggable: false,
           icon: icon,
         });
 
