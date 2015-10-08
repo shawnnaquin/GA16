@@ -316,7 +316,7 @@ $("#myModal").on("opened.fndtn.reveal", function(){
     $('.loadsocial div header').show();
     $('.map-overlay').css('background','rgba(0,0,0,1)').show();
     //$('.on-top').css('opacity','1');
-    $('#large-on-top').animate({'margin-left': '-23em'}, 100);
+    $('#large-on-top').animate({'margin-left': '-25em'}, 100);
     $('#large-on-top .info a.ga16').hide();
     $('#large-on-top .info a.register').removeClass('left').addClass('right');
     //$('#large-on-top .info').removeClass('small-8 small-offset-2 large-6 large-offset-3');
