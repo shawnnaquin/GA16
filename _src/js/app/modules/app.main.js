@@ -195,7 +195,11 @@ function heightFn() {
   if ( $('body').hasClass('home') ) { 
     // google maps
     initMap();
+    
+    //$('body').perfectScrollbar();
 
+    $('.loadsocial').perfectScrollbar();  
+    //$('.about-replace').perfectScrollbar();
     // animate home info in
   } // end body.home 
 $( window ).resize(function() {
@@ -316,7 +320,7 @@ $("#myModal").on("opened.fndtn.reveal", function(){
     $('.loadsocial div header').show();
     $('.map-overlay').css('background','rgba(0,0,0,1)').show();
     //$('.on-top').css('opacity','1');
-    $('#large-on-top').animate({'margin-left': '-25em'}, 100);
+    $('#large-on-top').animate({'margin-left': '-23em'}, 100);
     $('#large-on-top .info a.ga16').hide();
     $('#large-on-top .info a.register').removeClass('left').addClass('right');
     //$('#large-on-top .info').removeClass('small-8 small-offset-2 large-6 large-offset-3');
@@ -338,7 +342,7 @@ $("#myModal").on("opened.fndtn.reveal", function(){
     $('#large-on-top').animate({'margin-left': '0', 'margin-right': '0', 'width': '100%'}, 100);
     $('#large-on-top .info').addClass('small-offset-2 large-offset-3');
     $('.about-replace').css({'transform': 'translateY(500px)', 'opacity': '0'});
-    $('#about').fadeOut(800);
+    $('#about').fadeOut(100);
 
     //aboutReplace = 0;
     //aboutHeight = 0;
@@ -368,10 +372,10 @@ $("#myModal").on("opened.fndtn.reveal", function(){
       $('#large-bg .loop video').animate({'opacity': '0'}, 100);
       $('#large-bg .loop video').css({ 'height': '0', 'width': '0' });
       $('#large-bg .video-overlay').load('register.html #about', function(){
-      $('.about-replace').perfectScrollbar();
+        $('.about-replace').perfectScrollbar(); 
       $('#about').animate({'opacity': '1'}, 2000).css('transform','translateY(0px)');
       title();
-      //aboutReplace = $('.about-replace').height();
+      //aboutReplace = $('.about-replacde').height();
       //aboutHeight = $('#about').height();
       
       //heightFn();

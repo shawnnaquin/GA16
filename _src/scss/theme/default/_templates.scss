@@ -301,6 +301,45 @@ body.landing-nojs {
 }
 
 // register 2
+#about .header-row, .loadsocial {
+  header {
+    @include top-left(0,0);
+    z-index:z('header')+5;
+    margin-top: 1.3em;
+    height: 1.3em;
+    width:100%;
+    clear:both;
+    div.columns {
+      height:100%;
+    }
+    p {
+      padding:0;
+      @include open-sans;
+      @include heavy-w;
+    }
+    p.close {
+      @include medium-w;
+      @include mp-reset;
+      @include inline;
+      @include float-left;
+    }
+    a.closeit {
+      @include wh(auto, 100%);
+      @include block;
+      @include float-left;
+      margin-left:1em;
+      margin-top:-.2em;
+      svg.close-svg {
+        @include close-o;
+        width:auto;
+        @include slow-transition(fill);
+      }
+    }
+    a.closeit:hover svg.close-svg {
+      fill:$color-bright;
+    }
+  }
+}
 #register-replace {
   div:nth-child(2) {
     margin-left:0.3em;
@@ -377,49 +416,18 @@ body.landing-nojs {
 }
 
 //register initial
-  header {
-    @include top-left(0,0);
-    z-index:z('header')+5;
-    margin-top: 1.3em;
-    height: 1.3em;
-    width:100%;
-    clear:both;
-    div.columns {
-      height:100%;
-    }
-    p {
-      padding:0;
-      @include open-sans;
-      @include heavy-w;
-    }
-    p.close {
-      @include medium-w;
-      @include mp-reset;
-      @include inline;
-      @include float-left;
-    }
-    a.closeit {
-      @include wh(auto, 100%);
-      @include block;
-      @include float-left;
-      margin-left:1em;
-      margin-top:-.2em;
-      svg.close-svg {
-        @include close-o;
-        width:auto;
-        @include slow-transition(fill);
-      }
-    }
-    a.closeit:hover svg.close-svg {
-      fill:$color-bright;
-    }
-  }
+
 
 #about {
   transform:translateY(1000px);
   @include opacity-off;
   @include slow-transition(transform);
   @include wh(100%,100%);
+  max-height:100%;
+  //overflow:hidden;
+  .header-row {
+    height:2.6em;
+  }
   p {
     @include small-s; 
     margin-bottom:.5em; 
@@ -446,10 +454,10 @@ body.landing-nojs {
   .about-replace {
     position: absolute;
     float: none;
-    top: 4em;
-    height: 100%;
+    top:6em;
+    height:100%;
+    min-height:100%;
     //overflow: scroll;
-    left: 0;
     .ps-scrollbar-y-rail {
       opacity:0;
     }
@@ -586,7 +594,7 @@ body.home {
   }
   
   .arrow-container {
-    @include bottom-left(55%, auto);
+    @include top-left(25em, auto);
     @include no-pointer;
     @include wh(100%, 3em!important);
     z-index:z('normal')+2;
@@ -728,7 +736,8 @@ body.home {
     .loop {
       @include wh(100%, 100%);
       background:$color-black;
-      overflow:hidden;
+      //overflow:hidden;
+      max-height:100%;
       @include mp-reset;
       img.crowd {
         @include undisplay;
@@ -757,6 +766,25 @@ body.home {
 
     a.register2 {
     margin:3em 11em 20em 0;
+    }
+  }
+  .loadsocial {
+    .header-row {
+      height:2.6em;
+    }
+    .tagboard-row {
+      top: 6em;
+      position: absolute;
+      width: 100%;
+      height:1em;
+    }
+    .tagboard-embed {
+      width: 100%;
+      float:left;
+      height:auto;
+      .ps-scrollbar-y-rail {
+        opacity:0;
+      }
     }
   }
 }// end body.home

@@ -18,18 +18,21 @@
 *:after {
 	box-sizing: border-box;
 }
-
+  .ps-scrollbar-y-rail, .ps-scrollbar-x-rail {
+    opacity:0;
+  }
 body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
   //@include float-left;
   //@include wh(100%, 100%);
-   position: absolute;
-   min-height:100%!important;
+  overflow:hidden;
+  position: absolute;
   top:0;
   bottom:0;
   left:0;
   right:0;
+
 }
 body.home {
   #universe {
@@ -96,9 +99,13 @@ body.home {
   .loop {
     //opacity:0;
     animation:fadeIn 5s ease;
+    overflow:hidden;
   }
 }
 @keyframes fadeIn {
   0% {opacity:0;}
   100% {opacity:1;}
+}
+video {
+  max-height:100%;
 }

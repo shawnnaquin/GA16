@@ -171,12 +171,14 @@ body.home {
   }
   
   .arrow-container {
+    @include top-left(30em, auto);
     a.arrow {
 
     }
     a.arrow:hover {
     }
   }
+
 
   .on-top {
 
