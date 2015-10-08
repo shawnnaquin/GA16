@@ -194,7 +194,7 @@ function heightFn() {
 
   if ( $('body').hasClass('home') ) { 
     // google maps
-    //initMap();
+    initMap();
     // animate home info in
   } // end body.home 
 $( window ).resize(function() {
