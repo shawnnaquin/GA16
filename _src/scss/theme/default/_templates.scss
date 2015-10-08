@@ -291,6 +291,7 @@ body.landing-nojs {
 .button-row .button {
   @include btn-o;
   @include exsmall-s;
+
   margin:3em 9em 20em 0; 
 }
 
@@ -750,8 +751,13 @@ body.home {
       }
     }
   }
-  #about .about-replace .button-row a.register2 {
-    margin-bottom:20em;
+  #about .about-replace .button-row {
+    float:left;
+    clear:left;
+
+    a.register2 {
+    margin:3em 11em 20em 0;
+    }
   }
 }// end body.home
 
