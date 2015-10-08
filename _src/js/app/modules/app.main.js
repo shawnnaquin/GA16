@@ -196,13 +196,6 @@ function heightFn() {
     // google maps
     initMap();
 
-    $(function() {
-      
-      alert('done');
-      // with vanilla JS!
-      //Ps.initialize(document.getElementById('Demo'));
-    });
-
     // animate home info in
   } // end body.home 
 $( window ).resize(function() {
