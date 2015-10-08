@@ -195,7 +195,7 @@ function heightFn() {
   if ( $('body').hasClass('home') ) { 
     // google maps
     initMap();
-    
+
     //$('body').perfectScrollbar();
 
     $('.loadsocial').perfectScrollbar();  
@@ -221,12 +221,33 @@ $("#myModal").on("opened.fndtn.reveal", function(){
   // hamburger menu
   
   function hamburger() {
-    $('.popup, .popup-overlay, .popup-info').show();
-    $('.popup, .popup-overlay, .popup-info').animate({
+
+    $('.popup-info').hide();
+    $('.popup-replace').css('opacity','0');
+    $('.popup, .popup-overlay, .popup-info').show().animate({
       'width': '100%',
-      'height': '100%',
       'opacity': '1',
     }, 500);
+
+    popupHeightFn();
+  }
+  
+  function popupHeightFn() {
+    $('.popup-info').show(function() {
+    
+      prH = ( $(this).height() );
+      var bH = $('body').height();
+      var mT = ((bH - prH) / 2)-30;
+   
+      if (prH < bH) {
+        $('.popup-replace').css({ 'margin-top': mT, 'opacity': '0' }).animate({'opacity': '1'}, 200);
+      }
+      else {
+        $('.popup-replace').animate({'opacity': '1'}, 200);
+      }
+    
+    });
+
   }
 
   // on register2 click
