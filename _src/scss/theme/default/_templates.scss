@@ -449,6 +449,9 @@ body.landing-nojs {
     height: 100%;
     overflow: scroll;
     left: 0;
+    .ps-scrollbar-y-rail {
+      opacity:0;
+    }
     @include slow-transition(transform, opacity);
     div:nth-child(1),div:nth-child(2) {
       float:left;

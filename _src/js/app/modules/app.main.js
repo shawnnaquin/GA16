@@ -195,6 +195,14 @@ function heightFn() {
   if ( $('body').hasClass('home') ) { 
     // google maps
     initMap();
+
+    $(function() {
+      
+      alert('done');
+      // with vanilla JS!
+      //Ps.initialize(document.getElementById('Demo'));
+    });
+
     // animate home info in
   } // end body.home 
 $( window ).resize(function() {
@@ -367,7 +375,7 @@ $("#myModal").on("opened.fndtn.reveal", function(){
       $('#large-bg .loop video').animate({'opacity': '0'}, 100);
       $('#large-bg .loop video').css({ 'height': '0', 'width': '0' });
       $('#large-bg .video-overlay').load('register.html #about', function(){
-      
+      $('.about-replace').perfectScrollbar();
       $('#about').animate({'opacity': '1'}, 2000).css('transform','translateY(0px)');
       title();
       //aboutReplace = $('.about-replace').height();
