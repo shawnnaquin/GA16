@@ -1,276 +1,282 @@
 html {
-  background:#2b2b2b;
+    background:#2b2b2b;
 }
 
 body.version {
-  .popup {
-    display:none;
-  }
-  svg.go {
-    display:block;
-    float:none;
-    margin:2em auto;
-    fill:$color-bright;
-    animation:logo 5s infinite;
-    width:50%;
-  }
-  #choose a {
-    display:block;
-    float:none;
-    margin:0 auto;
-    clear:left;
-    width:10em;
-    text-align:center;
-    margin-top:2em;
-    @include exlarge-s;
-    @include slow-transition(color);
-    color:white;
-  }
+    .popup {
+        display:none;
+    }
+    svg.go {
+        display:block;
+        float:none;
+        margin:2em auto;
+        fill:$color-bright;
+        animation:logo 5s infinite;
+        width:50%;
+    }
+    #choose a {
+        display:block;
+        float:none;
+        margin:0 auto;
+        clear:left;
+        width:10em;
+        text-align:center;
+        margin-top:2em;
+        @include exlarge-s;
+        @include slow-transition(color);
+        color:white;
+    }
     #choose a:hover {
-    color:$color-bright;
-  }
-}
+        color:$color-bright;
+    }
+} 
+// end body.version
+
 body.interior, body.interior #universe, body.interior #galaxy {
-  float: left;
-  height: auto;
-  width: 100%;
-  position: relative;
+    float: left;
+    height: auto;
+    width: 100%;
+    position: relative;
 }
+// end body interior global
 
 body.interior {
 
-  background:  linear-gradient(to top, rgba(56, 165, 123, 1) 0%, rgba(56, 165, 123, .8) 80%, rgba(56, 165, 123, .5) 100%),
-  url('../imgs/crowd.jpg') center / cover no-repeat;
+    background:  linear-gradient(to top, rgba(56, 165, 123, 1) 0%, rgba(56, 165, 123, .8) 80%, rgba(56, 165, 123, .5) 100%),
+    url('../imgs/crowd.jpg') center / cover no-repeat;
     #footer {
-    position:absolute;
-    z-index:z('normal')+999;
-    background:#2b2b2b;
-    padding:.5em;
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    p {
-      @include small-s;
-      margin:0; padding:0;
-      width:100%;
-      text-align:center;
-    }
-  }
-  #content {
-    @include open-sans;
-    position:relative;
-    float:left;
-    width:100%;
-    height:auto;
-    padding:1em;
-    margin-bottom:3em;
-    .main-links {
-      h1 {
-        text-align: center;
-        @include medium-s;
-
-      }
-      a:nth-child(1) {
-        margin-top:1em;
-        margin-bottom:0;
-      }
-      a {
-        display:block;
+        position:absolute;
+        z-index:z('normal')+999;
+        background:#2b2b2b;
+        padding:.5em;
+        position:fixed;
+        bottom:0;
+        left:0;
         width:100%;
-        text-align:center;
-        margin:1em auto;
-        margin-bottom:1em;
-        float:none;
+        p {
+          @include small-s;
+          margin:0; padding:0;
+          width:100%;
+          text-align:center;
+        }
+    }
+    #content {
+        @include open-sans;
         position:relative;
-        @include large-s;
-        @include heavy-w;
-      }
+        float:left;
+        width:100%;
+        height:auto;
+        padding:1em;
+        margin-bottom:3em;
+        .main-links {
+            h1 {
+                text-align: center;
+                @include medium-s;
+            }
+        }
+        a:nth-child(1) {
+            margin-top:1em;
+            margin-bottom:0;
+        }
+        a {
+            display:block;
+            width:100%;
+            text-align:center;
+            margin:1em auto;
+            margin-bottom:1em;
+            float:none;
+            position:relative;
+            @include large-s;
+            @include heavy-w;
+        }
     }
     a {
-      color:$color-ltgray;
-      text-decoration:underline;
+        color:$color-ltgray;
+        text-decoration:underline;
     }
     a:hover {
-      color:$color-bright;
+        color:$color-bright;
     }
     a.button, input[type=submit] {
-      @include small-s;
-      text-decoration:none;
-      border-radius:0.3em;
-      width:100%;
+        @include small-s;
+        text-decoration:none;
+        border-radius:0.3em;
+        width:100%;
     }
     a.button:hover, input[type=submit]:hover {
-      @include small-s;
-      background:$color-bright;
-      color:black;
+        @include small-s;
+        background:$color-bright;
+        color:black;
     }
     form {
-      background:rgba(255,255,255,.5);
-      border-radius:0.5em;
-      margin-bottom:5em;
+        background:rgba(255,255,255,.5);
+        border-radius:0.5em;
+        margin-bottom:5em;
     }
 
     .popup {
-      svg.go {
-        display:block;
-        animation: logo 5s infinite;
-        fill: $color-bright;
-        width:50%;
-        float:none;
-        margin:0 auto;
-        margin-bottom:2em;
-      }
-      .popup-replace {
-
-        svg.line {
-          stroke:black;
-          stroke-miterlimit:10;
-          stroke-width:1;
+        svg.go {
+            display:block;
+            animation: logo 5s infinite;
+            fill: $color-bright;
+            width:50%;
+            float:none;
+            margin:0 auto;
+            margin-bottom:2em;
         }
-      }
-      .popup-replace p {
-        text-align:center;
+        .popup-replace {
+            svg.line {
+              stroke:black;
+              stroke-miterlimit:10;
+              stroke-width:1;
+            }   
+        }
+        .popup-replace p {
+            text-align:center;
+        }
+        .social-links {
+            margin-top:2em;
+        }
+        .social-links a.button {
+            margin-top:1em;
+        }
+        .social-center {
+            float: none;
+            margin: 0 auto;
+            width: 5em;
+            margin-bottom: 2em;
+            height: 1em;
 
-      }
-      .social-links {
-        margin-top:2em;
-      }
-      .social-links a.button {
-        margin-top:1em;
-      }
-      .social-center {
-        float: none;
-        margin: 0 auto;
-        width: 5em;
-        margin-bottom: 2em;
-        height: 1em;
+            a {
+              color: black;
+              display: block;
+              float: none;
+              position: relative;
+              margin: 0 auto;
+              clear: none;
+              /* margin-right: 0.2em; */
+              text-align: center;
+              @include fast-transition(color);
+              @include medium-w;
+              width: 4em;
+            }
+            a:hover {
+              color:$color-bright;
+            }
+        }
+        // end .social-center
+    }
+    // end body.interior .popup
+}
+// end body.interior
 
+// nav for interior pages
+#nav {
+    position:relative;
+    float:left;
+    margin: 0;
+    z-index: 10;
+    display: block;
+    //styling underneath
+    background-color: #2b2b2b;
+    width:100%;
+    li {
+        float: left;
+        list-style:none;
+        svg.go {
+            fill: #61ffc2;
+            height: 3em;
+            width: 3em;
+            margin-right: 1em;
+            display: block;
+        }
         a {
-        color: black;
-        display: block;
-        float: none;
-        position: relative;
-        margin: 0 auto;
-        clear: none;
-        /* margin-right: 0.2em; */
-        text-align: center;
-        @include fast-transition(color);
-        @include medium-w;
-        width: 4em;
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 12px;
+            display: block;
         }
         a:hover {
-          color:$color-bright;
+            background-color: #021A1A;
         }
-      }
-    }
-  }
-  // nav for interior pages
-  #nav {
-      position:relative;
-      float:left;
-      margin: 0;
-      z-index: 10;
-      display: block;
-      //styling underneath
-      background-color: #2b2b2b;
-      width:100%;
-  }
-   
-  #nav li { float: left; list-style:none;}
-  #nav li {
-    svg.go {
-      fill: #61ffc2;
-      height: 3em;
-      width: 3em;
-      margin-right: 1em;
-      display: block;
-    }
-  }
-  #nav li:hover { position: relative; }
-   
-  #nav li:hover > a {
-      background: #021A1A;
-   
-      box-shadow: 5px 5px 25px #000;
-      -moz-box-shadow: 5px 5px 25px #000;
-      -webkit-box-shadow: 5px 5px 25px #000;
-   
-      border-radius: 10px;
-      -moz-border-radius: 10px;
-      -webkit-border-radius: 10px;
-  }
-   
-  #nav li.sub:hover > a {
-      border-radius: 10px 10px 0 0;
-      -moz-border-radius: 10px 10px 0 0;
-      -webkit-border-radius: 10px 10px 0 0;
-  }
-   
-  #nav li a {
-      color: #fff;
-      font-weight: bold;
-      text-decoration: none;
-      padding: 12px;
-      display: block;
-  }
-  #nav li a:hover { background-color: #021A1A; }
-   
-  #nav li ul {
-      background: #fff;
-      margin-top: -2px;
-      display: none;
-  }
-  #nav li:hover ul {
-      display:block;
-      position:absolute;
-  }
-   
-  #nav li ul {
-      background: rgba(255,255,255,0.5);
-      padding: 10px 5px;
-   
-      box-shadow: 5px 5px 25px #000;
-      -moz-box-shadow: 5px 5px 25px #000;
-      -webkit-box-shadow: 5px 5px 25px #000;
-   
-      border-radius: 0px 15px 15px 15px;
-      -moz-border-radius: 0px 15px 15px 15px;
-      -webkit-border-radius: 0px 5px 5px 5px;
+        ul {
+            background: #fff;
+            margin-top: -2px;
+            display: none;
+            background: rgba(255,255,255,0.5);
+            padding: 10px 5px;
 
-  }
-  #nav li ul li a, #nav li ul li a:hover {
-      background: transparent;
-      color: #000;
-      width: 150px;
-      font-size: 0.95em;
-      font-weight: normal;
-  }
-  #nav li ul li a:hover { text-decoration: underline;
-      box-shadow: none;
-      -moz-box-shadow: none;
-      -webkit-box-shadow: none;
-   
-      border-radius: 0;
-      -moz-border-radius: 0;
-      -webkit-border-radius: 0;
-  }
+            box-shadow: 5px 5px 25px #000;
+            -moz-box-shadow: 5px 5px 25px #000;
+            -webkit-box-shadow: 5px 5px 25px #000;
+
+            border-radius: 0px 15px 15px 15px;
+            -moz-border-radius: 0px 15px 15px 15px;
+            -webkit-border-radius: 0px 5px 5px 5px;
+            li a, li a:hover {
+                background: transparent;
+                color: #000;
+                width: 150px;
+                font-size: 0.95em;
+                font-weight: normal;
+            }
+            li a:hover {
+                text-decoration: underline;
+                box-shadow: none;
+                -moz-box-shadow: none;
+                -webkit-box-shadow: none;
+
+                border-radius: 0;
+                -moz-border-radius: 0;
+                -webkit-border-radius: 0;
+            }
+        }
+    } 
+    //nav li
+
+    li:hover {
+        position: relative;
+        >a {
+            background: #021A1A;
+
+            box-shadow: 5px 5px 25px #000;
+            -moz-box-shadow: 5px 5px 25px #000;
+            -webkit-box-shadow: 5px 5px 25px #000;
+
+            border-radius: 10px;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+        }
+        ul {
+            display:block;
+            position:absolute;
+        }
+    }
+    li.sub:hover > a {
+        border-radius: 10px 10px 0 0;
+        -moz-border-radius: 10px 10px 0 0;
+        -webkit-border-radius: 10px 10px 0 0;
+    }
 }
+//end #nav
+
+//landing-nojs
 body.landing-nojs {
-
-  #content .popup svg.go {
-    display:block;
-    margin-bottom:2em;
-    animation: logo 5s infinite;
-    fill: $color-bright;
-  }
+    #content .popup svg.go {
+        display:block;
+        margin-bottom:2em;
+        animation: logo 5s infinite;
+        fill: $color-bright;
+    }
 }
+
 @keyframes logo {
     0% {opacity:1;}
     50% {opacity:0.5;}
     100% {opacity:1;}
-
 }
+//end landing-nojs
 
 .close-reveal-modal {
     top: -3rem!important;
@@ -278,22 +284,21 @@ body.landing-nojs {
     text-shadow: 2px 2px 2px $color-bright;
 }
 #large-bg {
-  float:left;
-  height:100%;
-  min-height:100%;
+    float:left;
+    height:100%;
+    min-height:100%;
 }
 #large-on-top, #large-bg {
-  display:none;
+    display:none;
 }
 #small-on-top, #small-bg {
-  display:block;
+    display:block;
 }
 
 .button-row .button {
-  @include btn-o;
-  @include exsmall-s;
-
-  margin:3em 9em 20em 0; 
+    @include btn-o;
+    @include exsmall-s;
+    margin:3em 9em 20em 0; 
 }
 
 #register-replace .button-row .button {
@@ -303,509 +308,466 @@ body.landing-nojs {
 
 // register 2
 #about .header-row, .loadsocial, .popup .header-row {
-  header {
-    @include top-left(0,0);
-    z-index:z('header')+5;
-    margin-top: 1.3em;
-    height: 1.3em;
-    width:100%;
-    clear:both;
-    div.columns {
-      height:100%;
-    }
-    p {
-      padding:0;
-      @include open-sans;
-      @include heavy-w;
-    }
-    p.close {
-      @include medium-w;
-      @include mp-reset;
-      @include inline;
-      @include float-left;
-    }
-    a.closeit {
-      @include wh(auto, 100%);
-      @include block;
-      @include float-left;
-      margin-left:1em;
-      margin-top:-.2em;
-      svg.close-svg {
-        @include close-o;
-        width:auto;
-        @include slow-transition(fill);
-      }
-    }
-    a.closeit:hover svg.close-svg {
-      fill:$color-bright;
-    }
-  }
-}
-#register-replace {
-  div:nth-child(2) {
-    margin-left:0.3em;
-  }
-
-  /*span.input {
-    width:100%;
-    margin-bottom:0.1em;
-  }*/
-  /*
-  span.input-left {
-    width:60%;
-    margin-right:0%;
-  }*/
-  form {
-    float: left;
-    width: 100%;
-    .button-row {
-      float:left;
-      width:100%;
-      margin-top:1em;
-      text-align:center;
-      input.register {
-        margin-bottom:20em;
-      }
-      div.error {
-        width: 50%;
-        float: none;
-        margin: 0 auto;
-        height: 1em;
-        p {
-          width:100%;
-          text-align:center;
+    header {
+        @include top-left(0,0);
+        z-index:z('header')+5;
+        margin-top: 1.3em;
+        height: 1.3em;
+        width:100%;
+        clear:both;
+        div.columns {
+            height:100%;
         }
-      }
+        p {
+            padding:0;
+            @include open-sans;
+            @include heavy-w;
+        }
+        p.close {
+            @include medium-w;
+            @include mp-reset;
+            @include inline;
+            @include float-left;
+        }
+        a.closeit {
+            @include wh(auto, 100%);
+            @include block;
+            @include float-left;
+            margin-left:1em;
+            margin-top:-.2em;
+            svg.close-svg {
+                @include close-o;
+                width:auto;
+                @include slow-transition(fill);
+            }
+        }
+        a.closeit:hover svg.close-svg {
+            fill:$color-bright;
+        }
     }
-  }
-  span.input {
-    border-radius:3px;
-  }
+}
 
-  input:focus {
+#register-replace {
+    div:nth-child(2) {
+        margin-left:0.3em;
+    }
+
+    form {
+        float: left;
+        width: 100%;
+        .button-row {
+            float:left;
+            width:100%;
+            margin-top:1em;
+            text-align:center;
+            input.register {
+                margin-bottom:20em;
+            }
+            div.error {
+                width: 50%;
+                float: none;
+                margin: 0 auto;
+                height: 1em;
+                p {
+                    width:100%;
+                    text-align:center;
+                }
+            }
+        }
+    }
+}
+
+span.input {
+    border-radius:3px;
+}
+
+input:focus {
     @include label-border-o;
     border-color:$color-bright;
-  }
+}
 
-  input.register{
+input.register{
     @include btn-o;
     @include exsmall-s;
     background:black;
-  }
+}
 
-  label.error {
+label.error {
     @include error-o;
-  }
- span.error-border input {
+}
+span.error-border input {
     @include label-border-o;
     border-color:$color-alert;
-  }
+}
 
-  div.error {
+div.error {
     @include float-left;
     margin-left:1em;
     clear:left;
     svg {
-    @include undisplay;
-    float:none;
-    @include alert-o;
-    @include wh(1.5em, 1.5em);
-    clear:left;
-    margin:0 auto;
+        @include undisplay;
+        float:none;
+        @include alert-o;
+        @include wh(1.5em, 1.5em);
+        clear:left;
+        margin:0 auto;
     }
-  }
 }
 
 //register initial
 
 
 #about {
-  transform:translateY(1000px);
-  @include opacity-off;
-  @include slow-transition(transform);
-  @include wh(100%,100%);
-  max-height:100%;
-  //overflow:hidden;
-  .header-row {
-    height:2.6em;
-  }
-  p {
-    @include small-s; 
-    margin-bottom:.5em; 
-    line-height:1.3em;
-  }
-
-  .button-row .button:hover {
-    background-color:$color-bright;
-  }
-
-  div div.about-content p:nth-child(1) {
-      padding-top:2em;
-  }
-  #register-replace div.error p {
-    @include mp-reset;
-    @include float-left;
-    @include medium-w;
-    font-style: italic;
-  }
-  h1{
-    @include medium-s;
-    margin-top:1em;
-  }
-  .about-replace {
-    position: absolute;
-    float: none;
-    top:6em;
-    height:100%;
-    min-height:100%;
-    //overflow: scroll;
-    .ps-scrollbar-y-rail {
-      opacity:0;
+    transform:translateY(1000px);
+    @include opacity-off;
+    @include slow-transition(transform);
+    @include wh(100%,100%);
+    max-height:100%;
+    //overflow:hidden;
+    .header-row {
+        height:2.6em;
     }
-    @include slow-transition(transform, opacity);
-    div:nth-child(1),div:nth-child(2) {
-      float:left;
-      height:auto;
+    p {
+        @include small-s; 
+        margin-bottom:.5em; 
+        line-height:1.3em;
     }
-  }
+
+    .button-row .button:hover {
+        background-color:$color-bright;
+    }
+
+    div div.about-content p:nth-child(1) {
+        padding-top:2em;
+    }
+    #register-replace div.error p {
+        @include mp-reset;
+        @include float-left;
+        @include medium-w;
+        font-style: italic;
+    }
+    h1 {
+        @include medium-s;
+        margin-top:1em;
+    }
+    .about-replace {
+        position: absolute;
+        float: none;
+        top:6em;
+        height:100%;
+        min-height:100%;
+        @include slow-transition(transform, opacity);
+        //overflow: scroll;
+        .ps-scrollbar-y-rail {
+          opacity:0;
+        }
+
+        div:nth-child(1),div:nth-child(2) {
+          float:left;
+          height:auto;
+        }
+    }
 }// end about
 
 //loading page
 body.loading {
 
-  .top-line a {
-    @include undisplay;
-  }
-  
-  #ip-container {
-    padding-top:3%;
-    @include block-center(0, auto);
-
-    svg.cross {
-      @include top-left(10%, 29.5%);
-      @include wh(40%, auto);
-      z-index:z('base');
-      fill:$color-ltgray;
+    .top-line a {
+        @include undisplay;
     }
 
-    .loading-container {
-      @include top-left(30%, 28.5%);
-      @include wh(33%, auto);
-      svg {fill:$color-teal;}
+    #ip-container {
+        padding-top:3%;
+        @include block-center(0, auto);
 
-      svg.loading {
-        @include float-left;
-        @include wh(28%, auto);
-        padding:12% 6% 0 0;
-      }
+        svg.cross {
+            @include top-left(10%, 29.5%);
+            @include wh(40%, auto);
+            z-index:z('base');
+            fill:$color-ltgray;
+        }
 
-      svg.go {
-        @include float-left;
-        @include wh(60%, auto);
-      }
-    }//loading-container
-  }//container
-}//body.loading
+        .loading-container {
+            @include top-left(30%, 28.5%);
+            @include wh(33%, auto);
+            svg {fill:$color-teal;}
+            svg.loading {
+                @include float-left;
+                @include wh(28%, auto);
+                padding:12% 6% 0 0;
+            }
+            svg.go {
+                @include float-left;
+                @include wh(60%, auto);
+            }
+        }
+        //loading-container
+    }
+    //container
+}
+//body.loading
 
 // home page
 body.home {
-  background:#2b2b2b;
-  .popup {
-    @include wh(0,100%);
-    @include undisplay;
-    @include top-left(0, 50%);
-    z-index:z('header')-2;
-    background:$color-teal url('../imgs/church.jpg') no-repeat;
-    background-size:cover;
-    margin-top:.2em;
-    overflow:hidden;
-    transform: translateX(-50%);
-
-    .popup-overlay {
-      @include wh(100%, 100%);
-      @include top-left(0,0);
-      z-index:z('header')+2;
-      background: linear-gradient(to top, rgba(56, 165, 123, 1) 0%, rgba(56, 165, 123, .8) 80%, rgba(56, 165, 123, .5) 100%);
-    }
-
-    .popup-info {
-      @include wh(100%,auto);
-      @include top-left(0,0);
-      z-index:z('header')+3;
-      .row .popup-replace {
-        height: auto;
-        float: left;
-        clear: left;
-      }
-      svg.go {
-        @include block;
-        @include block-center(3em,auto);
-        @include wh (33%, auto);
-        fill:white;
-      }
-      svg.line {
-        @include line-o;
-        @include block-center (0, auto);
-        @include wh(70%, 0.3em);
-        margin-bottom:2em;
-        stroke:$color-black;
-      }
-      p {
-        @include medium-s;
-        text-align:center;
-        line-height:1.5em;
-      }
-      .social-links {
-        @include float-left;
-        @include wh(100%, auto);
-        .social-center {
-          @include large-s;
-          @include wh(9em, auto);
-          @include block-center(0,auto);
-          a {
-            @include block;
-            @include float-left;
-            @include wh(4.5em, auto);
-            @include medium-s;
-            @include medium-w;
-            @include slow-transition(color);
-            color:$color-black;
-            text-align:center;
-          }
-        }
-
-        a:hover {
-          color:$color-alert;
-        }
-        a.button {
-          @include btn-o;
-          @include block-center(4em, auto);
-          background:$color-black;
-          @include med-transition(background);
-        }
-        a.button:hover {
-          background:$color-teal;
-          color:white;
-        }
-      }
-    }
-  }
-
-  // animation: visiblility 1s;
-  @include medium-s;
-  
-  .background {
-    @include top-left(0,0);
-    z-index:z('normal');
-  }
-  
-  .arrow-container {
-    @include top-left(25em, auto);
-    @include no-pointer;
-    @include wh(100%, 3em!important);
-    z-index:z('normal')+2;
-    a.arrow {
-      @include arrow-o;
-      @include wh(2.5em,2.5em);
-      svg {
-        position:absolute;
-        @include top-left(0,0);
-        fill:white;
-        margin:0;
-        @include med-transition(width,height, margin);
-        @include wh(100%,auto);
-      }
-      svg#play {
-        z-index:z('normal');
-      }
-      svg#circle {
-        z-index:z('normal')+1;
-      }
-    }
-    a.arrow:hover {
-      svg#play {
-        
-      }
-      svg#circle {
-        z-index:z('normal')+1;
-        margin:-10% 0 0 -10%;
-        width:120%;
-        height:auto;
-      }
-    }
-  }
-    @keyframes logoon {
-      0%    {opacity:0;}
-      100%  {opacity:1;}
-    }
-
-  .on-top {
-    @include top-left(0, 0);
-    @include no-pointer;
-    @include opacity-off;
+    background:#2b2b2b;
+    // animation: visiblility 1s;
     @include medium-s;
-    height:100%;
-    overflow:hidden;
-    animation-name: logoon;
-    animation-duration:500ms;
-    animation-delay:500ms;
-    animation-iteration-count:1;
-    animation-fill-mode: forwards;
-    .info svg.go {
-      opacity:0;
+    .popup {
+        @include wh(0,100%);
+        @include undisplay;
+        @include top-left(0, 50%);
+        z-index:z('header')-2;
+        background:$color-teal url('../imgs/church.jpg') no-repeat;
+        background-size:cover;
+        margin-top:.2em;
+        overflow:hidden;
+        transform: translateX(-50%);
+
+        .popup-overlay {
+            @include wh(100%, 100%);
+            @include top-left(0,0);
+            z-index:z('header')+2;
+            background: linear-gradient(to top, rgba(56, 165, 123, 1) 0%, rgba(56, 165, 123, .8) 80%, rgba(56, 165, 123, .5) 100%);
+        }
+
+        .popup-info {
+            @include wh(100%,auto);
+            @include top-left(0,0);
+            z-index:z('header')+3;
+            .row .popup-replace {
+                height: auto;
+                float: left;
+                clear: left;
+            }
+            svg.go {
+                @include block;
+                @include block-center(3em,auto);
+                @include wh (33%, auto);
+                fill:white;
+            }
+            svg.line {
+                @include line-o;
+                @include block-center (0, auto);
+                @include wh(70%, 0.3em);
+                margin-bottom:2em;
+                stroke:$color-black;
+            }
+            p {
+                @include medium-s;
+                text-align:center;
+                line-height:1.5em;
+            }
+            .social-links {
+                @include float-left;
+                @include wh(100%, auto);
+                .social-center {
+                    @include large-s;
+                    @include wh(9em, auto);
+                    @include block-center(0,auto);
+                    a {
+                        @include block;
+                        @include float-left;
+                        @include wh(4.5em, auto);
+                        @include medium-s;
+                        @include medium-w;
+                        @include slow-transition(color);
+                        color:$color-black;
+                        text-align:center;
+                    }
+                }
+                a:hover {
+                  color:$color-alert;
+                }
+                a.button {
+                    @include btn-o;
+                    @include block-center(4em, auto);
+                    background:$color-black;
+                    @include med-transition(background);
+                }
+                a.button:hover {
+                    background:$color-teal;
+                    color:white;
+                }
+            }
+            // end .social-links
+        }
+        // end .popup-info
     }
-    .info h1 {
-      opacity:0;
+    // end .popup
+
+    .background {
+        @include top-left(0,0);
+        z-index:z('normal');
     }
-    display:block;
-    z-index:z('normal')+1;
-    .info {
-      text-align:center;
-      padding-top:8em;
-      svg.go {
-        //opacity:0;
-        @include go-o;
-        @include wh (10em, auto);
+    
+    @keyframes logoon {
+        0%    {opacity:0;}
+        100%  {opacity:1;}
+    }
+
+    .on-top {
+        @include top-left(0, 0);
+        @include no-pointer;
+        @include opacity-off;
+        @include medium-s;
+        display:block;
+        height:100%;
+        overflow:hidden;
         animation-name: logoon;
-        animation-duration:1s;
-        animation-delay:1s;
+        animation-duration:500ms;
+        animation-delay:500ms;
         animation-iteration-count:1;
         animation-fill-mode: forwards;
-      }
-
-      h1 {
-        padding:2em 0 1em 0;
-        @include large-s;
-        animation-name: logoon;
-        animation-duration:1s;
-        animation-delay:950ms;
-        animation-iteration-count:1;
-        animation-fill-mode: forwards;
-      }
-      .info-buttons {
-        @include block-center(5em, auto);
-        @include wh (12em,auto);
-
-        a.button {
-          @include btn-o;
-          background:black;
-          @include med-transition(background);
-          margin-top:2em;
+        z-index:z('normal')+1;
+        .info {
+            text-align:center;
+            padding-top:8em;
+            svg.go {
+                opacity:0;
+                @include go-o;
+                @include wh (10em, auto);
+                animation-name: logoon;
+                animation-duration:1s;
+                animation-delay:1s;
+                animation-iteration-count:1;
+                animation-fill-mode: forwards;
+            }
+            h1 {
+                opacity:0;
+                padding:2em 0 1em 0;
+                @include large-s;
+                animation-name: logoon;
+                animation-duration:1s;
+                animation-delay:950ms;
+                animation-iteration-count:1;
+                animation-fill-mode: forwards;
+            }
+            .info-buttons {
+                @include block-center(5em, auto);
+                @include wh (12em,auto);
+                a.button {
+                    @include btn-o;
+                    background:black;
+                    @include med-transition(background);
+                    margin-top:2em;
+                }
+                a.button:hover{
+                    background:$color-teal;
+                }
+                a.ga16{
+                    @include ga16-btn-o;
+                    background: $color-teal;
+                    @include slow-transition(background);
+                }
+                a.ga16:hover {
+                    background:$color-black;
+                }
+            }
         }
-        a.button:hover{
-          background:$color-teal;
-        }
-        a.ga16{
-          @include ga16-btn-o;
-          background: $color-teal;
-          @include slow-transition(background);
-        }
-        a.ga16:hover {
-          background:$color-black;
-        }
-      }
+        // end .info
     }
-  }
+    // end .on-top
 
-  .row {
-    @include wh(100%, 100%);
-    .map-overlay {
-      position:absolute;
-      margin-left:50%;
-      @include undisplay;
-      z-index:z('normal');
-      background:black;
-      @include wh(50%,100%);
-    }
-    #map {
-      @include wh(100%, 100%);
-      background-color: #2b2b2b;
-      position:absolute;
-      margin-left:100%;
-      img[src='http://maps.gstatic.com/intl/en_us/mapfiles/iw_close.gif'] 
-        { content:url('../imgs/marker-opt.svg'); }
-      .gm-style > div {
-        background: #2b2b2b url('../imgs/map.png') no-repeat center / cover;
-      }
-      .gm-style:nth-child(1) > div:nth-child(2) {
-        opacity:0!important;
-      } 
-      .gm-style:nth-child(1) > div:nth-child(8) {
-        opacity:0!important;
-      } 
-      .gm-style > div:nth-last-child(1) {
-        top:auto!important;
-        bottom:20px;
-        .gm-style-mtc div {
-          background-color:#2b2b2b!important;
+    .row {
+        @include wh(100%, 100%);
+        .map-overlay {
+            position:absolute;
+            margin-left:50%;
+            @include undisplay;
+            z-index:z('normal');
+            background:black;
+            @include wh(50%,100%);
         }
-      } 
+        #map {
+            @include wh(100%, 100%);
+            background-color: #2b2b2b;
+            position:absolute;
+            margin-left:100%;
+            img[src='http://maps.gstatic.com/intl/en_us/mapfiles/iw_close.gif'] {
+                content:url('../imgs/marker-opt.svg');
+            }
+            .gm-style > div {
+                background: #2b2b2b url('../imgs/map.png') no-repeat center / cover;
+            }
+            .gm-style:nth-child(1) > div:nth-child(2) {
+                opacity:0!important;
+            } 
+            .gm-style:nth-child(1) > div:nth-child(8) {
+                opacity:0!important;
+            } 
+            .gm-style > div:nth-last-child(1) {
+                top:auto!important;
+                bottom:20px;
+            }
+            .gm-style-mtc div {
+                background-color:#2b2b2b!important;
+            }
+        } 
     }
 
     .loop {
-      @include wh(100%, 100%);
-      background:$color-black;
-      //overflow:hidden;
-      max-height:100%;
-      @include mp-reset;
-      img.crowd {
-        @include undisplay;
-        @include opacity-minimal;
-        @include wh(100%, auto);
-      }
-      
-      .video {
-        @include wh(auto, 100%);
-        bottom:-50%;
-        right:-50%;
-        z-index:z('normal');
-        margin-left:-1em;
-      }
-      .video-overlay {
-        @include top-right(0, 0);
-        @include wh (100%, 100%);
-        z-index:z('normal')+1;
-        background: linear-gradient(to bottom, rgba(68,68,68,0.5) 40%,rgba(56,165,123,1) 100%);
-      }
+        @include wh(100%, 100%);
+        background:$color-black;
+        //overflow:hidden;
+        max-height:100%;
+        @include mp-reset;
+        img.crowd {
+            @include undisplay;
+            @include opacity-minimal;
+            @include wh(100%, auto);
+        }
+        .video {
+            @include wh(auto, 100%);
+            bottom:-50%;
+            right:-50%;
+            z-index:z('normal');
+            margin-left:-1em;
+        }
+        .video-overlay {
+            @include top-right(0, 0);
+            @include wh (100%, 100%);
+            z-index:z('normal')+1;
+            background: linear-gradient(to bottom, rgba(68,68,68,0.5) 40%,rgba(56,165,123,1) 100%);
+        }
     }
-  }
-  #about .about-replace .button-row {
+}
+
+#about .about-replace .button-row {
     float:left;
     clear:left;
-
     a.register2 {
-    margin:3em 11em 20em 0;
+        margin:3em 11em 20em 0;
     }
-  }
-  .loadsocial {
+}
+
+.loadsocial {
     .header-row {
       height:2.6em;
     }
     .tagboard-row {
-      top: 6em;
-      position: absolute;
-      width: 100%;
-      height:1em;
+        top: 6em;
+        position: absolute;
+        width: 100%;
+        height:1em;
     }
     .tagboard-embed {
-      width: 100%;
-      float:left;
-      height:auto;
-      .ps-scrollbar-y-rail {
-        opacity:0;
-      }
+        width: 100%;
+        float:left;
+        height:auto;
+        .ps-scrollbar-y-rail {
+            opacity:0;
+        }
     }
-  }
-}// end body.home
+}
 
 body.version {
-  div.top-line a {
-    display:none;
-  }
+    div.top-line a {
+        display:none;
+    }
 }
 
 body.venue-nojs {
-#content .popup svg.go {
-  width:90%;
-}
+    #content .popup svg.go {
+        width:90%;
+    }
 }
