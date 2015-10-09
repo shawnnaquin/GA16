@@ -599,7 +599,41 @@ body.home {
         @include top-left(0,0);
         z-index:z('normal');
     }
-    
+
+    .arrow-container {
+        @include top-left(25em, auto);
+        @include no-pointer;
+        @include wh(100%, 3em!important);
+        z-index:z('normal')+2;
+        a.arrow {
+            @include arrow-o;
+            @include wh(2.5em,2.5em);
+            svg {
+                position:absolute;
+                @include top-left(0,0);
+                fill:white;
+                margin:0;
+                @include med-transition(width,height, margin);
+                @include wh(100%,auto);
+            }
+            svg#play {
+                  z-index:z('normal');
+            }
+            svg#circle {
+                  z-index:z('normal')+1;
+            }
+        }
+        a.arrow:hover {
+            svg#play {}
+            svg#circle {
+              z-index:z('normal')+1;
+              margin:-10% 0 0 -10%;
+              width:120%;
+              height:auto;
+            }
+        }
+    }
+
     @keyframes logoon {
         0%    {opacity:0;}
         100%  {opacity:1;}
