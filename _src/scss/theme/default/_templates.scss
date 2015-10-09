@@ -307,7 +307,8 @@ body.landing-nojs {
 }
 
 // register 2
-#about .header-row, .loadsocial, .popup .header-row {
+#about .header-row, .loadsocial, .popup .header-row, {
+    height:2.6em!important;
     header {
         @include top-left(0,0);
         z-index:z('header')+5;
@@ -315,6 +316,7 @@ body.landing-nojs {
         height: 1.3em;
         width:100%;
         clear:both;
+        height:1em;
         div.columns {
             height:100%;
         }
@@ -507,6 +509,56 @@ body.loading {
 }
 //body.loading
 
+.holder {
+  float:none;
+  margin:0 auto;
+  margin-top:0%;
+  height:90%;
+  width: 25%;
+  transform:translateX(.5em);
+  //background: url('../imgs/church.jpg') no-repeat;
+  @include slow-transition(width);
+  transition-timing-function: cubic-bezier(.42,.23,.92,.66);
+}
+.container {
+    width: 50%;
+    height:100%;
+    float:left;
+    animation-fill-mode: forwards;
+}
+
+#left .box {
+  width:100%;
+  height:100%;
+  transform: perspective( 1500px ) rotateY(90deg );
+  transform-origin: right;
+  background:#41b186;
+  //animation-fill-mode: forwards;
+  @include slow-transition(transform);
+}
+
+#right .box {
+  width:100%;
+  height:100%;
+  margin-left:-1px;
+  background:$color-teal;
+  transform: perspective( 1500px ) rotateY( -90deg );
+  transform-origin: left;
+  @include slow-transition(transform);
+
+}
+
+#holder-content {
+    opacity:0;
+    position:absolute;
+    top:0; left:0;
+    height:100%;
+    width:100%;
+    background:transparent;
+    @include slow-transition(opacity, background);
+    transition-delay: 500ms;
+}
+
 // home page
 body.home {
     background:#2b2b2b;
@@ -517,12 +569,13 @@ body.home {
         @include undisplay;
         @include top-left(0, 50%);
         z-index:z('header')-2;
-        background:$color-teal url('../imgs/church.jpg') no-repeat;
+        // background:$color-teal url('../imgs/church.jpg') no-repeat;
+        // background:rgba(0,0,0,.8);
         background-size:cover;
         margin-top:.2em;
         overflow:hidden;
         transform: translateX(-50%);
-
+        @include fast-transition(background);
         .popup-overlay {
             @include wh(100%, 100%);
             @include top-left(0,0);
@@ -535,6 +588,9 @@ body.home {
             @include top-left(0,0);
             z-index:z('header')+3;
             .row .popup-replace {
+                opacity:0;
+                @include slow-transition(opacity);
+                transition-delay:500ms;
                 height: auto;
                 float: left;
                 clear: left;
@@ -550,7 +606,7 @@ body.home {
                 @include block-center (0, auto);
                 @include wh(70%, 0.3em);
                 margin-bottom:2em;
-                stroke:$color-black;
+                stroke:$color-teal;
             }
             p {
                 @include medium-s;
@@ -804,4 +860,9 @@ body.venue-nojs {
     #content .popup svg.go {
         width:90%;
     }
+}
+
+.loop, #map, .map-overlay {
+    @include slow-transition(transform);
+    transition-timing-function: cubic-bezier(.42,.23,.92,.66);
 }

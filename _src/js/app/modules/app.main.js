@@ -228,7 +228,27 @@ $("#myModal").on("opened.fndtn.reveal", function(){
       'width': '100%',
       'opacity': '1',
     }, 500);
+
     popupHeightFn();
+
+    $('.popup').show().css('background', 'rgba(0,0,0,.6)').animate({'opacity':'1'},200);
+
+    $('#left .box').css(
+        'transform', 'perspective( 1500px ) rotateY( 0deg )');
+    $('#right .box').css(
+        'transform', 'perspective( 1500px ) rotateY( 0deg )');
+
+    $('#map, .map-overlay').css('transform', 'translateX(92%)');
+    $('.loop').css('transform', 'translateX(-88.5%)');
+
+    $('.holder').css('width', '90%');
+    
+    $('#holder-content').css({'opacity': '1', 'background': 'url("assets/imgs/church.jpg") no-repeat'});
+
+    $('.popup').css('background', 'rgba(0,0,0,.6)');
+
+    $('.popup-replace').css('opacity','1');
+
   }
   
   function popupHeightFn() {
@@ -347,6 +367,8 @@ $("#myModal").on("opened.fndtn.reveal", function(){
     //$('#large-on-top .info').addClass('small-5');
     //$('#large-on-top .info .info-buttons').css('margin','2em 0 0 0');
     $('#large-on-top .info').css({'text-align': 'right'});
+
+    
   }
 
   function closeIt() {
@@ -370,8 +392,18 @@ $("#myModal").on("opened.fndtn.reveal", function(){
     $('#large-bg .map-overlay').hide();
     // $(heightClasses).css('style', '100%');
     $('#large-bg-loop video').css({ 'height': '100%', 'width': 'auto' });
-    $('.popup').animate({'width': '0%', 'opacity': '0',}, 500);
-
+    
+    $('#left .box').css(
+        'transform', 'perspective( 1500px ) rotateY( 90deg )');
+    $('#right .box').css(
+        'transform', 'perspective( 1500px ) rotateY( -90deg )');
+    $('.holder').css('width','0%');
+    $('.popup').css('background','transparent').animate({'opacity':'0'},200).hide(200);
+    
+    $('#map, .map-overlay').css('transform', 'translateX(0)');
+    $('.loop').css('transform', 'translateX(0)');
+    $('#holder-content').css({'opacity': '0', 'background': 'transparent'});
+    $('.popup-replace').css('opacity','0');
   }
 
   function register() {
