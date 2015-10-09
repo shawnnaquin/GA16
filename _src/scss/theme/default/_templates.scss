@@ -45,24 +45,24 @@ body.interior {
 
     background:  linear-gradient(to top, rgba(56, 165, 123, 1) 0%, rgba(56, 165, 123, .8) 80%, rgba(56, 165, 123, .5) 100%),
     url('../imgs/crowd.jpg') center / cover no-repeat;
-    form {
-        label {
-            margin-top:1em;
-        }
-        input, input:focus {
-            width:100%;
-            height:2em;
-            padding-left:.5em;
+    // form {
+    //     label {
+    //         margin-top:1em;
+    //     }
+    //     input, input:focus {
+    //         width:100%;
+    //         height:2em;
+    //         padding-left:.5em;
 
-        }
-        input:focus {
-            background:$color-teal;
-        }
-        input.button {
-            margin-top:1em;
-            line-height:0;
-        }
-    }
+    //     }
+    //     input:focus {
+    //         background:$color-teal;
+    //     }
+    //     input.button {
+    //         margin-top:1em;
+    //         line-height:0;
+    //     }
+    // }
     #footer {
         position:absolute;
         z-index:z('normal')+999;
