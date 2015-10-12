@@ -360,8 +360,10 @@
                     icon: icon,
                 });
 
-                var contentString = "<div class='info-content'><div class='info-content-top'><h1 style='color:black;'>VENUE</h1></div><div class='info-content-bottom'><p>Music City Center</p><a id='#hamburger-button' href='signup.html' style='display:block;'>Find out more &raquo;</a></div></div>";
+                var contentString = "<div class='info-content'><div class='info-content-top'><h1 style='color:black;'>VENUE</h1></div><div class='info-content-bottom'><p>Music City Center</p><a id='hamburger-button' href='http://www.nashvillemusiccitycenter.com/' rel='' target='_blank' style='display:block;'>Find out more &raquo;</a></div></div>";
 
+                $('a#hamburger-button').click(function(){ alert('hello'); return false; });
+                
                 infoBubble = new InfoBubble({
                     content: contentString,
                     shadowStyle: 1,
