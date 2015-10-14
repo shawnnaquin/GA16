@@ -53,6 +53,8 @@
 			}
 		  /// begin
             if ( $("body").hasClass("version") ) {
+                setTimeout($(this).show(), 800);
+                
                 if ( $(document).width() < 470 ) {
                     window.location = "landing.html";
                 }
@@ -76,7 +78,7 @@
             }
 
             // addressing stuff //////////////
-            $(document).on("click", "a.closeit", function() {
+            $(document).on("click", "a.closeit, a#popup-close", function() {
                 closeIt();
             });
 
@@ -113,6 +115,7 @@
                 //$(".about-replace").perfectScrollbar();
                 // animate home info in
             }
+
             // end body.home 
             $( window ).resize(function() {
                 iframeSize();
@@ -130,35 +133,39 @@
 
             // click handlers ///////////////////
             // hamburger menu
-        
+
             function hamburger() {
 
+                $('a.gradient-icon').hide(200);                
+                $('a#popup-close').show(200);
+                
                 $(".popup-info").hide();
                 $(".popup-replace").css("opacity","0");
-                $(".popup, .popup-overlay, .popup-info").show().animate({
-                    "width": "100%", "opacity": "1",
+                $(".popup").show().animate({
+                    "width": "100%", "height": "100%", "opacity": "1",
                 }, 500);
+                $(".popup-overlay").animate({"width": "100%"}, 500);
 
                 popupHeightFn();
 
-                $(".popup").show().css("background", "rgba(0,0,0,.6)").animate({"opacity":"1"},200);
+                $(".popup").show().animate({"opacity":"1"},200);
 
                 $("#left .box").css(
                     "transform", "perspective( 1500px ) rotateY( 0deg )");
                 $("#right .box").css(
                     "transform", "perspective( 1500px ) rotateY( 0deg )");
 
-                $("#map, .map-overlay").css("transform", "translateX(92%)");
-                $(".loop").css("transform", "translateX(-88.5%)");
+                // $("#map, .map-overlay").css("transform", "translateX(92%)");
+                // $(".loop").css("transform", "translateX(-88.5%)");
 
                 $(".holder").css("width", "90%");
           
-                $("#holder-content").css({"opacity": "1", "background": "url('assets/imgs/church.jpg') no-repeat"});
-
-                $(".popup").css("background", "rgba(0,0,0,.6)");
+                $("#holder-content").css({"opacity": "1", "height": "90%", "width": "90%", "background": "url('assets/imgs/church.jpg') no-repeat", "background-size": "cover"});
 
                 $(".popup-replace").css("opacity","1");
 
+                $(".popup").css({'background': 'rgb(0,0,0)'});
+                $(".popup-info").perfectScrollbar(); 
             }
 
             function popupHeightFn() {
@@ -181,6 +188,7 @@
             function register2() {
                 // load in form page / start form page
                 $(".about-replace").css("display","none");
+
                 $(".about-replace").load("register2.html #register-replace", function(){
 
                     //aboutReplace = $(".about-replace").height();
@@ -258,25 +266,33 @@
             }
 
             function loadSocial() {
-                closeIt();
           
                 $(".map-overlay").show();
                 $("div.tagboard-embed").show();
                 $(".loadsocial div header").show();
                 $(".map-overlay").css("background","rgba(0,0,0,1)").show();
-                //$(".on-top").css("opacity","1");
-                $("#large-on-top").animate({"margin-left": "-23em"}, 100);
+                
+                // button movement
                 $("#large-on-top .info a.ga16").hide();
-                $("#large-on-top .info a.register").removeClass("left").addClass("right");
-                //$("#large-on-top .info").removeClass("small-8 small-offset-2 large-6 large-offset-3");
-                //$("#large-on-top .info").addClass("small-5");
-                //$("#large-on-top .info .info-buttons").css("margin","2em 0 0 0");
-                $("#large-on-top .info").css({"text-align": "right"});
+                $("#large-on-top .info").removeClass("small-offset-2 large-offset-3");
+                $("#large-on-top .info").css({"text-align": "right", "width": "75%", "margin-left": "10%"});
+                $("#large-on-top").animate({"margin-left": "0", "width": "50%"}, 1000, "easeOutExpo");
+                $("#large-on-top .info a.register").removeClass("left").addClass("right", 1000).show();
+                $("#about").hide();
+                // $("#large-on-top .info a.ga16").hide();
+                // $("#large-on-top").animate({"margin-left": "-23em"}, 300);
+                // $("#large-on-top .info a.register").removeClass("left").addClass("right");
+                // $("#large-on-top .info").css({"text-align": "right"});
+
             }
 
             function closeIt() {
+
+                $('a.gradient-icon').show(200);                
+                $('a#popup-close').hide(200);
+
                 $("#large-bg .loop .video-overlay").css("overflow", "hidden");
-                $("#large-on-top .info a.register, #large-on-top .info a.ga16").show();
+                $("#large-on-top .info a.register, #large-on-top .info a.ga16").show(200);
                 $("#large-on-top .info a.ga16").addClass("right").removeClass("left");
                 $("#large-on-top .info a.register").addClass("left").removeClass("right");
                 $("#large-on-top .info .info-buttons, .info, .crowd").attr("style","");
@@ -284,7 +300,7 @@
                 $("#large-on-top .info").addClass("small-8 small-offset-2 large-6 large-offset-3");
                 $("#large-bg .loop video").animate({"opacity": "1"}, 100);
                 $("#large-bg .loop video").css({ "height": "100%", "width": "auto" });
-                $("#large-on-top").animate({"margin-left": "0", "margin-right": "0", "width": "100%"}, 100);
+                $("#large-on-top").animate({"margin-left": "0", "margin-right": "0", "width": "100%"}, 1000, "easeOutExpo");
                 $("#large-on-top .info").addClass("small-offset-2 large-offset-3");
                 $(".about-replace").css({"transform": "translateY(500px)", "opacity": "0"});
                 $("#about").fadeOut(100);
@@ -310,21 +326,24 @@
             }
 
             function register() {
+
                 $("#large-bg .map-overlay").hide();
                 $("div.tagboard-embed").hide();
                 $(".loadsocial div header").hide();
                 $(".map-overlay").css("background","rgba(0,0,0,.5)").show();
+                
+                // button movement
                 $("#large-on-top .info a.register").hide();
-                $("#large-on-top .info a.ga16").removeClass("right").addClass("left", 1000).show();
-                //    $("#large-on-top .info .info-buttons").css("margin","2em 0 0 0");
                 $("#large-on-top .info").removeClass("small-offset-2 large-offset-3");
-                //    $("#large-on-top .info").addClass("small-5 small-offset-7", 1000).css("text-align","left");
                 $("#large-on-top .info").css({"text-align": "left", "width": "75%", "margin-left": "10%"});
-                $("#large-on-top").animate({"margin-left": "50%", "width": "50%"}, 100);
+                $("#large-on-top").animate({"margin-left": "50%", "width": "50%"}, 1000, "easeOutExpo");
+                $("#large-on-top .info a.ga16").removeClass("right").addClass("left", 1000).show();
+                
                 $("#large-bg .loop .crowd").css("display", "block").animate({ "opacity": ".8"}, "slow");
                 $("#large-bg .loop .video-overlay").css("background-color", "rgba(52,212,150,.5");
                 $("#large-bg .loop video").animate({"opacity": "0"}, 100);
                 $("#large-bg .loop video").css({ "height": "0", "width": "0" });
+
                 $("#large-bg .video-overlay").load("register.html #about", function(){
                     $(".about-replace").perfectScrollbar(); 
                     $("#about").animate({"opacity": "1"}, 2000).css("transform","translateY(0px)");

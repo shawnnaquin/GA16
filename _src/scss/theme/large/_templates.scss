@@ -7,24 +7,29 @@ body.home {
   .on-top {
     font-size:1em;
   }
-
   @media screen and (min-width:1025px) {
-  .arrow-container {
-    @include top-left(28em, auto);
+    .arrow-container {
+      @include top-left(28em, auto);
+    }
   }
-}
   @media screen and (min-width:1440px) {
-  .arrow-container {
-    @include top-left(40em, auto);
-  }
-}
-  
+    .arrow-container {
+      @include top-left(42em, auto);
+      a.arrow {
+        @include wh(4em,4em);
+      }
+    }
+    #about {
+      p {@include exlarge-s; margin-bottom:1em; line-height:1.5em;}
+      h1 {@include exlarge-s; margin-top:1em;}
+      div .button-row .button {
+        font-size:1.2em;
+      }
+    }
+  } 
 }
 
-#about {
-  p {@include medium-s; margin-bottom:1em; line-height:1.5em;}
-  h1 {@include exlarge-s; margin-top:1em;}
-}
+
 #register-replace {
   span.input {
     width:100%;

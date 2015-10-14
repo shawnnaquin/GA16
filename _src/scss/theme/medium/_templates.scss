@@ -74,9 +74,6 @@ body.interior {
   }
 
 #about {
-  p {
-
-  }
 
   .button-row .button:hover {
   }
@@ -171,11 +168,28 @@ body.home {
   }
   
   .arrow-container {
-    @include top-left(30em, auto);
+    @include top-left(28em, auto);
+    @include wh(100%, 4em!important);
     a.arrow {
-
+      // margin:-10% 0 0 -10%;
+      // height:4em;
+      @include wh(2.5em,2.5em);
+      svg{margin:auto;}
+    }
+    svg#circle {
+      width:120%;
+      margin:-11% 0 0 -12%;
+      height:auto;
     }
     a.arrow:hover {
+      // @include wh(4em,4em);
+      svg#play {}
+      svg#circle {
+        z-index:z('normal')+1;
+        margin:-20% 0 0 -20%;;
+        width:140%;
+        height:auto;
+      }
     }
   }
 
@@ -188,7 +202,7 @@ body.home {
       svg.go {
       }
       h1 {
-        @include exlarge-s;
+        font-size:2em;
       }
       .info-buttons {
         @include wh (100%, 1em);

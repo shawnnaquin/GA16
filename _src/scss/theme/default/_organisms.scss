@@ -44,19 +44,14 @@
   .mark{fill:$color-white;}
 }
 
-a.gradient-icon svg line.hamburger{
-  fill:none;
-  stroke:#ffffff;
-  stroke-width:6;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  stroke-miterlimit:10;
+a.gradient-icon svg.info-icon{
+  fill:white;
   @include exslow-transition(stroke);
 
 }
 
-a.gradient-icon:hover svg line.hamburger{
-  stroke:$color-bright;
+a.gradient-icon:hover svg.info-icon{
+  fill:$color-bright;
 }
 
 @mixin line-o {
