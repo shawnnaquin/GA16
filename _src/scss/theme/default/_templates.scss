@@ -294,10 +294,18 @@ body.landing-nojs {
 }
 //end landing-nojs
 
-.close-reveal-modal {
-    top: -3rem!important;
-    right: 0rem;
-    text-shadow: 2px 2px 2px $color-bright;
+.reveal-modal .close-reveal-modal {
+    position: absolute;
+    top: -1em;
+    width: 20px;
+    right: 0;
+    svg {
+        fill:white;
+        transition:fill 300ms ease;
+    }
+}
+.reveal-modal .close-reveal-modal:hover {
+    svg {fill:$color-teal;}
 }
 #large-bg {
     float:left;
