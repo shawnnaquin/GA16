@@ -635,8 +635,8 @@ body.home {
             overflow:scroll;
             @include top-left(0,0);
             z-index:z('header')+3;
-            font-size:1em;
             .row .popup-replace {
+                font-size:1.2em;
                 opacity:0;
                 @include slow-transition(opacity);
                 transition-delay:500ms;
