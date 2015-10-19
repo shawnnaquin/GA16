@@ -127,11 +127,8 @@ body.home {
 
     .popup-overlay {
     }
-
     .popup-info {
-      .row .popup-replace {
-        
-      }
+      div {}
       svg.go {
 
       }
@@ -249,3 +246,6 @@ body.home {
     }
   }
 }// end body.home
+.popup-replace {
+        font-size:1.3em;
+      }

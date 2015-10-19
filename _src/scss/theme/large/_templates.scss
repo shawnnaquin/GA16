@@ -8,8 +8,8 @@ body.home {
     font-size:1em;
   }
   .popup .popup-info {
-    .row .popup-replace {
-      font-size:1.8em;
+    div .popup-replace {
+      
     }
   }
   @media screen and (min-width:1025px) {
@@ -45,4 +45,7 @@ body.home {
   input.register {
     @include small-s;
   }
+}
+.popup-replace {
+  font-size:1.6em;
 }
